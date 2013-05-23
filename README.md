@@ -11,21 +11,21 @@ Website: <http://stevemorse.org/phoneticinfo.htm> (source download, information 
 
 ### Information
 
-Currently there are 16 languages supported: Arabic, Czech, Dutch, English, French, German, Greek, Hebrew, Hungarian,
-Italian, Polish, Portuguese, Romanian, Russian, Spanish, Turkish. In Russian and Greek languages both native and latin
-alphabets are supported. Also BMPM (Beider-Morse Phonetic Matching) can parse Hebrew names with Ashkenazic and Sephardic
-rules.
+Currently there are 17 languages supported: Arabic, Czech, Dutch, English, French, German, Greek, Hebrew, Hungarian,
+Italian, Latvian, Polish, Portuguese, Romanian, Russian, Spanish, Turkish. In Russian and Greek languages both native
+and latin alphabets are supported. Also BMPM (Beider-Morse Phonetic Matching) can parse Hebrew names with Ashkenazic
+and Sephardic rules.
 
 ### Differences
 
 This fork's goal is to get rid of deprecated and global functions, global variables and to represent algorithm in
 OOP-like style. Also there were implemented some fixes and modifications for unification purposes. While exceeding the
 limits of procedural code now it's possible to include algorithm in frameworks and third-parity applications without
-a headache.
+a headache. Latvian language experimental support added.
 
 ### Requirements
 
-PHP 5+
+PHP 5+; mbtring extenstion
 
 # Usage
 

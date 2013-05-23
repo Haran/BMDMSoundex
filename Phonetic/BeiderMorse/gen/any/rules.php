@@ -264,7 +264,7 @@ $this->rules[ $this->getLanguageIndexByName('any') ] = array(
     array("eu", "", "", "(eu|Yj[".$this->lang['german']."]|ej[".$this->lang['german']."]|oj[".$this->lang['german']."]|Y[".$this->lang['dutch']."])"),
     array("ey", "", "", "(aj|ej)"),
     array("ia", "", "", "ja"),
-    array("ie", "", "", "(i[".$this->lang['german']."]|e[".$this->lang['polish']."]|ije[".$this->lang['russian']."]|Q[".$this->lang['dutch']."]|je)"),
+    array("ie", "", "", "(D[".$this->lang['latvian']."]ie|i[".$this->lang['german']."]|e[".$this->lang['polish']."]|ije[".$this->lang['russian']."]|Q[".$this->lang['dutch']."]|je)"),
     array("ii", "", "$", "i"), // russian
     array("io", "", "", "(jo|e[".$this->lang['russian']."])"),
     array("iu", "", "", "ju"),
@@ -302,10 +302,11 @@ $this->rules[ $this->getLanguageIndexByName('any') ] = array(
     array("ä", "", "", "(Y|e)"),
     array("á", "", "", "a"), // Port & Sp
     array("à", "", "", "a"),
+    array("ā", "", "", "a"),
     array("â", "", "", "a"),
     array("ã", "", "", "(a|an)"), // Port
     array("ă", "", "", "(e[".$this->lang['romanian']."]|a)"), // romanian
-    array("č", "", "", "tS"), // czech
+    array("č", "", "", "tS"), // czech + latvian
     array("ć", "", "", "(tS[".$this->lang['polish']."]|ts)"), // polish
     array("ç", "", "", "(s|tS[".$this->lang['turkish']."])"),
     array("ď", "", "", "(d|dj[".$this->lang['czech']."])"),
@@ -314,14 +315,20 @@ $this->rules[ $this->getLanguageIndexByName('any') ] = array(
     array("é", "", "", "e"),
     array("è", "", "", "e"),
     array("ê", "", "", "e"),
+    array("ē", "", "", "e"),
     array("ě", "", "", "(e|je[".$this->lang['czech']."])"),
     array("ğ", "", "", ""), // turkish
+    array("ģ", "", "", "(d|dj)"), // latvian
+    array("ī", "", "", "i"),
     array("í", "", "", "i"),
     array("î", "", "", "i"),
     array("ı", "", "", "(i|e[".$this->lang['turkish']."]|[".$this->lang['turkish']."])"),
+    array("ķ","","","(t|ti)"),
+    array("ļ", "", "", "l"), // latvian
     array("ł", "", "", "l"),
-    array("ń", "", "", "(n|nj[".$this->lang['polish']."])"), // polish
+    array("ń", "", "", "(n|nj[".$this->lang['polish']."])"),
     array("ñ", "", "", "(n|nj[".$this->lang['spanish']."])"),
+    array("ņ", "", "", "(n|nj[".$this->lang['latvian']."])"),
     array("ó", "", "", "(u[".$this->lang['polish']."]|o)"),
     array("ô", "", "", "o"), // Port & Fr
     array("õ", "", "", "(o|on[".$this->lang['portuguese']."]|Y[".$this->lang['hungarian']."])"),
@@ -330,7 +337,7 @@ $this->rules[ $this->getLanguageIndexByName('any') ] = array(
     array("ř", "", "", "(r|rZ[".$this->lang['czech']."])"),
     array("ś", "", "", "(S[".$this->lang['polish']."]|s)"),
     array("ş", "", "", "S"),  // romanian+turkish
-    array("š", "", "", "S"),  // czech
+    array("š", "", "", "S"),  // czech+latvian
     array("ţ", "", "", "ts"), // romanian
     array("ť", "", "", "(t|tj[".$this->lang['czech']."])"),
     array("ű", "", "", "Q"), // hungarian
@@ -338,8 +345,10 @@ $this->rules[ $this->getLanguageIndexByName('any') ] = array(
     array("ú", "", "", "u"),
     array("ů", "", "", "u"), // czech
     array("ù", "", "", "u"), // french
+    array("ū", "", "", "u"), // latvian
     array("ý", "", "", "i"), // czech
     array("ż", "", "", "Z"), // polish
+    array("ž", "", "", "Z"), // latvian
     array("ź", "", "", "(Z[".$this->lang['polish']."]|z)"),
 
     array("ß", "", "", "s"), // german

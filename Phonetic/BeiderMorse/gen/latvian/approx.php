@@ -20,9 +20,7 @@
  * If not, see <http://www.gnu.org/licenses/>.
  */
 
-$this->languages = array(
-    "any", "arabic", "cyrillic", "czech", "dutch", "english", "french",
-    "german", "greek", "greeklatin", "hebrew", "hungarian", "italian",
-    "latvian", "polish", "portuguese", "romanian", "russian", "spanish",
-    "turkish"
-);
+require(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'french'.DIRECTORY_SEPARATOR.'approx.php');
+
+// this file uses the same rules as french/approx.php
+$this->approx[ $this->getLanguageIndexByName('latvian') ] = $this->approx[ $this->getLanguageIndexByName('french') ];
