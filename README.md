@@ -25,7 +25,7 @@ a headache. Latvian language experimental support added.
 
 ### Requirements
 
-PHP 5+; mbtring extenstion
+PHP 5+; mbstring extenstion
 
 # Usage
 
