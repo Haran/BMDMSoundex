@@ -247,6 +247,8 @@ class BMSoundex extends Phonetic implements iBeiderMorse
     private function getPhonetic($input, $langCode='', $concat=false)
     {
 
+        $this->checkEncoding($input);
+
         // Filter input
         $input = mb_strtolower(trim($input), mb_detect_encoding($input));
         $input = trim(str_replace('-', ' ', $input));
@@ -950,6 +952,21 @@ class BMSoundex extends Phonetic implements iBeiderMorse
     {
         $res = array_search($name, $this->languages);
         return ($res===false) ? null : $res;
+    }
+
+
+    /**
+     * Check if input string is unicode.
+     * Triggers E_WARNING if not.
+     *
+     * @param $input
+     * @return void
+     */
+    private function checkEncoding($input)
+    {
+        if(!mb_check_encoding($input, 'UTF-8')) {
+            trigger_error('Input string must be encoded in UTF-8', E_USER_WARNING);
+        }
     }
 
 }
