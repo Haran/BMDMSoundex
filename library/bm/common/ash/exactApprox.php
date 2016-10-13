@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,73 +15,75 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-// Sephardic
-$this->exactApproxCommon = array(
+return [
 
-    array("h", "", "$", ""),
+    ["h","","$",""],
 
     // VOICED - UNVOICED CONSONANTS
-    array("b", "", "[fktSs]", "p"),
-    array("b", "", "p", ""),
-    array("b", "", "$", "p"),
-    array("p", "", "[gdZz]", "b"),
-    array("p", "", "b", ""),
+    ["b","","[fktSs]","p"],
+    ["b","","p",""],
+    ["b","","$","p"],
+    ["p","","[gdZz]","b"],
+    ["p","","b",""],
 
-    array("v", "", "[pktSs]", "f"),
-    array("v", "", "f", ""),
-    array("v", "", "$", "f"),
-    array("f", "", "[bgdZz]", "v"),
-    array("f", "", "v", ""),
+    ["v","","[pktSs]","f"],
+    ["v","","f",""],
+    ["v","","$","f"],
+    ["f","","[bgdZz]","v"],
+    ["f","","v",""],
 
-    array("g", "", "[pftSs]", "k"),
-    array("g", "", "k", ""),
-    array("g", "", "$", "k"),
-    array("k", "", "[bdZz]", "g"),
-    array("k", "", "g", ""),
+    ["g","","[pftSs]","k"],
+    ["g","","k",""],
+    ["g","","$","k"],
+    ["k","","[bdZz]","g"],
+    ["k","","g",""],
 
-    array("d", "", "[pfkSs]", "t"),
-    array("d", "", "t", ""),
-    array("d", "", "$", "t"),
-    array("t", "", "[bgZz]", "d"),
-    array("t", "", "d", ""),
+    ["d","","[pfkSs]","t"],
+    ["d","","t",""],
+    ["d","","$","t"],
+    ["t","","[bgZz]","d"],
+    ["t","","d",""],
 
-    array("s", "", "dZ", ""),
-    array("s", "", "tS", ""),
+    ["s","","dZ",""],
+    ["s","","tS",""],
 
-    array("z", "", "[pfkSt]", "s"),
-    array("z", "", "[sSzZ]", ""),
-    array("s", "", "[sSzZ]", ""),
-    array("Z", "", "[sSzZ]", ""),
-    array("S", "", "[sSzZ]", ""),
+    ["z","","[pfkSt]","s"],
+    ["z","","[sSzZ]",""],
+    ["s","","[sSzZ]",""],
+    ["Z","","[sSzZ]",""],
+    ["S","","[sSzZ]",""],
 
     // SIMPLIFICATION OF CONSONANT CLUSTERS
-    array("jnm", "", "", "jm"),
+
+    ["jnm","","","jm"],
 
     // DOUBLE --> SINGLE
-    array("ji", "^", "", "i"),
-    array("jI", "^", "", "I"),
 
-    array("a", "", "[aAB]", ""),
-    array("a", "[AB]", "", ""),
-    array("A", "", "A", ""),
-    array("B", "", "B", ""),
+    ["ji","^","","i"],
+    ["jI","^","","I"],
 
-    array("b", "", "b", ""),
-    array("d", "", "d", ""),
-    array("f", "", "f", ""),
-    array("g", "", "g", ""),
-    array("k", "", "k", ""),
-    array("l", "", "l", ""),
-    array("m", "", "m", ""),
-    array("n", "", "n", ""),
-    array("p", "", "p", ""),
-    array("r", "", "r", ""),
-    array("t", "", "t", ""),
-    array("v", "", "v", ""),
-    array("z", "", "z", "")
+    ["a","","[aAB]",""],
+    ["a","[AB]","",""],
+    ["A","","A",""],
+    ["B","","B",""],
 
-    // no filename here since it always gets merged into another file
+    ["b","","b",""],
+    ["d","","d",""],
+    ["f","","f",""],
+    ["g","","g",""],
+    ["k","","k",""],
+    ["l","","l",""],
+    ["m","","m",""],
+    ["n","","n",""],
+    ["p","","p",""],
+    ["r","","r",""],
+    ["t","","t",""],
+    ["v","","v",""],
+    ["z","","z",""]
 
-);
+    // do not put name of file here since it always gets merged into another file
+
+];
