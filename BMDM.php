@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
+ * Copyright Olegs Capligins, 2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,131 +14,196 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
-require_once 'BeiderMorse' . DIRECTORY_SEPARATOR . 'BMSoundex.php';
+namespace dautkom\bmdm;
+
+use dautkom\bmdm\library\Core;
+use dautkom\bmdm\library\BeiderMorse;
+use dautkom\bmdm\library\DaitchMokotoff;
+use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\BrowserConsoleHandler;
+use Monolog\Handler\NullHandler;
+use Monolog\Logger;
 
 
 /**
- * Interface for Daitch-Mokotoff class
+ * @package dautkom\bmdm
  */
-interface iDaitchMokotoff
-{
-    public function getSoundex($input);
-    public function getWordSoundex($input);
-}
-
-/**
- * Interface for Beider-Morse class
- */
-interface iBeiderMorse
-{
-    public function getLanguages();
-    public function getLanguageCode($input);
-    public function getPossibleLanguages($input);
-    public function getPhoneticKeys($input);
-    public function getNumericKeys($input);
-}
-
-/**
- * Core class
- */
-class Phonetic
+class BMDM extends Core
 {
 
     /**
-     * Verbose debug
+     * @var bool
      */
-    const DEBUG = false;
+    protected $debug = true;
 
     /**
-     * Default language type
-     * @var string
+     * @var float
      */
-    protected static $type = 'gen';
+    private $start = 0.0;
 
     /**
-     * Allowed langtypes: general, ashkenazic and sephardic
-     * @var array
+     * @var DaitchMokotoff
      */
-    protected $types  = array('gen', 'ash', 'sep');
+    public $dm;
 
     /**
-     * Singleton instance
-     * @var object
+     * @var BeiderMorse
      */
-    protected static $instance;
-
-    /**
-     * Daitch-Mokotoff obj
-     * @var object
-     */
-    public $DMSoundex;
-
-    /**
-     * Beider-Morse obj
-     * @var object
-     */
-    public $BMSoundex;
+    public $bm;
 
 
     /**
-     * Protect from creating via new Phonetic
+     * @ignore
+     * @param string $mode
      */
-    private function __construct()
-    {
-    }
-
-    /**
-     * Protect from creating via cloning
-     */
-    private function __clone()
-    {
-    }
-
-    /**
-     * Protect from creating via unserialize
-     */
-    private function __wakeup()
-    {
-    }
-
-
-    /**
-     * Singleton initialization
-     *
-     * @return Phonetic
-     */
-    public static function app()
+    public function __construct($mode = 'gen')
     {
 
-        if ( is_null(self::$instance) ) {
-            self::$instance = new self();
+        $this->start  = microtime(true);
+        self::$input  = null;
+        register_shutdown_function([$this, 'beforeShutdown']);
+
+        $handler      = $this->debug ? new BrowserConsoleHandler() : new NullHandler();
+        $formatter    = new LineFormatter("%datetime% [[%level_name%]]{macro: autolabel} %message%", "H:i:s.u");
+        self::$logger = new Logger('debug');
+        self::$logger->pushHandler($handler);
+        $handler->setFormatter($formatter);
+
+        if( !in_array($mode, ['gen', 'sep', 'ash']) ) {
+            self::$logger->info("Unsupported mode argument passed: '$mode', falling back to default 'gen'");
+            $mode = 'gen';
         }
 
-        return self::$instance;
+        $this->dm = new DaitchMokotoff();
+        $this->bm = new BeiderMorse($mode);
 
     }
 
 
     /**
-     * Application constructor.
-     * Instances child classes building application hierarchy.
+     * Performance data
      *
-     * @param $type
-     * @return mixed
+     * @return void
      */
-    public function run($type=null)
+    public function beforeShutdown()
     {
 
-        // Type adjustment
-        if( in_array($type, $this->types) ) {
-            self::$type = $type;
+        $time = microtime(true) - $this->start;
+        $mem  = memory_get_usage();
+
+        self::$logger->info("Execution time: $time seconds");
+        self::$logger->info("Used memory: $mem bytes");
+
+    }
+
+
+    /**
+     * Set property self::$input preparatory encoding it to UTF-8 and taking
+     * care of ampersand-notation encoding of unicode (e.g. &#....)
+     *
+     * @param  string $input
+     * @return $this
+     */
+    public function set($input)
+    {
+        self::$input = Core::prepareString($input);
+        return $this;
+    }
+
+
+    /**
+     * Retrieve full soundex data
+     * <p></p>
+     * EXAMPLE:
+     *     array(
+     *         ['input'] => (string) input string
+     *         ['numeric'] => (array) Daitch-Mokotoff numeric keys
+     *         ['phonetic'] => (array) Beider-Morse phonetic keys
+     *     )
+     *
+     * @return array
+     */
+    public function soundex()
+    {
+
+        $result   = [];
+        $phonetic = $this->bm->soundex();
+
+        $result['input']    = self::$input;
+        $result['numeric']  = $this->beiderMorseToDaitchMokotoff($phonetic);
+        $result['phonetic'] = $phonetic;
+
+        return $result;
+
+    }
+
+
+    /**
+     * Retrieve list of supported languages
+     *
+     * @return array
+     */
+    public function getLanguages()
+    {
+        return $this->bm->getLanguages();
+    }
+
+
+    /**
+     * Determine language of given string
+     * <p></p>
+     * EXAMPLE:
+     *     array(
+     *         'code' => (int) language code,
+     *         'languages' => array(
+     *             [0] => 'english',
+     *             [1] => 'french',
+     *             ...
+     *         )
+     *     )
+     *
+     * @return array
+     */
+    public function guess()
+    {
+
+        $code  = $this->bm->getLanguageCode();
+        $names = $this->bm->getLanguageNames();
+
+        return ['code' => $code, 'languages' => $names];
+
+    }
+
+
+    /**
+     * Convert Beider-Morse phonetic keys to Daitch-Mokotoff keys
+     * with proper deduplication of keys per each word
+     *
+     * @param  array $phoneticKeys array of Beider-Morse phonetic keys
+     * @return array
+     */
+    private function beiderMorseToDaitchMokotoff($phoneticKeys)
+    {
+
+        $result = [];
+
+        foreach ($phoneticKeys as $word => $keys) {
+
+            foreach ($keys as $key) {
+
+                $dm_soundex      = $this->dm->soundex($key);
+                $dm_soundex      = join(' ', $dm_soundex);
+                $result[$word][] = $dm_soundex;
+            }
+
+            $result[$word] = array_unique($result[$word]);
+            $result[$word] = array_values($result[$word]);
+
         }
 
-        $this->DMSoundex = new DMSoundex();
-        $this->BMSoundex = new BMSoundex();
-
-        return self::$instance;
+        return $result;
 
     }
 
