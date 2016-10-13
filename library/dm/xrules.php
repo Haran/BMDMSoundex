@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Stephen P. Morse, 2005
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,11 +15,14 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->languages = array(
-    "any", "arabic", "cyrillic", "czech", "dutch", "english", "french",
-    "german", "greek", "greeklatin", "hebrew", "hungarian", "italian",
-    "latvian", "polish", "portuguese", "romanian", "russian", "spanish",
-    "turkish"
-);
+return [
+    ["rz", "94", "94", "94"],
+    ["ch", "4", "4", "4"],
+    ["ck", "45", "45", "45"],
+#   ["rs", "94", "94", "94"],
+    ["c", "4", "4", "4"],
+    ["j", "4", "4", "4"],
+];
