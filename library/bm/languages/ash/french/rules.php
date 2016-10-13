@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,84 +15,87 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-// Ashkenazic
-$this->rules[ $this->getLanguageIndexByName('french') ] = array(
+return [
 
     // CONSONANTS
-    array("kh", "", "", "x"), // foreign
-    array("ph", "", "", "f"),
+    ["kh","","","x"], // foreign
+    ["ph","","","f"],
 
-    array("ç", "", "", "s"),
-    array("x", "", "", "ks"),
-    array("ch", "", "", "S"),
-    array("c", "", "[eiyéèê]", "s"),
-    array("c", "", "", "k"),
-    array("gn", "", "", "(n|gn)"),
-    array("g", "", "[eiy]", "Z"),
-    array("gue", "", "$", "k"),
-    array("gu", "", "[eiy]", "g"),
-    //array("aill","","e","aj"), // non Jewish
+    ["ç","","","s"],
+    ["x","","","ks"],
+    ["ch","","","S"],
+    ["c","","[eiyéèê]","s"],
+    ["c","","","k"],
+    ["gn","","","(n|gn)"],
+    ["g","","[eiy]","Z"],
+    ["gue","","$","k"],
+    ["gu","","[eiy]","g"],
+    //array("aill","","e","aj"),  // non Jewish
     //array("ll","","e","(l|j)"), // non Jewish
-    array("que", "", "$", "k"),
-    array("qu", "", "", "k"),
-    array("q", "", "", "k"),
-    array("s", "[aeiouyéèê]", "[aeiouyéèê]", "z"),
-    array("h", "[bdgt]", "", ""), // translit from Arabic
-    array("h", "", "$", ""), // foreign
-    array("j", "", "", "Z"),
-    array("w", "", "", "v"),
-    array("ouh", "", "[aioe]", "(v|uh)"),
-    array("ou", "", "[aeio]", "v"),
-    array("uo", "", "", "(vo|o)"),
-    array("u", "", "[aeio]", "v"),
+    ["que","","$","k"],
+    ["qu","","","k"],
+    ["q","","","k"],
+    ["s","[aeiouyéèê]","[aeiouyéèê]","z"],
+    ["h","[bdgt]","",""], // translit from Arabic
+    ["h","","$",""],      // foreign
+    ["j","","","Z"],
+    ["w","","","v"],
+    ["ouh","","[aioe]","(v|uh)"],
+    ["ou","","[aeio]","v"],
+    ["uo","","","(vo|o)"],
+    ["u","","[aeio]","v"],
 
     // VOWELS
-    array("aue", "", "", "aue"),
-    array("eau", "", "", "o"),
+    ["aue","","","aue"],
+    ["eau","","","o"],
     //array("au","","","(o|au)"), // non Jewish
-    array("ai", "", "", "aj"), // [e] is non Jewish
-    array("ay", "", "", "aj"), // [e] is non Jewish
-    array("é", "", "", "e"),
-    array("ê", "", "", "e"),
-    array("è", "", "", "e"),
-    array("à", "", "", "a"),
-    array("â", "", "", "a"),
-    array("où", "", "", "u"),
-    array("ou", "", "", "u"),
-    array("oi", "", "", "oj"), // [ua] is non Jewish
-    array("ei", "", "", "aj"), // [e] is non Jewish
-    array("ey", "", "", "aj"), // [e] non Jewish
+    ["ai","","","aj"], // [e] is non Jewish
+    ["ay","","","aj"], // [e] is non Jewish
+    ["é","","","e"],
+    ["ê","","","e"],
+    ["è","","","e"],
+    ["à","","","a"],
+    ["â","","","a"],
+    ["où","","","u"],
+    ["ou","","","u"],
+    ["oi","","","oj"], // [ua] is non Jewish
+    ["ei","","","aj"], // [e] is non Jewish
+    ["ey","","","aj"], // [e] non Jewish
     //array("eu","","","(e|o)"), // non Jewish
-    array("y", "[ou]", "", "j"),
-    array("e", "", "$", "(e|)"),
-    array("i", "", "[aou]", "j"),
-    array("y", "", "[aoeu]", "j"),
-    array("y", "", "", "i"),
+    ["y","[ou]","","j"],
+    ["e","","$","(e|)"],
+    ["i","","[aou]","j"],
+    ["y","","[aoeu]","j"],
+    ["yi","","","i"],
+    ["ii","","","i"],
+    ["yy","","","i"],
+    ["y","","","i"],
 
     // TRIVIAL
-    array("a", "", "", "a"),
-    array("b", "", "", "b"),
-    array("d", "", "", "d"),
-    array("e", "", "", "E"), // only Ashkenazic
-    array("f", "", "", "f"),
-    array("g", "", "", "g"),
-    array("h", "", "", "h"),
-    array("i", "", "", "I"), // only Ashkenazic
-    array("k", "", "", "k"),
-    array("l", "", "", "l"),
-    array("m", "", "", "m"),
-    array("n", "", "", "n"),
-    array("o", "", "", "o"),
-    array("p", "", "", "p"),
-    array("r", "", "", "r"),
-    array("s", "", "", "s"),
-    array("t", "", "", "t"),
-    array("u", "", "", "u"),
-    array("v", "", "", "v"),
-    array("z", "", "", "z"),
+    ["a","","","a"],
+    ["b","","","b"],
+    ["d","","","d"],
+    ["e","","","E"], // only Ashkenazic
+    ["f","","","f"],
+    ["g","","","g"],
+    ["h","","","h"],
+    ["i","","","I"], // only Ashkenazic
+    ["k","","","k"],
+    ["l","","","l"],
+    ["m","","","m"],
+    ["n","","","n"],
+    ["o","","","o"],
+    ["p","","","p"],
+    ["r","","","r"],
+    ["s","","","s"],
+    ["t","","","t"],
+    ["u","","","u"],
+    ["v","","","v"],
+    ["z","","","z"],
 
-    array("rulesfrench")
+    ["rulesfrench"]
 
-);
+];

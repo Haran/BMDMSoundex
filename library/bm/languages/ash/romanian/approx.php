@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +15,8 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-require(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'polish'.DIRECTORY_SEPARATOR.'approx.php');
-
-// this file uses the same rules as polish/approx.php
-$this->approx[ $this->getLanguageIndexByName('romanian') ] = $this->approx[ $this->getLanguageIndexByName('polish') ];
+// this file uses the same rules as approx polish
+return require(__DIR__.'/../polish/approx.php');

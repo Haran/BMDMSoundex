@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,41 +15,42 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->approx[ $this->getLanguageIndexByName('english') ] = array(
+return [
 
     // VOWELS
-    array("I", "", "[^aEIeiou]e", "(Q|i|D)"), // like in "five"
-    array("I", "", "$", "i"),
-    array("I", "[aEIeiou]", "", "i"),
-    array("I", "", "[^k]$", "i"),
-    array("Ik", "[lr]", "$", "(ik|Qk)"),
-    array("Ik", "", "$", "ik"),
-    array("sIts", "", "$", "(sits|sQts)"),
-    array("Its", "", "$", "its"),
-    array("I", "", "", "(i|Q)"),
+    ["I","","[^aEIeiou]e","(Q|i|D)"], // like in "five"
+    ["I", "", "$", "i"],
+    ["I", "[aEIeiou]", "", "i"],
+    ["I", "", "[^k]$", "i"],
+    ["Ik", "[lr]", "$", "(ik|Qk)"],
+    ["Ik", "", "$", "ik"],
+    ["sIts", "", "$", "(sits|sQts)"],
+    ["Its", "", "$", "its"],
+    ["I", "", "", "(i|Q)"],
 
-    array("lE", "[bdfgkmnprsStvzZ]", "", "(il|li|lY)"), // Applebaum < Appelbaum
+    ["lE","[bdfgkmnprsStvzZ]","","(il|li|lY)"],  // Applebaum < Appelbaum
 
-    array("au", "", "", "(D|a|u)"),
-    array("ou", "", "", "(D|o|u)"),
-    array("ai", "", "", "(D|a|i)"),
-    array("oi", "", "", "(D|o|i)"),
-    array("ui", "", "", "(D|u|i)"),
+    ["au","","","(D|a|u)"],
+    ["ou","","","(D|o|u)"],
+    ["ai","","","(D|a|i)"],
+    ["oi","","","(D|o|i)"],
+    ["ui","","","(D|u|i)"],
 
-    array("E", "D[^aeiEIou]", "", "(i|)"), // Weinberg, Shaneberg (shaneberg/shejneberg) --> shejnberg
-    array("e", "D[^aeiEIou]", "", "(i|)"),
+    ["E","D[^aeiEIou]","","(i|)"], // Weinberg, Shaneberg (shaneberg/shejneberg) --> shejnberg
+    ["e","D[^aeiEIou]","","(i|)"],
 
-    array("e", "", "", "i"),
-    array("E", "", "[fklmnprsStv]$", "i"),
-    array("E", "", "ts$", "i"),
-    array("E", "[DaoiEuQY]", "", "i"),
-    array("E", "", "[aoQY]", "i"),
-    array("E", "", "", "(Y|i)"),
+    ["e", "", "", "i"],
+    ["E", "", "[fklmnprsStv]$", "i"],
+    ["E", "", "ts$", "i"],
+    ["E", "[DaoiEuQY]", "", "i"],
+    ["E", "", "[aoQY]", "i"],
+    ["E", "", "", "(Y|i)"],
 
-    array("a", "", "", "(a|o)"),
+    ["a", "", "", "(a|o)"],
 
-    array("approxenglish")
+    ["approxenglish"]
 
-);
+];

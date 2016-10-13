@@ -18,5 +18,21 @@
  *
  */
 
-// this file uses the same rules as approx french
-return require(__DIR__.'/../french/approx.php');
+return [
+
+    ["A", "", "", "a"],
+    ["B", "", "", "a"],
+
+    ["E", "", "", "e"],
+    ["F", "", "", "e"],
+
+    ["I", "", "", "i"],
+    ["O", "", "", "o"],
+    ["P", "", "", "o"],
+    ["U", "", "", "u"],
+
+    ["J", "", "", "l"],
+
+    ["exactany"]
+
+];

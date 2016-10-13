@@ -18,5 +18,27 @@
  *
  */
 
-// this file uses the same rules as approx french
-return require(__DIR__.'/../french/approx.php');
+return [
+
+    0 => [
+        "/y/",
+        "/k/",
+        "/w/",
+        "/gie/",
+        "/q/",
+    ],
+
+    1 => [
+        '/ghe/',
+        '/ghi/',
+        '/vici$/',
+        '/schi$/',
+        '/c$/',
+        '/â/',
+        '/ă/',
+        '/î/',
+        '/ş/',
+        '/ţ/',
+    ],
+
+];

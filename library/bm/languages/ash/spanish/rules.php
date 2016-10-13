@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,70 +15,70 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-// Ashkenazic = Argentina
-$this->rules[ $this->getLanguageIndexByName('spanish') ] = array(
+return [
 
     // CONSONANTS
-    array("ñ", "", "", "(n|nj)"),
+    ["ñ","","","(n|nj)"],
 
-    array("ch", "", "", "(tS|dZ)"), // dZ is typical for Argentina
-    array("h", "[bdgt]", "", ""), // translit. from Arabic
-    array("h", "", "$", ""), // foreign
+    ["ch","","","(tS|dZ)"], // dZ is typical for Argentina
+    ["h","[bdgt]","",""], // translit. from Arabic
+    ["h","","$",""], // foreign
 
-    array("j", "", "", "x"),
-    array("x", "", "", "ks"),
-    array("ll", "", "", "(l|Z)"), // Z is typical for Argentina, only Ashkenazic
-    array("w", "", "", "v"), // foreign words
+    ["j","","","x"],
+    ["x","","","ks"],
+    ["ll","","","(l|Z)"], // Z is typical for Argentina, only Ashkenazic
+    ["w","","","v"], // foreign words
 
-    array("v", "", "", "(b|v)"),
-    array("b", "", "", "(b|v)"),
-    array("m", "", "[bpvf]", "(m|n)"),
+    ["v","","","(b|v)"],
+    ["b","","","(b|v)"],
+    ["m","","[bpvf]","(m|n)"],
 
-    array("c", "", "[ei]", "s"),
-    array("c", "", "", "k"),
+    ["c","","[ei]","s"],
+    ["c","","","k"],
 
-    array("z", "", "", "(z|s)"), // as "c" befoire "e" or "i", in Spain it is like unvoiced English "th"
+    ["z","","","(z|s)"], // as "c" befoire "e" or "i", in Spain it is like unvoiced English "th"
 
-    array("gu", "", "[ei]", "(g|gv)"), // "gv" because "u" can actually be "ü"
-    array("g", "", "[ei]", "(x|g)"), // "g" only for foreign words
+    ["gu","","[ei]","(g|gv)"], // "gv" because "u" can actually be "ü"
+    ["g","","[ei]","(x|g)"],  // "g" only for foreign words
 
-    array("qu", "", "", "k"),
-    array("q", "", "", "k"),
+    ["qu","","","k"],
+    ["q","","","k"],
 
-    array("uo", "", "", "(vo|o)"),
-    array("u", "", "[aei]", "v"),
+    ["uo","","","(vo|o)"],
+    ["u","","[aei]","v"],
 
-    array("y", "", "", "(i|j|S|Z)"), // S or Z are peculiar to South America; only Ashkenazic
+    ["y","","","(i|j|S|Z)"], // S or Z are peculiar to South America; only Ashkenazic
 
     // VOWELS
-    array("ü", "", "", "v"),
-    array("á", "", "", "a"),
-    array("é", "", "", "e"),
-    array("í", "", "", "i"),
-    array("ó", "", "", "o"),
-    array("ú", "", "", "u"),
+    ["ü","","","v"],
+    ["á","","","a"],
+    ["é","","","e"],
+    ["í","","","i"],
+    ["ó","","","o"],
+    ["ú","","","u"],
 
     // TRIVIAL
-    array("a", "", "", "a"),
-    array("d", "", "", "d"),
-    array("e", "", "", "E"), // Only Ashkenazic
-    array("f", "", "", "f"),
-    array("g", "", "", "g"),
-    array("h", "", "", "h"),
-    array("i", "", "", "I"), // Only Ashkenazic
-    array("k", "", "", "k"),
-    array("l", "", "", "l"),
-    array("m", "", "", "m"),
-    array("n", "", "", "n"),
-    array("o", "", "", "o"),
-    array("p", "", "", "p"),
-    array("r", "", "", "r"),
-    array("s", "", "", "s"),
-    array("t", "", "", "t"),
-    array("u", "", "", "u"),
+    ["a","","","a"],
+    ["d","","","d"],
+    ["e","","","E"], // Only Ashkenazic
+    ["f","","","f"],
+    ["g","","","g"],
+    ["h","","","h"],
+    ["i","","","I"], // Only Ashkenazic
+    ["k","","","k"],
+    ["l","","","l"],
+    ["m","","","m"],
+    ["n","","","n"],
+    ["o","","","o"],
+    ["p","","","p"],
+    ["r","","","r"],
+    ["s","","","s"],
+    ["t","","","t"],
+    ["u","","","u"],
 
-    array("rulesspanish")
+    ["rulesspanish"]
 
-);
+];

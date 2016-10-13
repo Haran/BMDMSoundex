@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,20 +15,37 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->approx[ $this->getLanguageIndexByName('arabic') ] = array(
+return [
 
-    array("1a", "", "", "(D|a)"),
-    array("1i", "", "", "(D|i|e)"),
-    array("1u", "", "", "(D|u|o)"),
-    array("j1", "", "", "(ja|je|jo|ju|j)"),
-    array("1", "", "", "(a|e|i|o|u|)"),
-    array("u", "", "", "(o|u)"),
-    array("i", "", "", "(i|e)"),
-    array("p", "", "$", "p"),
-    array("p", "", "", "(p|b)"),
+    0 => [
+        "/dzi/",
+        "/aj/",
+        "/ej/",
+        "/oj/",
+        "/uj/",
+        "/w/",
+        "/kie/",
+        "/gie/",
+        '/sch/',
+    ],
 
-    array("approxarabic")
+    1 => [
+        '/eau/',
+        '/oe/',
+        '/gue/',
+        '/gui/',
+        '/guy/',
+        '/â/',
+        '/à/',
+        '/ç/',
+        '/é/',
+        '/è/',
+        '/ê/',
+        '/î/',
+        '/ù/',
+    ],
 
-);
+];

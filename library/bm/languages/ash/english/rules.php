@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,100 +15,100 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->rules[ $this->getLanguageIndexByName('english') ] = array(
+return [
 
     // CONSONANTS
-    array("tch", "", "", "tS"),
-    array("ch", "", "", "(tS|x)"),
-    array("ck", "", "", "k"),
-    array("cc", "", "[iey]", "ks"), // success, accent
-    array("c", "", "c", ""),
-    array("c", "", "[iey]", "s"), // circle
-    array("c", "", "", "k"), // candy
-    array("gh", "^", "", "g"), // ghost
-    array("gh", "", "", "(g|f|w)"), // burgh | tough | bough
-    array("gn", "", "", "(gn|n)"),
-    array("g", "", "[iey]", "(g|dZ)"), // get, gem, giant, gigabyte
+    ["tch","","","tS"],
+    ["ch","","","(tS|x)"],
+    ["ck","","","k"],
+    ["cc","","[iey]","ks"], // success, accent
+    ["c","","c",""],
+    ["c","","[iey]","s"], // circle
+    ["c","","","k"], // candy
+    ["gh","^","","g"], // ghost
+    ["gh","","","(g|f|w)"], // burgh | tough | bough
+    ["gn","","","(gn|n)"],
+    ["g","","[iey]","(g|dZ)"], // get, gem, giant, gigabyte
     // array("th","","","(6|8|t)"),
-    array("th", "", "", "t"),
-    array("kh", "", "", "x"),
-    array("ph", "", "", "f"),
-    array("sch", "", "", "(S|sk)"),
-    array("sh", "", "", "S"),
-    array("who", "^", "", "hu"),
-    array("wh", "^", "", "w"),
+    ["th","","","t"],
+    ["kh","","","x"],
+    ["ph","","","f"],
+    ["sch","","","(S|sk)"],
+    ["sh","","","S"],
+    ["who","^","","hu"],
+    ["wh","^","","w"],
 
-    array("h", "", "$", ""), // hard to find an example that isn't in a name
-    array("h", "", "[^aeiou]", ""), // hard to find an example that isn't in a name
-    array("h", "^", "", "H"),
-    array("h", "", "", "h"),
+    ["h","","$",""], // hard to find an example that isn't in a name
+    ["h","","[^aeiou]",""], // hard to find an example that isn't in a name
+    ["h","^","","H"],
+    ["h","","","h"],
 
-    array("j", "", "", "dZ"),
-    array("kn", "^", "", "n"), // knight
-    array("mb", "", "$", "m"),
-    array("ng", "", "$", "(N|ng)"),
-    array("pn", "^", "", "(pn|n)"),
-    array("ps", "^", "", "(ps|s)"),
-    array("qu", "", "", "kw"),
-    array("q", "", "", "k"),
-    array("tia", "", "", "(So|Sa)"),
-    array("tio", "", "", "So"),
-    array("wr", "^", "", "r"),
-    array("w", "", "", "(w|v)"), // the variant "v" is for spellings coming from German/Polish
-    array("x", "^", "", "z"),
-    array("x", "", "", "ks"),
+    ["j","","","dZ"],
+    ["kn","^","","n"], // knight
+    ["mb","","$","m"],
+    ["ng","","$","(N|ng)"],
+    ["pn","^","","(pn|n)"],
+    ["ps","^","","(ps|s)"],
+    ["qu","","","kw"],
+    ["q","","","k"],
+    ["tia","","","(So|Sa)"],
+    ["tio","","","So"],
+    ["wr","^","","r"],
+    ["w","","","(w|v)"], // the variant "v" is for spellings coming from German/Polish
+    ["x","^","","z"],
+    ["x","","","ks"],
 
     // VOWELS
-    array("y", "^", "", "j"),
-    array("y", "^", "[aeiouy]", "j"),
-    array("yi", "^", "", "i"),
-    array("aue", "", "", "aue"),
-    array("oue", "", "", "(aue|oue)"),
-    array("ai", "", "", "(aj|e)"), // rain | said
-    array("ay", "", "", "aj"),
-    array("a", "", "[^aeiou]e", "aj"), // plane (actually "ej")
-    array("a", "", "", "(e|o|a)"), // hat | call | part
-    array("ei", "", "", "(aj|i)"), // weigh | receive
-    array("ey", "", "", "(aj|i)"), // hey | barley
-    array("ear", "", "", "ia"), // tear
-    array("ea", "", "", "(i|e)"), // reason | treasure
-    array("ee", "", "", "i"), // between
-    array("e", "", "[^aeiou]e", "i"), // meter
-    array("e", "", "$", "(|E)"), // blame, badge
-    array("e", "", "", "E"), // bed
-    array("ie", "", "", "i"), // believe
-    array("i", "", "[^aeiou]e", "aj"), // five
-    array("i", "", "", "I"), // hit -- Morse disagrees, feels it should go to I
-    array("oa", "", "", "ou"), // toad
-    array("oi", "", "", "oj"), // join
-    array("oo", "", "", "u"), // food
-    array("ou", "", "", "(u|ou)"), // through | tough | could
-    array("oy", "", "", "oj"), // boy
-    array("o", "", "[^aeiou]e", "ou"), // rode
-    array("o", "", "", "(o|a)"), // hot -- Morse disagrees, feels it should go to 9
-    array("u", "", "[^aeiou]e", "(ju|u)"), // cute | flute
-    array("u", "", "r", "(e|u)"), // turn -- Morse disagrees, feels it should go to E
-    array("u", "", "", "(u|a)"), // put
-    array("y", "", "", "i"),
+    ["yi"," ","","i"],
+    ["y","^","[aeiouy]","j"],
+    ["aue","","","aue"],
+    ["oue","","","(aue|oue)"],
+    ["ai","","","(aj|e)"], // rain | said
+    ["ay","","","aj"],
+    ["a","","[^aeiou]e","aj"], // plane (actually "ej")
+    ["a","","","(e|o|a)"], // hat | call | part
+    ["ei","","","(aj|i)"], // weigh | receive
+    ["ey","","","(aj|i)"], // hey | barley
+    ["ear","","","ia"], // tear
+    ["ea","","","(i|e)"], // reason | treasure
+    ["ee","","","i"], // between
+    ["e","","[^aeiou]e","i"], // meter
+    ["e","","$","(|E)"], // blame, badge
+    ["e","","","E"], // bed
+    ["ie","","","i"], // believe
+    ["i","","[^aeiou]e","aj"], // five
+    ["i","","","I"], // hit -- Morse disagrees, feels it should go to I
+    ["oa","","","ou"], // toad
+    ["oi","","","oj"], // join
+    ["oo","","","u"], // food
+    ["ou","","","(u|ou)"], // through | tough | could
+    ["oy","","","oj"], // boy
+    ["o","","[^aeiou]e","ou"], // rode
+    ["o","","","(o|a)"], // hot -- Morse disagrees, feels it should go to 9
+    ["u","","[^aeiou]e","(ju|u)"], // cute | flute
+    ["u","","r","(e|u)"], // turn -- Morse disagrees, feels it should go to E
+    ["u","","","(u|a)"], // put
+    ["y","","","i"],
 
     // TRIVIAL
-    array("b", "", "", "b"),
-    array("d", "", "", "d"),
-    array("f", "", "", "f"),
-    array("g", "", "", "g"),
-    array("k", "", "", "k"),
-    array("l", "", "", "l"),
-    array("m", "", "", "m"),
-    array("n", "", "", "n"),
-    array("p", "", "", "p"),
-    array("r", "", "", "r"),
-    array("s", "", "", "s"),
-    array("t", "", "", "t"),
-    array("v", "", "", "v"),
-    array("z", "", "", "z"),
+    ["b","","","b"],
+    ["d","","","d"],
+    ["f","","","f"],
+    ["g","","","g"],
+    ["k","","","k"],
+    ["l","","","l"],
+    ["m","","","m"],
+    ["n","","","n"],
+    ["p","","","p"],
+    ["r","","","r"],
+    ["s","","","s"],
+    ["t","","","t"],
+    ["v","","","v"],
+    ["z","","","z"],
 
-    array("rulesenglish")
+    ["rulesenglish"]
 
-);
+];

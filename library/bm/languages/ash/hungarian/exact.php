@@ -18,5 +18,5 @@
  *
  */
 
-// this file uses the same rules as approx french
-return require(__DIR__.'/../french/approx.php');
+// this file uses the same rules as exact russian
+return require(__DIR__.'/../russian/exact.php');

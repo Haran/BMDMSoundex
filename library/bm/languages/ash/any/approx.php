@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,148 +15,143 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-
-// ASHKENAZIC
-
-// A, E, I, O, P, U should create variants, but a, e, i, o, u should not create any new variant
-// Q = ü ; Y = ä = ö
-// H = initial "H" in German/English
-$this->approx[ $this->getLanguageIndexByName('any') ] = array(
+return [
 
     // CONSONANTS
-    array("b", "", "", "(b|v[".$this->lang['spanish']."])"),
-    array("J", "", "", "z"), // Argentina Spanish: "ll" = /Z/, but approximately /Z/ = /z/
+    ["b","","","(b|v[%spanish%])"],
+    ["J", "", "", "z"], // Argentina Spanish: "ll" = /Z/, but approximately /Z/ = /z/
 
     // VOWELS
     // "ALL" DIPHTHONGS are interchangeable BETWEEN THEM and with monophthongs of which they are composed ("D" means "diphthong")
-    //  {a,o} are totally interchangeable if non-stressed; in German "a/o" can actually be from "ä/ö" (that are equivalent to "e")
-    //  {i,e} are interchangeable if non-stressed, while in German "u" can actually be from "ü" (that is equivalent to "i")
-    array("aiB", "", "[bp]", "(D|Dm)"),
-    array("AiB", "", "[bp]", "(D|Dm)"),
-    array("oiB", "", "[bp]", "(D|Dm)"),
-    array("OiB", "", "[bp]", "(D|Dm)"),
-    array("uiB", "", "[bp]", "(D|Dm)"),
-    array("UiB", "", "[bp]", "(D|Dm)"),
-    array("eiB", "", "[bp]", "(D|Dm)"),
-    array("EiB", "", "[bp]", "(D|Dm)"),
-    array("iiB", "", "[bp]", "(D|Dm)"),
-    array("IiB", "", "[bp]", "(D|Dm)"),
+    // {a,o} are totally interchangeable if non-stressed; in German "a/o" can actually be from "ä/ö" (that are equivalent to "e")
+    // {i,e} are interchangeable if non-stressed, while in German "u" can actually be from "ü" (that is equivalent to "i")
+    ["aiB","","[bp]","(D|Dm)"],
+    ["AiB","","[bp]","(D|Dm)"],
+    ["oiB","","[bp]","(D|Dm)"],
+    ["OiB","","[bp]","(D|Dm)"],
+    ["uiB","","[bp]","(D|Dm)"],
+    ["UiB","","[bp]","(D|Dm)"],
+    ["eiB","","[bp]","(D|Dm)"],
+    ["EiB","","[bp]","(D|Dm)"],
+    ["iiB","","[bp]","(D|Dm)"],
+    ["IiB","","[bp]","(D|Dm)"],
 
-    array("aiB", "", "[dgkstvz]", "(D|Dn)"),
-    array("AiB", "", "[dgkstvz]", "(D|Dn)"),
-    array("oiB", "", "[dgkstvz]", "(D|Dn)"),
-    array("OiB", "", "[dgkstvz]", "(D|Dn)"),
-    array("uiB", "", "[dgkstvz]", "(D|Dn)"),
-    array("UiB", "", "[dgkstvz]", "(D|Dn)"),
-    array("eiB", "", "[dgkstvz]", "(D|Dn)"),
-    array("EiB", "", "[dgkstvz]", "(D|Dn)"),
-    array("iiB", "", "[dgkstvz]", "(D|Dn)"),
-    array("IiB", "", "[dgkstvz]", "(D|Dn)"),
+    ["aiB","","[dgkstvz]","(D|Dn)"],
+    ["AiB","","[dgkstvz]","(D|Dn)"],
+    ["oiB","","[dgkstvz]","(D|Dn)"],
+    ["OiB","","[dgkstvz]","(D|Dn)"],
+    ["uiB","","[dgkstvz]","(D|Dn)"],
+    ["UiB","","[dgkstvz]","(D|Dn)"],
+    ["eiB","","[dgkstvz]","(D|Dn)"],
+    ["EiB","","[dgkstvz]","(D|Dn)"],
+    ["iiB","","[dgkstvz]","(D|Dn)"],
+    ["IiB","","[dgkstvz]","(D|Dn)"],
 
-    array("B", "", "[bp]", "(o|om[".$this->lang['polish']."]|im[".$this->lang['polish']."])"),
-    array("B", "", "[dgkstvz]", "(a|o|on[".$this->lang['polish']."]|in[".$this->lang['polish']."])"),
-    array("B", "", "", "(a|o)"),
+    ["B","","[bp]","(o|om[%polish%]|im[%polish%])"],
+    ["B","","[dgkstvz]","(a|o|on[%polish%]|in[%polish%])"],
+    ["B", "", "", "(a|o)"],
 
-    array("aiF", "", "[bp]", "(D|Dm)"),
-    array("AiF", "", "[bp]", "(D|Dm)"),
-    array("oiF", "", "[bp]", "(D|Dm)"),
-    array("OiF", "", "[bp]", "(D|Dm)"),
-    array("uiF", "", "[bp]", "(D|Dm)"),
-    array("UiF", "", "[bp]", "(D|Dm)"),
-    array("eiF", "", "[bp]", "(D|Dm)"),
-    array("EiF", "", "[bp]", "(D|Dm)"),
-    array("iiF", "", "[bp]", "(D|Dm)"),
-    array("IiF", "", "[bp]", "(D|Dm)"),
+    ["aiF","","[bp]","(D|Dm)"],
+    ["AiF","","[bp]","(D|Dm)"],
+    ["oiF","","[bp]","(D|Dm)"],
+    ["OiF","","[bp]","(D|Dm)"],
+    ["uiF","","[bp]","(D|Dm)"],
+    ["UiF","","[bp]","(D|Dm)"],
+    ["eiF","","[bp]","(D|Dm)"],
+    ["EiF","","[bp]","(D|Dm)"],
+    ["iiF","","[bp]","(D|Dm)"],
+    ["IiF","","[bp]","(D|Dm)"],
 
-    array("aiF", "", "[dgkstvz]", "(D|Dn)"),
-    array("AiF", "", "[dgkstvz]", "(D|Dn)"),
-    array("oiF", "", "[dgkstvz]", "(D|Dn)"),
-    array("OiF", "", "[dgkstvz]", "(D|Dn)"),
-    array("uiF", "", "[dgkstvz]", "(D|Dn)"),
-    array("UiF", "", "[dgkstvz]", "(D|Dn)"),
-    array("eiF", "", "[dgkstvz]", "(D|Dn)"),
-    array("EiF", "", "[dgkstvz]", "(D|Dn)"),
-    array("iiF", "", "[dgkstvz]", "(D|Dn)"),
-    array("IiF", "", "[dgkstvz]", "(D|Dn)"),
+    ["aiF","","[dgkstvz]","(D|Dn)"],
+    ["AiF","","[dgkstvz]","(D|Dn)"],
+    ["oiF","","[dgkstvz]","(D|Dn)"],
+    ["OiF","","[dgkstvz]","(D|Dn)"],
+    ["uiF","","[dgkstvz]","(D|Dn)"],
+    ["UiF","","[dgkstvz]","(D|Dn)"],
+    ["eiF","","[dgkstvz]","(D|Dn)"],
+    ["EiF","","[dgkstvz]","(D|Dn)"],
+    ["iiF","","[dgkstvz]","(D|Dn)"],
+    ["IiF","","[dgkstvz]","(D|Dn)"],
 
-    array("F", "", "[bp]", "(i|im[".$this->lang['polish']."]|om[".$this->lang['polish']."])"),
-    array("F", "", "[dgkstvz]", "(i|in[".$this->lang['polish']."]|on[".$this->lang['polish']."])"),
-    array("F", "", "", "i"),
+    ["F","","[bp]","(i|im[%polish%]|om[%polish%])"],
+    ["F","","[dgkstvz]","(i|in[%polish%]|on[%polish%])"],
+    ["F", "", "", "i"],
 
-    array("P", "", "", "(o|u)"),
+    ["P", "", "", "(o|u)"],
 
-    array("I", "[aeiouAEIBFOUQY]", "", "i"),
-    array("I", "", "[^aeiouAEBFIOU]e", "(Q[".$this->lang['german']."]|i|D[".$this->lang['english']."])"), // "line"
-    array("I", "", "$", "i"),
-    array("I", "", "[^k]$", "i"),
-    array("Ik", "[lr]", "$", "(ik|Qk[".$this->lang['german']."])"),
-    array("Ik", "", "$", "ik"),
-    array("sIts", "", "$", "(sits|sQts[".$this->lang['german']."])"),
-    array("Its", "", "$", "its"),
-    array("I", "", "", "(Q[".$this->lang['german']."]|i)"),
+    ["I", "[aeiouAEIBFOUQY]", "", "i"],
+    ["I","","[^aeiouAEBFIOU]e","(Q[%german%]|i|D[%english%])"],  // "line"
+    ["I", "", "$", "i"],
+    ["I", "", "[^k]$", "i"],
+    ["Ik", "[lr]", "$", "(ik|Qk[%german%])"],
+    ["Ik", "", "$", "ik"],
+    ["sIts", "", "$", "(sits|sQts[%german%])"],
+    ["Its", "", "$", "its"],
+    ["I", "", "", "(Q[%german%]|i)"],
 
-    array("lE", "[bdfgkmnprsStvzZ]", "$", "(li|il[".$this->lang['english']."])"), // Apple < Appel
-    array("lE", "[bdfgkmnprsStvzZ]", "", "(li|il[".$this->lang['english']."]|lY[".$this->lang['german']."])"), // Applebaum < Appelbaum
+    ["lE","[bdfgkmnprsStvzZ]","$","(li|il[%english%])"],             // Apple < Appel
+    ["lE","[bdfgkmnprsStvzZ]","","(li|il[%english%]|lY[%german%])"],  // Applebaum < Appelbaum
 
-    array("au", "", "", "(D|a|u)"),
-    array("ou", "", "", "(D|o|u)"),
+    ["au","","","(D|a|u)"],
+    ["ou","","","(D|o|u)"],
 
-    array("ai", "", "", "(D|a|i)"),
-    array("Ai", "", "", "(D|a|i)"),
-    array("oi", "", "", "(D|o|i)"),
-    array("Oi", "", "", "(D|o|i)"),
-    array("ui", "", "", "(D|u|i)"),
-    array("Ui", "", "", "(D|u|i)"),
-    array("ei", "", "", "(D|i)"),
-    array("Ei", "", "", "(D|i)"),
+    ["ai","","","(D|a|i)"],
+    ["Ai","","","(D|a|i)"],
+    ["oi","","","(D|o|i)"],
+    ["Oi","","","(D|o|i)"],
+    ["ui","","","(D|u|i)"],
+    ["Ui","","","(D|u|i)"],
+    ["ei","","","(D|i)"],
+    ["Ei","","","(D|i)"],
 
-    array("iA", "", "$", "(ia|io)"),
-    array("iA", "", "", "(ia|io|iY[".$this->lang['german']."])"),
-    array("A", "", "[^aeiouAEBFIOU]e", "(a|o|Y[".$this->lang['german']."]|D[".$this->lang['english']."])"), // "plane"
+    ["iA","","$","(ia|io)"],
+    ["iA","","","(ia|io|iY[%german%])"],
+    ["A","","[^aeiouAEBFIOU]e","(a|o|Y[%german%]|D[%english%])"], // "plane"
 
-    array("E", "i[^aeiouAEIOU]", "", "(i|Y[".$this->lang['german']."]|[".$this->lang['english']."])"), // Wineberg (vineberg/vajneberg) --> vajnberg
-    array("E", "a[^aeiouAEIOU]", "", "(i|Y[".$this->lang['german']."]|[".$this->lang['english']."])"), //  Shaneberg (shaneberg/shejneberg) --> shejnberg
+    ["E","i[^aeiouAEIOU]","","(i|Y[%german%]|[%english%])"], // Wineberg (vineberg/vajneberg) --> vajnberg
+    ["E","a[^aeiouAEIOU]","","(i|Y[%german%]|[%english%])"], //  Shaneberg (shaneberg/shejneberg) --> shejnberg
 
-    array("e", "", "[fklmnprstv]$", "i"),
-    array("e", "", "ts$", "i"),
-    array("e", "", "$", "i"),
-    array("e", "[DaoiuAOIUQY]", "", "i"),
-    array("e", "", "[aoAOQY]", "i"),
-    array("e", "", "", "(i|Y[".$this->lang['german']."])"),
+    ["e", "", "[fklmnprstv]$", "i"],
+    ["e", "", "ts$", "i"],
+    ["e", "", "$", "i"],
+    ["e", "[DaoiuAOIUQY]", "", "i"],
+    ["e", "", "[aoAOQY]", "i"],
+    ["e", "", "", "(i|Y[%german%])"],
 
-    array("E", "", "[fklmnprst]$", "i"),
-    array("E", "", "ts$", "i"),
-    array("E", "", "$", "i"),
-    array("E", "[DaoiuAOIUQY]", "", "i"),
-    array("E", "", "[aoAOQY]", "i"),
-    array("E", "", "", "(i|Y[".$this->lang['german']."])"),
+    ["E", "", "[fklmnprst]$", "i"],
+    ["E", "", "ts$", "i"],
+    ["E", "", "$", "i"],
+    ["E", "[DaoiuAOIUQY]", "", "i"],
+    ["E", "", "[aoAOQY]", "i"],
+    ["E", "", "", "(i|Y[%german%])"],
 
-    array("a", "", "", "(a|o)"),
+    ["a", "", "", "(a|o)"],
 
-    array("O", "", "[fklmnprstv]$", "o"),
-    array("O", "", "ts$", "o"),
-    array("O", "", "$", "o"),
-    array("O", "[oeiuQY]", "", "o"),
-    array("O", "", "", "(o|Y[".$this->lang['german']."])"),
+    ["O", "", "[fklmnprstv]$", "o"],
+    ["O", "", "ts$", "o"],
+    ["O", "", "$", "o"],
+    ["O", "[oeiuQY]", "", "o"],
+    ["O", "", "", "(o|Y[%german%])"],
 
-    array("A", "", "[fklmnprst]$", "(a|o)"),
-    array("A", "", "ts$", "(a|o)"),
-    array("A", "", "$", "(a|o)"),
-    array("A", "[oeiuQY]", "", "(a|o)"),
-    array("A", "", "", "(a|o|Y[".$this->lang['german']."])"),
+    ["A", "", "[fklmnprst]$", "(a|o)"],
+    ["A", "", "ts$", "(a|o)"],
+    ["A", "", "$", "(a|o)"],
+    ["A", "[oeiuQY]", "", "(a|o)"],
+    ["A", "", "", "(a|o|Y[%german%])"],
 
-    array("U", "", "$", "u"),
-    array("U", "[DoiuQY]", "", "u"),
-    array("U", "", "[^k]$", "u"),
-    array("Uk", "[lr]", "$", "(uk|Qk[".$this->lang['german']."])"),
-    array("Uk", "", "$", "uk"),
+    ["U", "", "$", "u"],
+    ["U", "[DoiuQY]", "", "u"],
+    ["U", "", "[^k]$", "u"],
+    ["Uk", "[lr]", "$", "(uk|Qk[%german%])"],
+    ["Uk", "", "$", "uk"],
 
-    array("sUts", "", "$", "(suts|sQts[".$this->lang['german']."])"),
-    array("Uts", "", "$", "uts"),
-    array("U", "", "", "(u|Q[".$this->lang['german']."])"),
+    ["sUts", "", "$", "(suts|sQts[%german%])"],
+    ["Uts", "", "$", "uts"],
+    ["U", "", "", "(u|Q[%german%])"],
 
-    array("approxany")
-    
-);
+    ["approxany"]
+
+];
