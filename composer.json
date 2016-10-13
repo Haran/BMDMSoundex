@@ -1,0 +1,40 @@
+{
+  "name": "dautkom/bmdm",
+  "description": "Beider-Morse plus Daitch-Mokotoff soundex",
+  "type": "project",
+  "keywords": [
+    "soundex",
+    "beider-morse",
+    "daitch-mokotoff",
+    "phonetic matching"
+  ],
+  "license": "GPL-3.0+",
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4.0",
+    "ext-mbstring": "*",
+    "monolog/monolog": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.5.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "dautkom\\bmdm\\": ""
+    }
+  },
+  "authors": [
+    {
+      "name": "Alexander Beider",
+      "email": "albeider@yahoo.fr"
+    },
+    {
+      "name": "Stephen P. Morse",
+      "email": "steve@stevemorse.org"
+    },
+    {
+      "name": "Oļegs Čapligins",
+      "email": "shader@dautkom.lv"
+    }
+  ]
+}
