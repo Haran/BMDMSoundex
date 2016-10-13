@@ -1,54 +1,72 @@
 <?php
+/*
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
+ *
+ * This is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * It is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU General Public License.
+ * If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 
-$this->rules[ $this->getLanguageIndexByName('latvian') ] = array(
+return [
 
     // CONSONANTS
-    array("č", "", "", "tS"),
-    array("ģ", "", "", "(d|dj)"),
-    array("ķ","","","(t|ti)"),
-    array("ļ","","","lj"),
-    array("š", "", "", "S"),
-    array("ņ","","","(n|nj)"),
-    array("ž", "", "", "Z"),
+    ["č", "", "", "tS"],
+    ["ģ", "", "", "(d|dj)"],
+    ["ķ","","","(t|ti)"],
+    ["ļ","","","lj"],
+    ["š", "", "", "S"],
+    ["ņ","","","(n|nj)"],
+    ["ž", "", "", "Z"],
 
     // SPECIAL VOWELS
-    array("ā", "", "", "a"),
-    array("ē", "", "", "e"),
-    array("ī", "", "", "i"),
-    array("ū", "", "", "u"),
+    ["ā", "", "", "a"],
+    ["ē", "", "", "e"],
+    ["ī", "", "", "i"],
+    ["ū", "", "", "u"],
 
     // DIPHTONGS
-    array("ai","","","(D|ai)"),
-    array("ei","","","(D|ei)"),
-    array("io","","","jo"),
-    array("iu","","","(D|iu)"),
-    array("ie","","","(D|ie)"),
-    array("o","","","(D|uo)"),
-    array("ui","","","(D|ui)"),
+    ["ai","","","(D|ai)"],
+    ["ei","","","(D|ei)"],
+    ["io","","","jo"],
+    ["iu","","","(D|iu)"],
+    ["ie","","","(D|ie)"],
+    ["o","","","(D|uo)"],
+    ["ui","","","(D|ui)"],
 
     // LATIN ALPHABET
-    array("a","","","a"),
-    array("b","","","b"),
-    array("c","","","ts"),
-    array("d","","","d"),
-    array("e","","","E"),
-    array("f","","","f"),
-    array("g","","","g"),
-    array("h","","","h"),
-    array("i","","","I"),
-    array("j","","","j"),
-    array("k","","","k"),
-    array("l","","","l"),
-    array("m","","","m"),
-    array("n","","","n"),
-    array("p","","","p"),
-    array("r","","","r"),
-    array("s","","","s"),
-    array("t","","","t"),
-    array("u","","","u"),
-    array("v","","","v"),
-    array("z","","","z"),
+    ["a","","","a"],
+    ["b","","","b"],
+    ["c","","","ts"],
+    ["d","","","d"],
+    ["e","","","E"],
+    ["f","","","f"],
+    ["g","","","g"],
+    ["h","","","h"],
+    ["i","","","I"],
+    ["j","","","j"],
+    ["k","","","k"],
+    ["l","","","l"],
+    ["m","","","m"],
+    ["n","","","n"],
+    ["p","","","p"],
+    ["r","","","r"],
+    ["s","","","s"],
+    ["t","","","t"],
+    ["u","","","u"],
+    ["v","","","v"],
+    ["z","","","z"],
 
-    array("ruleslatvian")
+    ["ruleslatvian"]
 
-);
+];

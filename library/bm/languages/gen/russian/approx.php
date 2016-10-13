@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,42 +15,43 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->approx[ $this->getLanguageIndexByName('russian') ] = array(
+return [
 
     // VOWELS
-    array ("I", "", "$", "i"),
-    array ("I", "", "[^k]$", "i"),
-    array ("Ik", "[lr]", "$", "(ik|Qk)"),
-    array ("Ik", "", "$", "ik"),
-    array ("sIts", "", "$", "(sits|sQts)"),
-    array ("Its", "", "$", "its"),
-    array ("I", "[aeiEIou]", "", "i"),
-    array ("I", "", "", "(i|Q)"),
+    ["I", "", "$", "i"],
+    ["I", "", "[^k]$", "i"],
+    ["Ik", "[lr]", "$", "(ik|Qk)"],
+    ["Ik", "", "$", "ik"],
+    ["sIts", "", "$", "(sits|sQts)"],
+    ["Its", "", "$", "its"],
+    ["I", "[aeiEIou]", "", "i"],
+    ["I", "", "", "(i|Q)"],
 
-    array("au","","","(D|a|u)"),
-    array("ou","","","(D|o|u)"),
-    array("ai","","","(D|a|i)"),
-    array("oi","","","(D|o|i)"),
-    array("ui","","","(D|u|i)"),
+    ["au","","","(D|a|u)"],
+    ["ou","","","(D|o|u)"],
+    ["ai","","","(D|a|i)"],
+    ["oi","","","(D|o|i)"],
+    ["ui","","","(D|u|i)"],
 
-    array("om","","[bp]","(om|im)"),
-    array("on","","[dgkstvz]","(on|in)"),
-    array("em","","[bp]","(im|om)"),
-    array("en","","[dgkstvz]","(in|on)"),
-    array("Em","","[bp]","(im|Ym|om)"),
-    array("En","","[dgkstvz]","(in|Yn|on)"),
+    ["om","","[bp]","(om|im)"],
+    ["on","","[dgkstvz]","(on|in)"],
+    ["em","","[bp]","(im|om)"],
+    ["en","","[dgkstvz]","(in|on)"],
+    ["Em","","[bp]","(im|Ym|om)"],
+    ["En","","[dgkstvz]","(in|Yn|on)"],
 
-    array ("a", "", "", "(a|o)"),
-    array ("e", "", "", "i"),
+    ["a", "", "", "(a|o)"],
+    ["e", "", "", "i"],
 
-    array ("E", "", "[fklmnprsStv]$", "i"),
-    array ("E", "", "ts$", "i"),
-    array ("E", "[DaoiuQ]", "", "i"),
-    array ("E", "", "[aoQ]", "i"),
-    array ("E", "", "", "(Y|i)"),
+    ["E", "", "[fklmnprsStv]$", "i"],
+    ["E", "", "ts$", "i"],
+    ["E", "[DaoiuQ]", "", "i"],
+    ["E", "", "[aoQ]", "i"],
+    ["E", "", "", "(Y|i)"],
 
-    array("approxrussian")
+    ["approxrussian"]
 
-);
+];

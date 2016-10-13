@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,72 +15,73 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->rules[ $this->getLanguageIndexByName('dutch') ] = array(
+return [
 
     // CONSONANTS
-    array("ssj", "", "", "S"),
-    array("sj", "", "", "S"),
-    array("ch", "", "", "x"),
-    array("c", "", "[eiy]", "ts"),
-    array("ck", "", "", "k"),        // German
-    array("pf", "", "", "(pf|p|f)"), // German
-    array("ph", "", "", "(ph|f)"),
-    array("qu", "", "", "kv"),
-    array("th", "^", "", "t"), // German
-    array("th", "", "[äöüaeiou]", "(t|th)"), // German
-    array("th", "", "", "t"), // German
-    array("ss", "", "", "s"),
-    array("h", "[aeiouy]", "", ""),
+    ["ssj","","","S"],
+    ["sj","","","S"],
+    ["ch","","","x"],
+    ["c","","[eiy]","ts"],
+    ["ck","","","k"],     // German
+    ["pf","","","(pf|p|f)"], // German
+    ["ph","","","(ph|f)"],
+    ["qu","","","kv"],
+    ["th","^","","t"], // German
+    ["th","","[äöüaeiou]","(t|th)"], // German
+    ["th","","","t"], // German
+    ["ss","","","s"],
+    ["h","[aeiouy]","",""],
 
     // VOWELS
-    array("aue", "", "", "aue"),
-    array("ou", "", "", "au"),
-    array("ie", "", "", "(Q|i)"),
-    array("uu", "", "", "(Q|u)"),
-    array("ee", "", "", "e"),
-    array("eu", "", "", "(Y|Yj)"), // Dutch Y
-    array("aa", "", "", "a"),
-    array("oo", "", "", "o"),
-    array("oe", "", "", "u"),
-    array("ij", "", "", "ej"),
-    array("ui", "", "", "(Y|uj)"),
-    array("ei", "", "", "(ej|aj)"), // Dutch ej
+    ["aue","","","aue"],
+    ["ou","","","au"],
+    ["ie","","","(Q|i)"],
+    ["uu","","","(Q|u)"],
+    ["ee","","","e"],
+    ["eu","","","(Y|Yj)"], // Dutch Y
+    ["aa","","","a"],
+    ["oo","","","o"],
+    ["oe","","","u"],
+    ["ij","","","ej"],
+    ["ui","","","(Y|uj)"],
+    ["ei","","","(ej|aj)"], // Dutch ej
 
-    array("i", "", "[aou]", "j"),
-    array("y", "", "[aeou]", "j"),
-    array("i", "[aou]", "", "j"),
-    array("y", "[aeou]", "", "j"),
+    ["i","","[aou]","j"],
+    ["y","","[aeou]","j"],
+    ["i","[aou]","","j"],
+    ["y","[aeou]","","j"],
 
     // LATIN ALPHABET
-    array("a", "", "", "a"),
-    array("b", "", "", "b"),
-    array("c", "", "", "k"),
-    array("d", "", "", "d"),
-    array("e", "", "", "e"),
-    array("f", "", "", "f"),
-    array("g", "", "", "(g|x)"),
-    array("h", "", "", "h"),
-    array("i", "", "", "(i|Q)"),
-    array("j", "", "", "j"),
-    array("k", "", "", "k"),
-    array("l", "", "", "l"),
-    array("m", "", "", "m"),
-    array("n", "", "", "n"),
-    array("o", "", "", "o"),
-    array("p", "", "", "p"),
-    array("q", "", "", "k"),
-    array("r", "", "", "r"),
-    array("s", "", "", "s"),
-    array("t", "", "", "t"),
-    array("u", "", "", "(u|Q)"),
-    array("v", "", "", "v"),
-    array("w", "", "", "(w|v)"),
-    array("x", "", "", "ks"),
-    array("y", "", "", "i"),
-    array("z", "", "", "z"),
+    ["a","","","a"],
+    ["b","","","b"],
+    ["c","","","k"],
+    ["d","","","d"],
+    ["e","","","e"],
+    ["f","","","f"],
+    ["g","","","(g|x)"],
+    ["h","","","h"],
+    ["i","","","(i|Q)"],
+    ["j","","","j"],
+    ["k","","","k"],
+    ["l","","","l"],
+    ["m","","","m"],
+    ["n","","","n"],
+    ["o","","","o"],
+    ["p","","","p"],
+    ["q","","","k"],
+    ["r","","","r"],
+    ["s","","","s"],
+    ["t","","","t"],
+    ["u","","","(u|Q)"],
+    ["v","","","v"],
+    ["w","","","(w|v)"],
+    ["x","","","ks"],
+    ["y","","","i"],
+    ["z","","","z"],
 
-    array("rulesdutch")
+    ["rulesdutch"]
 
-);
+];

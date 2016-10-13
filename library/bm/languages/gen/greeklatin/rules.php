@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,113 +15,113 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->rules[ $this->getLanguageIndexByName('greeklatin') ] = array(
+return [
 
-    array("au","","$","af"),
-    array("au","","[kpstfh]","af"),
-    array("au","","","av"),
-    array("eu","","$","ef"),
-    array("eu","","[kpstfh]","ef"),
-    array("eu","","","ev"),
-    array("ou","","","u"),
+    ["au","","$","af"],
+    ["au","","[kpstfh]","af"],
+    ["au","","","av"],
+    ["eu","","$","ef"],
+    ["eu","","[kpstfh]","ef"],
+    ["eu","","","ev"],
+    ["ou","","","u"],
 
-    array("gge","[aeiouy]","","(nje|je)"), // aggelopoulos
-    array("ggi","[aeiouy]","[aou]","(nj|j)"),
-    array("ggi","[aeiouy]","","(ni|i)"),
-    array("gge","","","je"),
-    array("ggi","","","i"),
-    array("gg","[aeiouy]","","(ng|g)"),
-    array("gg","","","g"),
-    array("gk","^","","g"),
-    array("gke","[aeiouy]","","(nje|je)"),
-    array("gki","[aeiouy]","","(ni|i)"),
-    array("gke","","","je"),
-    array("gki","","","i"),
-    array("gk","[aeiouy]","","(ng|g)"),
-    array("gk","","","g"),
-    array("nghi","","[aouy]","Nj"),
-    array("nghi","","","(Ngi|Ni)"),
-    array("nghe","","[aouy]","Nj"),
-    array("nghe","","","(Nje|Nge)"),
-    array("ghi","","[aouy]","j"),
-    array("ghi","","","(gi|i)"),
-    array("ghe","","[aouy]","j"),
-    array("ghe","","","(je|ge)"),
-    array("ngh","","","Ng"),
-    array("gh","","","g"),
-    array("ngi","","[aouy]","Nj"),
-    array("ngi","","","(Ngi|Ni)"),
-    array("nge","","[aouy]","Nj"),
-    array("nge","","","(Nje|Nge)"),
-    array("gi","","[aouy]","j"),
-    array("gi","","","(gi|i)"), // what about Pantazis = Pantagis ???
-    array("ge","","[aouy]","j"),
-    array("ge","","","(je|ge)"),
-    array("ng","","","Ng"), // fragakis = fraggakis = frangakis; angel = agel = aggel
+    ["gge","[aeiouy]","","(nje|je)"], // aggelopoulos
+    ["ggi","[aeiouy]","[aou]","(nj|j)"],
+    ["ggi","[aeiouy]","","(ni|i)"],
+    ["gge","","","je"],
+    ["ggi","","","i"],
+    ["gg","[aeiouy]","","(ng|g)"],
+    ["gg","","","g"],
+    ["gk","^","","g"],
+    ["gke","[aeiouy]","","(nje|je)"],
+    ["gki","[aeiouy]","","(ni|i)"],
+    ["gke","","","je"],
+    ["gki","","","i"],
+    ["gk","[aeiouy]","","(ng|g)"],
+    ["gk","","","g"],
+    ["nghi","","[aouy]","Nj"],
+    ["nghi","","","(Ngi|Ni)"],
+    ["nghe","","[aouy]","Nj"],
+    ["nghe","","","(Nje|Nge)"],
+    ["ghi","","[aouy]","j"],
+    ["ghi","","","(gi|i)"],
+    ["ghe","","[aouy]","j"],
+    ["ghe","","","(je|ge)"],
+    ["ngh","","","Ng"],
+    ["gh","","","g"],
+    ["ngi","","[aouy]","Nj"],
+    ["ngi","","","(Ngi|Ni)"],
+    ["nge","","[aouy]","Nj"],
+    ["nge","","","(Nje|Nge)"],
+    ["gi","","[aouy]","j"],
+    ["gi","","","(gi|i)"], // what about Pantazis = Pantagis ???
+    ["ge","","[aouy]","j"],
+    ["ge","","","(je|ge)"],
+    ["ng","","","Ng"], // fragakis = fraggakis = frangakis; angel = agel = aggel
 
-    array("i","","[aeou]","j"),
-    array("i","[aeou]","","j"),
-    array("y","","[aeou]","j"),
-    array("y","[aeou]","","j"),
-    array("yi","","[aeou]", "j"),
-    array("yi","","", "i"),
+    ["i","","[aeou]","j"],
+    ["i","[aeou]","","j"],
+    ["y","","[aeou]","j"],
+    ["y","[aeou]","","j"],
+    ["yi","","[aeou]", "j"],
+    ["yi","","", "i"],
 
-    array("ch","","","x"),
-    array("kh","","","x"),
-    array("dh","","","d"),  // actually as "th" in English "that"
-    array("dj","","","dZ"), // Turkish words
-    array("ph","","","f"),
-    array("th","","","t"),
-    array("kz","","","gz"),
-    array("tz","","","dz"),
-    array("s","","[bgdmnr]","z"),
+    ["ch","","","x"],
+    ["kh","","","x"],
+    ["dh","","","d"],  // actually as "th" in English "that"
+    ["dj","","","dZ"], // Turkish words
+    ["ph","","","f"],
+    ["th","","","t"],
+    ["kz","","","gz"],
+    ["tz","","","dz"],
+    ["s","","[bgdmnr]","z"],
 
-    array("mb","","","(mb|b)"), // Liberis = Limperis = Limberis
-    array("mp","^","","b"),
-    array("mp","[aeiouy]","","mp"),
-    array("mp","","","b"),
-    array("nt","^","","d"),
-    array("nt","[aeiouy]","","(nd|nt)"), // Greek "nd"
-    array("nt","","","(nt|d)"), // Greek "d" after any consonant
+    ["mb","","","(mb|b)"], // Liberis = Limperis = Limberis
+    ["mp","^","","b"],
+    ["mp","[aeiouy]","","mp"],
+    ["mp","","","b"],
+    ["nt","^","","d"],
+    ["nt","[aeiouy]","","(nd|nt)"], // Greek "nd"
+    ["nt","","","(nt|d)"], // Greek "d" after any consonant
 
-    array("á","","","a"),
-    array("é","","","e"),
-    array("í","","","i"),
-    array("ó","","","o"),
-    array("óu","","","u"),
-    array("ú","","","u"),
-    array("ý","","","(i|Q|u)"), // [ü]
+    ["á","","","a"],
+    ["é","","","e"],
+    ["í","","","i"],
+    ["ó","","","o"],
+    ["óu","","","u"],
+    ["ú","","","u"],
+    ["ý","","","(i|Q|u)"], // [ü]
 
-    array("a","","","a"),
-    array("b","","","(b|v)"), // beta: modern "v", old "b"
-    array("c","","","k"),
-    array("d","","","d"),    // modern like "th" in English "them", old "d"
-    array("e","","","e"),
-    array("f","","","f"),
-    array("g","","","g"),
-    array("h","","","x"),
-    array("i","","","i"),
-    array("j","","","(j|Z)"), // Panajotti = Panaiotti; Louijos = Louizos; Pantajis = Pantazis = Pantagis
-    array("k","","","k"),
-    array("l","","","l"),
-    array("m","","","m"),
-    array("n","","","n"),
-    array("ο","","","o"),
-    array("p","","","p"),
-    array("q","","","k"), // foreign
-    array("r","","","r"),
-    array("s","","","s"),
-    array("t","","","t"),
-    array("u","","","u"),
-    array("v","","","v"),
-    array("w","","","v"), // foreign
-    array("x","","","ks"),
-    array("y","","","(i|Q|u)"), // [ü]
-    array("z","","","z"),
+    ["a","","","a"],
+    ["b","","","(b|v)"], // beta: modern "v", old "b"
+    ["c","","","k"],
+    ["d","","","d"],    // modern like "th" in English "them", old "d"
+    ["e","","","e"],
+    ["f","","","f"],
+    ["g","","","g"],
+    ["h","","","x"],
+    ["i","","","i"],
+    ["j","","","(j|Z)"], // Panajotti = Panaiotti; Louijos = Louizos; Pantajis = Pantazis = Pantagis
+    ["k","","","k"],
+    ["l","","","l"],
+    ["m","","","m"],
+    ["n","","","n"],
+    ["ο","","","o"],
+    ["p","","","p"],
+    ["q","","","k"], // foreign
+    ["r","","","r"],
+    ["s","","","s"],
+    ["t","","","t"],
+    ["u","","","u"],
+    ["v","","","v"],
+    ["w","","","v"], // foreign
+    ["x","","","ks"],
+    ["y","","","(i|Q|u)"], // [ü]
+    ["z","","","z"],
 
+    ["rulesgreeklatin"]
 
-    array("rulesgreeklatin")
-
-);
+];

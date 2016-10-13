@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,75 +15,76 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->rules[ $this->getLanguageIndexByName('hungarian') ] = array(
+return [
 
     // CONSONANTS
-    array("sz","","","s"),
-    array("zs","","","Z"),
-    array("cs","","","tS"),
+    ["sz","","","s"],
+    ["zs","","","Z"],
+    ["cs","","","tS"],
 
-    array("ay","","","(oj|aj)"),
-    array("ai","","","(oj|aj)"),
-    array("aj","","","(oj|aj)"),
+    ["ay","","","(oj|aj)"],
+    ["ai","","","(oj|aj)"],
+    ["aj","","","(oj|aj)"],
 
-    array("ei","","","(aj|ej)"), // German element
-    array("ey","","","(aj|ej)"), // German element
+    ["ei","","","(aj|ej)"], // German element
+    ["ey","","","(aj|ej)"], // German element
 
-    array("y","[áo]","","j"),
-    array("i","[áo]","","j"),
-    array("ee","","","(ej|e)"),
-    array("ely","","","(ej|eli)"),
-    array("ly","","","(j|li)"),
-    array("gy","","[aeouáéóúüöőű]","dj"),
-    array("gy","","","(d|gi)"),
-    array("ny","","[aeouáéóúüöőű]","nj"),
-    array("ny","","","(n|ni)"),
-    array("ty","","[aeouáéóúüöőű]","tj"),
-    array("ty","","","(t|ti)"),
-    array("qu","","","(ku|kv)"),
-    array("h","","$",""),
+    ["y","[áo]","","j"],
+    ["i","[áo]","","j"],
+    ["ee","","","(ej|e)"],
+    ["ely","","","(ej|eli)"],
+    ["ly","","","(j|li)"],
+    ["gy","","[aeouáéóúüöőű]","dj"],
+    ["gy","","","(d|gi)"],
+    ["ny","","[aeouáéóúüöőű]","nj"],
+    ["ny","","","(n|ni)"],
+    ["ty","","[aeouáéóúüöőű]","tj"],
+    ["ty","","","(t|ti)"],
+    ["qu","","","(ku|kv)"],
+    ["h","","$",""],
 
     // SPECIAL VOWELS
-    array("á","","","a"),
-    array("é","","","e"),
-    array("í","","","i"),
-    array("ó","","","o"),
-    array("ú","","","u"),
-    array("ö","","","Y"),
-    array("ő","","","Y"),
-    array("ü","","","Q"),
-    array("ű","","","Q"),
+    ["á","","","a"],
+    ["é","","","e"],
+    ["í","","","i"],
+    ["ó","","","o"],
+    ["ú","","","u"],
+    ["ö","","","Y"],
+    ["ő","","","Y"],
+    ["ü","","","Q"],
+    ["ű","","","Q"],
 
     // LATIN ALPHABET
-    array("a","","","a"),
-    array("b","","","b"),
-    array("c","","","ts"),
-    array("d","","","d"),
-    array("e","","","E"),
-    array("f","","","f"),
-    array("g","","","g"),
-    array("h","","","h"),
-    array("i","","","I"),
-    array("j","","","j"),
-    array("k","","","k"),
-    array("l","","","l"),
-    array("m","","","m"),
-    array("n","","","n"),
-    array("o","","","o"),
-    array("p","","","p"),
-    array("q","","","k"),
-    array("r","","","r"),
-    array("s","","","(S|s)"),
-    array("t","","","t"),
-    array("u","","","u"),
-    array("v","","","v"),
-    array("w","","","v"),
-    array("x","","","ks"),
-    array("y","","","i"),
-    array("z","","","z"),
+    ["a","","","a"],
+    ["b","","","b"],
+    ["c","","","ts"],
+    ["d","","","d"],
+    ["e","","","E"],
+    ["f","","","f"],
+    ["g","","","g"],
+    ["h","","","h"],
+    ["i","","","I"],
+    ["j","","","j"],
+    ["k","","","k"],
+    ["l","","","l"],
+    ["m","","","m"],
+    ["n","","","n"],
+    ["o","","","o"],
+    ["p","","","p"],
+    ["q","","","k"],
+    ["r","","","r"],
+    ["s","","","(S|s)"],
+    ["t","","","t"],
+    ["u","","","u"],
+    ["v","","","v"],
+    ["w","","","v"],
+    ["x","","","ks"],
+    ["y","","","i"],
+    ["z","","","z"],
 
-    array("ruleshungarian")
+    ["ruleshungarian"]
 
-);
+];

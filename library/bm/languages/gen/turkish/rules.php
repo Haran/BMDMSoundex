@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,44 +15,45 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->rules[ $this->getLanguageIndexByName('turkish') ] = array(
+return [
 
-    array("ç","","","tS"),
-    array("ğ","","",""), // to show that previous vowel is long
-    array("ş","","","S"),
-    array("ü","","","Q"),
-    array("ö","","","Y"),
-    array("ı","","","(e|i|)"), // as "e" in English "label"
+    ["ç","","","tS"],
+    ["ğ","","",""], // to show that previous vowel is long
+    ["ş","","","S"],
+    ["ü","","","Q"],
+    ["ö","","","Y"],
+    ["ı","","","(e|i|)"], // as "e" in English "label"
 
-    array("a","","","a"),
-    array("b","","","b"),
-    array("c","","","dZ"),
-    array("d","","","d"),
-    array("e","","","e"),
-    array("f","","","f"),
-    array("g","","","g"),
-    array("h","","","h"),
-    array("i","","","i"),
-    array("j","","","Z"),
-    array("k","","","k"),
-    array("l","","","l"),
-    array("m","","","m"),
-    array("n","","","n"),
-    array("o","","","o"),
-    array("p","","","p"),
-    array("q","","","k"),  // foreign words
-    array("r","","","r"),
-    array("s","","","s"),
-    array("t","","","t"),
-    array("u","","","u"),
-    array("v","","","v"),
-    array("w","","","v"),  // foreign words
-    array("x","","","ks"), // foreign words
-    array("y","","","j"),
-    array("z","","","z"),
+    ["a","","","a"],
+    ["b","","","b"],
+    ["c","","","dZ"],
+    ["d","","","d"],
+    ["e","","","e"],
+    ["f","","","f"],
+    ["g","","","g"],
+    ["h","","","h"],
+    ["i","","","i"],
+    ["j","","","Z"],
+    ["k","","","k"],
+    ["l","","","l"],
+    ["m","","","m"],
+    ["n","","","n"],
+    ["o","","","o"],
+    ["p","","","p"],
+    ["q","","","k"], // foreign words
+    ["r","","","r"],
+    ["s","","","s"],
+    ["t","","","t"],
+    ["u","","","u"],
+    ["v","","","v"],
+    ["w","","","v"], // foreign words
+    ["x","","","ks"], // foreign words
+    ["y","","","j"],
+    ["z","","","z"],
 
-    array("turkish")
+    ["turkish"]
 
-);
+];

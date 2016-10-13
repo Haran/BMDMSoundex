@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,66 +15,67 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->approx[ $this->getLanguageIndexByName('german') ] = array(
+return [
 
-    array ("I", "", "$", "i"),
-    array ("I", "[aeiAEIOUouQY]", "", "i"),
-    array ("I", "", "[^k]$", "i"),
-    array ("Ik", "[lr]", "$", "(ik|Qk)"),
-    array ("Ik", "", "$", "ik"),
-    array ("sIts", "", "$", "(sits|sQts)"),
-    array ("Its", "", "$", "its"),
-    array ("I", "", "", "(Q|i)"),
+    ["I", "", "$", "i"],
+    ["I", "[aeiAEIOUouQY]", "", "i"],
+    ["I", "", "[^k]$", "i"],
+    ["Ik", "[lr]", "$", "(ik|Qk)"],
+    ["Ik", "", "$", "ik"],
+    ["sIts", "", "$", "(sits|sQts)"],
+    ["Its", "", "$", "its"],
+    ["I", "", "", "(Q|i)"],
 
-    array("AU","","","(D|a|u)"),
-    array("aU","","","(D|a|u)"),
-    array("Au","","","(D|a|u)"),
-    array("au","","","(D|a|u)"),
-    array("ou","","","(D|o|u)"),
-    array("OU","","","(D|o|u)"),
-    array("oU","","","(D|o|u)"),
-    array("Ou","","","(D|o|u)"),
-    array("ai","","","(D|a|i)"),
-    array("Ai","","","(D|a|i)"),
-    array("oi","","","(D|o|i)"),
-    array("Oi","","","(D|o|i)"),
-    array("ui","","","(D|u|i)"),
-    array("Ui","","","(D|u|i)"),
+    ["AU","","","(D|a|u)"],
+    ["aU","","","(D|a|u)"],
+    ["Au","","","(D|a|u)"],
+    ["au","","","(D|a|u)"],
+    ["ou","","","(D|o|u)"],
+    ["OU","","","(D|o|u)"],
+    ["oU","","","(D|o|u)"],
+    ["Ou","","","(D|o|u)"],
+    ["ai","","","(D|a|i)"],
+    ["Ai","","","(D|a|i)"],
+    ["oi","","","(D|o|i)"],
+    ["Oi","","","(D|o|i)"],
+    ["ui","","","(D|u|i)"],
+    ["Ui","","","(D|u|i)"],
 
-    array ("e", "", "", "i"),
+    ["e", "", "", "i"],
 
-    array ("E", "", "[fklmnprst]$", "i"),
-    array ("E", "", "ts$", "i"),
-    array ("E", "", "$", "i"),
-    array ("E", "[DaoAOUiuQY]", "", "i"),
-    array ("E", "", "[aoAOQY]", "i"),
-    array ("E", "", "", "(Y|i)"),
+    ["E", "", "[fklmnprst]$", "i"],
+    ["E", "", "ts$", "i"],
+    ["E", "", "$", "i"],
+    ["E", "[DaoAOUiuQY]", "", "i"],
+    ["E", "", "[aoAOQY]", "i"],
+    ["E", "", "", "(Y|i)"],
 
-    array ("O", "", "$", "o"),
-    array ("O", "", "[fklmnprst]$", "o"),
-    array ("O", "", "ts$", "o"),
-    array ("O", "[aoAOUeiuQY]", "", "o"),
-    array ("O", "", "", "(o|Y)"),
+    ["O", "", "$", "o"],
+    ["O", "", "[fklmnprst]$", "o"],
+    ["O", "", "ts$", "o"],
+    ["O", "[aoAOUeiuQY]", "", "o"],
+    ["O", "", "", "(o|Y)"],
 
-    array ("a", "", "", "(a|o)"),
+    ["a", "", "", "(a|o)"],
 
-    array ("A", "", "$", "(a|o)"),
-    array ("A", "", "[fklmnprst]$", "(a|o)"),
-    array ("A", "", "ts$", "(a|o)"),
-    array ("A", "[aoeOUiuQY]", "", "(a|o)"),
-    array ("A", "", "", "(a|o|Y)"),
+    ["A", "", "$", "(a|o)"],
+    ["A", "", "[fklmnprst]$", "(a|o)"],
+    ["A", "", "ts$", "(a|o)"],
+    ["A", "[aoeOUiuQY]", "", "(a|o)"],
+    ["A", "", "", "(a|o|Y)"],
 
-    array ("U", "", "$", "u"),
-    array ("U", "[DaoiuUQY]", "", "u"),
-    array ("U", "", "[^k]$", "u"),
-    array ("Uk", "[lr]", "$", "(uk|Qk)"),
-    array ("Uk", "", "$", "uk"),
-    array ("sUts", "", "$", "(suts|sQts)"),
-    array ("Uts", "", "$", "uts"),
-    array ("U", "", "", "(u|Q)"),
+    ["U", "", "$", "u"],
+    ["U", "[DaoiuUQY]", "", "u"],
+    ["U", "", "[^k]$", "u"],
+    ["Uk", "[lr]", "$", "(uk|Qk)"],
+    ["Uk", "", "$", "uk"],
+    ["sUts", "", "$", "(suts|sQts)"],
+    ["Uts", "", "$", "uts"],
+    ["U", "", "", "(u|Q)"],
 
-    array("approxgerman")
+    ["approxgerman"]
 
-);
+];

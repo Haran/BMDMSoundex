@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,61 +15,62 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->rules[ $this->getLanguageIndexByName('czech') ] = array(
+return [
 
-    array("ch", "", "", "x"),
-    array("qu", "", "", "(k|kv)"),
-    array("aue", "", "", "aue"),
-    array("ei", "", "", "(ej|aj)"),
-    array("i", "[aou]", "", "j"),
-    array("i", "", "[aeou]", "j"),
+    ["ch","","","x"],
+    ["qu","","","(k|kv)"],
+    ["aue","","","aue"],
+    ["ei","","","(ej|aj)"],
+    ["i","[aou]","","j"],
+    ["i","","[aeou]","j"],
 
-    array("č", "", "", "tS"),
-    array("š", "", "", "S"),
-    array("ň", "", "", "n"),
-    array("ť", "", "", "(t|tj)"),
-    array("ď", "", "", "(d|dj)"),
-    array("ř", "", "", "(r|rZ)"),
+    ["č","","","tS"],
+    ["š","","","S"],
+    ["ň","","","n"],
+    ["ť","","","(t|tj)"],
+    ["ď","","","(d|dj)"],
+    ["ř","","","(r|rZ)"],
 
-    array("á", "", "", "a"),
-    array("é", "", "", "e"),
-    array("í", "", "", "i"),
-    array("ó", "", "", "o"),
-    array("ú", "", "", "u"),
-    array("ý", "", "", "i"),
-    array("ě", "", "", "(e|je)"),
-    array("ů", "", "", "u"),
+    ["á","","","a"],
+    ["é","","","e"],
+    ["í","","","i"],
+    ["ó","","","o"],
+    ["ú","","","u"],
+    ["ý","","","i"],
+    ["ě","","","(e|je)"],
+    ["ů","","","u"],
 
     // LATIN ALPHABET
-    array("a", "", "", "a"),
-    array("b", "", "", "b"),
-    array("c", "", "", "ts"),
-    array("d", "", "", "d"),
-    array("e", "", "", "E"),
-    array("f", "", "", "f"),
-    array("g", "", "", "g"),
-    array("h", "", "", "(h|g)"),
-    array("i", "", "", "I"),
-    array("j", "", "", "j"),
-    array("k", "", "", "k"),
-    array("l", "", "", "l"),
-    array("m", "", "", "m"),
-    array("n", "", "", "n"),
-    array("o", "", "", "o"),
-    array("p", "", "", "p"),
-    array("q", "", "", "(k|kv)"),
-    array("r", "", "", "r"),
-    array("s", "", "", "s"),
-    array("t", "", "", "t"),
-    array("u", "", "", "u"),
-    array("v", "", "", "v"),
-    array("w", "", "", "v"),
-    array("x", "", "", "ks"),
-    array("y", "", "", "i"),
-    array("z", "", "", "z"),
+    ["a","","","a"],
+    ["b","","","b"],
+    ["c","","","ts"],
+    ["d","","","d"],
+    ["e","","","E"],
+    ["f","","","f"],
+    ["g","","","g"],
+    ["h","","","(h|g)"],
+    ["i","","","I"],
+    ["j","","","j"],
+    ["k","","","k"],
+    ["l","","","l"],
+    ["m","","","m"],
+    ["n","","","n"],
+    ["o","","","o"],
+    ["p","","","p"],
+    ["q","","","(k|kv)"],
+    ["r","","","r"],
+    ["s","","","s"],
+    ["t","","","t"],
+    ["u","","","u"],
+    ["v","","","v"],
+    ["w","","","v"],
+    ["x","","","ks"],
+    ["y","","","i"],
+    ["z","","","z"],
 
-    array("czech")
+    ["czech"]
 
-);
+];

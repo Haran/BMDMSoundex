@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,77 +15,78 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->approx[ $this->getLanguageIndexByName('polish') ] = array(
+return [
 
-    array("aiB","","[bp]","(D|Dm)"),
-    array("oiB","","[bp]","(D|Dm)"),
-    array("uiB","","[bp]","(D|Dm)"),
-    array("eiB","","[bp]","(D|Dm)"),
-    array("EiB","","[bp]","(D|Dm)"),
-    array("iiB","","[bp]","(D|Dm)"),
-    array("IiB","","[bp]","(D|Dm)"),
+    ["aiB","","[bp]","(D|Dm)"],
+    ["oiB","","[bp]","(D|Dm)"],
+    ["uiB","","[bp]","(D|Dm)"],
+    ["eiB","","[bp]","(D|Dm)"],
+    ["EiB","","[bp]","(D|Dm)"],
+    ["iiB","","[bp]","(D|Dm)"],
+    ["IiB","","[bp]","(D|Dm)"],
 
-    array("aiB","","[dgkstvz]","(D|Dn)"),
-    array("oiB","","[dgkstvz]","(D|Dn)"),
-    array("uiB","","[dgkstvz]","(D|Dn)"),
-    array("eiB","","[dgkstvz]","(D|Dn)"),
-    array("EiB","","[dgkstvz]","(D|Dn)"),
-    array("iiB","","[dgkstvz]","(D|Dn)"),
-    array("IiB","","[dgkstvz]","(D|Dn)"),
+    ["aiB","","[dgkstvz]","(D|Dn)"],
+    ["oiB","","[dgkstvz]","(D|Dn)"],
+    ["uiB","","[dgkstvz]","(D|Dn)"],
+    ["eiB","","[dgkstvz]","(D|Dn)"],
+    ["EiB","","[dgkstvz]","(D|Dn)"],
+    ["iiB","","[dgkstvz]","(D|Dn)"],
+    ["IiB","","[dgkstvz]","(D|Dn)"],
 
-    array("B","","[bp]","(o|om|im)"),
-    array("B","","[dgkstvz]","(o|on|in)"),
-    array ("B", "", "", "o"),
+    ["B","","[bp]","(o|om|im)"],
+    ["B","","[dgkstvz]","(o|on|in)"],
+    ["B", "", "", "o"],
 
-    array("aiF","","[bp]","(D|Dm)"),
-    array("oiF","","[bp]","(D|Dm)"),
-    array("uiF","","[bp]","(D|Dm)"),
-    array("eiF","","[bp]","(D|Dm)"),
-    array("EiF","","[bp]","(D|Dm)"),
-    array("iiF","","[bp]","(D|Dm)"),
-    array("IiF","","[bp]","(D|Dm)"),
+    ["aiF","","[bp]","(D|Dm)"],
+    ["oiF","","[bp]","(D|Dm)"],
+    ["uiF","","[bp]","(D|Dm)"],
+    ["eiF","","[bp]","(D|Dm)"],
+    ["EiF","","[bp]","(D|Dm)"],
+    ["iiF","","[bp]","(D|Dm)"],
+    ["IiF","","[bp]","(D|Dm)"],
 
-    array("aiF","","[dgkstvz]","(D|Dn)"),
-    array("oiF","","[dgkstvz]","(D|Dn)"),
-    array("uiF","","[dgkstvz]","(D|Dn)"),
-    array("eiF","","[dgkstvz]","(D|Dn)"),
-    array("EiF","","[dgkstvz]","(D|Dn)"),
-    array("iiF","","[dgkstvz]","(D|Dn)"),
-    array("IiF","","[dgkstvz]","(D|Dn)"),
+    ["aiF","","[dgkstvz]","(D|Dn)"],
+    ["oiF","","[dgkstvz]","(D|Dn)"],
+    ["uiF","","[dgkstvz]","(D|Dn)"],
+    ["eiF","","[dgkstvz]","(D|Dn)"],
+    ["EiF","","[dgkstvz]","(D|Dn)"],
+    ["iiF","","[dgkstvz]","(D|Dn)"],
+    ["IiF","","[dgkstvz]","(D|Dn)"],
 
-    array("F","","[bp]","(i|im|om)"),
-    array("F","","[dgkstvz]","(i|in|on)"),
-    array ("F", "", "", "i"),
+    ["F","","[bp]","(i|im|om)"],
+    ["F","","[dgkstvz]","(i|in|on)"],
+    ["F", "", "", "i"],
 
-    array ("P", "", "", "(o|u)"),
+    ["P", "", "", "(o|u)"],
 
-    array ("I", "", "$", "i"),
-    array ("I", "", "[^k]$", "i"),
-    array ("Ik", "[lr]", "$", "(ik|Qk)"),
-    array ("Ik", "", "$", "ik"),
-    array ("sIts", "", "$", "(sits|sQts)"),
-    array ("Its", "", "$", "its"),
-    array ("I", "[aeiAEBFIou]", "", "i"),
-    array ("I", "", "", "(i|Q)"),
+    ["I", "", "$", "i"],
+    ["I", "", "[^k]$", "i"],
+    ["Ik", "[lr]", "$", "(ik|Qk)"],
+    ["Ik", "", "$", "ik"],
+    ["sIts", "", "$", "(sits|sQts)"],
+    ["Its", "", "$", "its"],
+    ["I", "[aeiAEBFIou]", "", "i"],
+    ["I", "", "", "(i|Q)"],
 
-    array("au","","","(D|a|u)"),
-    array("ou","","","(D|o|u)"),
-    array("ai","","","(D|a|i)"),
-    array("oi","","","(D|o|i)"),
-    array("ui","","","(D|u|i)"),
+    ["au","","","(D|a|u)"],
+    ["ou","","","(D|o|u)"],
+    ["ai","","","(D|a|i)"],
+    ["oi","","","(D|o|i)"],
+    ["ui","","","(D|u|i)"],
 
-    array ("a", "", "", "(a|o)"),
-    array ("e", "", "", "i"),
+    ["a", "", "", "(a|o)"],
+    ["e", "", "", "i"],
 
-    array ("E", "", "[fklmnprst]$", "i"),
-    array ("E", "", "ts$", "i"),
-    array ("E", "", "$", "i"),
-    array ("E", "[DaoiuQ]", "", "i"),
-    array ("E", "", "[aoQ]", "i"),
-    array ("E", "", "", "(Y|i)"),
+    ["E", "", "[fklmnprst]$", "i"],
+    ["E", "", "ts$", "i"],
+    ["E", "", "$", "i"],
+    ["E", "[DaoiuQ]", "", "i"],
+    ["E", "", "[aoQ]", "i"],
+    ["E", "", "", "(Y|i)"],
 
-    array("approxpolish")
+    ["approxpolish"]
 
-);
+];

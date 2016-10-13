@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +15,10 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->rules[ $this->getLanguageIndexByName('french') ] = array(
+return array(
 
     // CONSONANTS
     array("lt","u","$","(lt|)"), // Renault
@@ -37,7 +35,7 @@ $this->rules[ $this->getLanguageIndexByName('french') ] = array(
     array("ps","","$","(ps|)"), // Champs
     array("rs","e","$","(rs|)"),
     array("ts","","$","(ts|)"),
-    array("s","","$","(s|)"),   // Denis
+    array("s","","$","(s|)"), // Denis
 
     array("x","u","$","(ks|)"), // Arnoux
 
@@ -82,10 +80,10 @@ $this->rules[ $this->getLanguageIndexByName('french') ] = array(
     array("â","","","a"),
     array("où","","","u"),
     array("ou","","","u"),
-    array("oi","","","(oj|va)"), // [va] (actually "ua") is non Jewish
+    array("oi","","","(oj|va)"),   // [va] (actually "ua") is non Jewish
     array("ei","","","(aj|ej|e)"), // [e] is non Jewish
     array("ey","","","(aj|ej|e)"), // [e] non Jewish
-    array("eu","","","(ej|Y)"), // non Jewish
+    array("eu","","","(ej|Y)"),    // non Jewish
     array("y","[ou]","","j"),
     array("e","","$","(e|)"),
     array("i","","[aou]","j"),

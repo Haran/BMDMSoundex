@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,148 +15,149 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
 // SEPHARDIC: INCORPORATES Portuguese + Italian + Spanish(+Catalan) + French
-$this->rules[ $this->getLanguageIndexByName('any') ] = array(
-
+return [
+    
     // CONSONANTS
-    array("ph", "", "", "f"), // foreign
-    array("sh", "", "", "S"), // foreign
-    array("kh", "", "", "x"), // foreign
+    ["ph","","","f"], // foreign
+    ["sh","","","S"], // foreign
+    ["kh","","","x"], // foreign
 
-    array("gli", "", "", "(gli|l[".$this->lang['italian']."])"),
-    array("gni", "", "", "(gni|ni[" . ($this->lang['italian'] + $this->lang['french']) . "])"),
-    array("gn", "", "[aeou]", "(n[" . ($this->lang['italian'] + $this->lang['french']) . "]|nj[" . ($this->lang['italian'] + $this->lang['french']) . "]|gn)"),
-    array("gh", "", "", "g"), // It + translit. from Arabic
-    array("dh", "", "", "d"), // translit. from Arabic
-    array("bh", "", "", "b"), // translit. from Arabic
-    array("th", "", "", "t"), // translit. from Arabic
-    array("lh", "", "", "l"), // Port
-    array("nh", "", "", "nj"), // Port
+    ["gli","","","(gli|l[%italian%])"],
+    ["gni","","","(gni|ni[%italian%+%french%])"],
+    ["gn","","[aeou]","(n[%italian%+%french%]|nj[%italian%+%french%]|gn)"],
+    ["gh","","","g"], // It + translit. from Arabic
+    ["dh","","","d"], // translit. from Arabic
+    ["bh","","","b"], // translit. from Arabic
+    ["th","","","t"], // translit. from Arabic
+    ["lh","","","l"], // Port
+    ["nh","","","nj"], // Port
 
-    array("ig", "[aeiou]", "", "(ig|tS[".$this->lang['spanish']."])"),
-    array("ix", "[aeiou]", "", "S"), // Sp
-    array("tx", "", "", "tS"), // Sp
-    array("tj", "", "$", "tS"), // Sp
-    array("tj", "", "", "dZ"), // Sp
-    array("tg", "", "", "(tg|dZ[".$this->lang['spanish']."])"),
+    ["ig","[aeiou]","","(ig|tS[%spanish%])"],
+    ["ix","[aeiou]","","S"], // Sp
+    ["tx","","","tS"], // Sp
+    ["tj","","$","tS"], // Sp
+    ["tj","","","dZ"], // Sp
+    ["tg","","","(tg|dZ[%spanish%])"],
 
-    array("gi", "", "[aeou]", "dZ"), // italian
-    array("g", "", "y", "Z"), // french
-    array("gg", "", "[ei]", "(gZ[" . ($this->lang['portuguese'] + $this->lang['french']) . "]|dZ[" . ($this->lang['italian'] + $this->lang['spanish']) . "]|x[".$this->lang['spanish']."])"),
-    array("g", "", "[ei]", "(Z[" . ($this->lang['portuguese'] + $this->lang['french']) . "]|dZ[" . ($this->lang['italian'] + $this->lang['spanish']) . "]|x[".$this->lang['spanish']."])"),
+    ["gi","","[aeou]","dZ"], // italian
+    ["g","","y","Z"], // french
+    ["gg","","[ei]","(gZ[%portuguese%+%french%]|dZ[%italian%+%spanish%]|x[%spanish%])"],
+    ["g","","[ei]","(Z[%portuguese%+%french%]|dZ[%italian%+%spanish%]|x[%spanish%])"],
 
-    array("guy", "", "", "gi"),
-    array("gue", "", "$", "(k[".$this->lang['french']."]|ge)"),
-    array("gu", "", "[ei]", "(g|gv)"), // not It
-    array("gu", "", "[ao]", "gv"), // not It
+    ["guy","","","gi"],
+    ["gue","","$","(k[%french%]|ge)"],
+    ["gu","","[ei]","(g|gv)"],     // not It
+    ["gu","","[ao]","gv"],  // not It  
 
-    array("ñ", "", "", "(n|nj)"),
-    array("ny", "", "", "nj"),
+    ["ñ","","","(n|nj)"],
+    ["ny","","","nj"],
 
-    array("sc", "", "[ei]", "(s|S[".$this->lang['italian']."])"),
-    array("sç", "", "[aeiou]", "s"), // not It
-    array("ss", "", "", "s"),
-    array("ç", "", "", "s"), // not It
+    ["sc","","[ei]","(s|S[%italian%])"],
+    ["sç","","[aeiou]","s"], // not It
+    ["ss","","","s"],
+    ["ç","","","s"],   // not It
 
-    array("ch", "", "[ei]", "(k[".$this->lang['italian']."]|S[" . ($this->lang['portuguese'] + $this->lang['french']) . "]|tS[".$this->lang['spanish']."]|dZ[".$this->lang['spanish']."])"),
-    array("ch", "", "", "(S|tS[".$this->lang['spanish']."]|dZ[".$this->lang['spanish']."])"),
+    ["ch","","[ei]","(k[%italian%]|S[%portuguese%+%french%]|tS[%spanish%]|dZ[%spanish%])"],
+    ["ch","","","(S|tS[%spanish%]|dZ[%spanish%])"],
 
-    array("ci", "", "[aeou]", "(tS[".$this->lang['italian']."]|si)"),
-    array("cc", "", "[eiyéèê]", "(tS[".$this->lang['italian']."]|ks[" . ($this->lang['portuguese'] + $this->lang['french'] + $this->lang['spanish']) . "])"),
-    array("c", "", "[eiyéèê]", "(tS[".$this->lang['italian']."]|s[" . ($this->lang['portuguese'] + $this->lang['french'] + $this->lang['spanish']) . "])"),
-    //array("c","","[aou]","(k|C[".($portuguese+$spanish)."])"), // "C" means that the actual letter could be "ç" (cedille omitted)
+    ["ci","","[aeou]","(tS[%italian%]|si)"],
+    ["cc","","[eiyéèê]","(tS[%italian%]|ks[%portuguese%+%french%+%spanish%])"],
+    ["c","","[eiyéèê]","(tS[%italian%]|s[%portuguese%+%french%+%spanish%])"],
+    //array("c","","[aou]","(k|C[%portuguese%+%spanish%])"), // "C" means that the actual letter could be "ç" (cedille omitted)
 
-    array("s", "^", "", "s"),
-    array("s", "[aáuiíoóeéêy]", "[aáuiíoóeéêy]", "(s[".$this->lang['spanish']."]|z[" . ($this->lang['portuguese'] + $this->lang['french'] + $this->lang['italian']) . "])"),
-    array("s", "", "[dglmnrv]", "(z|Z[".$this->lang['portuguese']."])"),
+    ["s","^","","s"],
+    ["s","[aáuiíoóeéêy]","[aáuiíoóeéêy]","(s[%spanish%]|z[%portuguese%+%french%+%italian%])"],
+    ["s","","[dglmnrv]","(z|Z[%portuguese%])"],
 
-    array("z", "", "$", "(s|ts[".$this->lang['italian']."]|S[".$this->lang['portuguese']."])"), // ts It, s/S/Z Port, s in Sp, z Fr
-    array("z", "", "[bdgv]", "(z|dz[".$this->lang['italian']."]|Z[".$this->lang['portuguese']."])"), // dz It, Z/z Port, z Sp & Fr
-    array("z", "", "[ptckf]", "(s|ts[".$this->lang['italian']."]|S[".$this->lang['portuguese']."])"), // ts It, s/S/z Port, z/s Sp
-    array("z", "", "", "(z|dz[".$this->lang['italian']."]|ts[".$this->lang['italian']."]|s[".$this->lang['spanish']."])"), // ts/dz It, z Port & Fr, z/s Sp
+    ["z","","$","(s|ts[%italian%]|S[%portuguese%])"], // ts It, s/S/Z Port, s in Sp, z Fr
+    ["z","","[bdgv]","(z|dz[%italian%]|Z[%portuguese%])"], // dz It, Z/z Port, z Sp & Fr
+    ["z","","[ptckf]","(s|ts[%italian%]|S[%portuguese%])"], // ts It, s/S/z Port, z/s Sp
+    ["z","","","(z|dz[%italian%]|ts[%italian%]|s[%spanish%])"], // ts/dz It, z Port & Fr, z/s Sp
 
-    array("que", "", "$", "(k[".$this->lang['french']."]|ke)"),
-    array("qu", "", "[eiu]", "k"),
-    array("qu", "", "[ao]", "(kv|k)"), // k is It
+    ["que","","$","(k[%french%]|ke)"],
+    ["qu","","[eiu]","k"],
+    ["qu","","[ao]","(kv|k)"], // k is It   
 
-    array("ex", "", "[aáuiíoóeéêy]", "(ez[".$this->lang['portuguese']."]|eS[".$this->lang['portuguese']."]|eks|egz)"),
-    array("ex", "", "[cs]", "(e[".$this->lang['portuguese']."]|ek)"),
+    ["ex","","[aáuiíoóeéêy]","(ez[%portuguese%]|eS[%portuguese%]|eks|egz)"],
+    ["ex","","[cs]","(e[%portuguese%]|ek)"],
 
-    array("m", "", "[cdglnrst]", "(m|n[".$this->lang['portuguese']."])"),
-    array("m", "", "[bfpv]", "(m|n[" . ($this->lang['portuguese'] + $this->lang['spanish']) . "])"),
-    array("m", "", "$", "(m|n[".$this->lang['portuguese']."])"),
+    ["m","","[cdglnrst]","(m|n[%portuguese%])"],
+    ["m","","[bfpv]","(m|n[%portuguese%+%spanish%])"],
+    ["m","","$","(m|n[%portuguese%])"],
 
-    array("b", "^", "", "(b|V[".$this->lang['spanish']."])"),
-    array("v", "^", "", "(v|B[".$this->lang['spanish']."])"),
+    ["b","^","","(b|V[%spanish%])"],
+    ["v","^","","(v|B[%spanish%])"],
 
-    // VOWELS
-    array("eau", "", "", "o"), // Fr
+    // VOWELS   
+    ["eau","","","o"], // Fr
 
-    array("ouh", "", "[aioe]", "(v[".$this->lang['french']."]|uh)"),
-    array("uh", "", "[aioe]", "(v|uh)"),
-    array("ou", "", "[aioe]", "v"), // french
-    array("uo", "", "", "(vo|o)"),
-    array("u", "", "[aie]", "v"),
+    ["ouh","","[aioe]","(v[%french%]|uh)"],
+    ["uh","","[aioe]","(v|uh)"],
+    ["ou","","[aioe]","v"], // french
+    ["uo","","","(vo|o)"],
+    ["u","","[aie]","v"],
 
-    array("i", "[aáuoóeéê]", "", "j"),
-    array("i", "", "[aeou]", "j"),
-    array("y", "[aáuiíoóeéê]", "", "j"),
-    array("y", "", "[aeiíou]", "j"),
-    array("e", "", "$", "(e|E[".$this->lang['french']."])"),
+    ["i","[aáuoóeéê]","","j"],
+    ["i","","[aeou]","j"],
+    ["y","[aáuiíoóeéê]","","j"],
+    ["y","","[aeiíou]","j"],
+    ["e","","$","(e|E[%french%])"],
 
-    array("ão", "", "", "(au|an)"), // Port
-    array("ãe", "", "", "(aj|an)"), // Port
-    array("ãi", "", "", "(aj|an)"), // Port
-    array("õe", "", "", "(oj|on)"), // Port
-    array("où", "", "", "u"), // Fr
-    array("ou", "", "", "(ou|u[".$this->lang['french']."])"),
+    ["ão","","","(au|an)"], // Port
+    ["ãe","","","(aj|an)"], // Port
+    ["ãi","","","(aj|an)"], // Port
+    ["õe","","","(oj|on)"], // Port
+    ["où","","","u"], // Fr
+    ["ou","","","(ou|u[%french%])"],
 
-    array("â", "", "", "a"), // Port & Fr
-    array("à", "", "", "a"), // Port
-    array("á", "", "", "a"), // Port & Sp
-    array("ã", "", "", "(a|an)"), // Port
-    array("é", "", "", "e"),
-    array("ê", "", "", "e"), // Port & Fr
-    array("è", "", "", "e"), // Sp & Fr & It
-    array("í", "", "", "i"), // Port & Sp
-    array("î", "", "", "i"), // Fr
-    array("ô", "", "", "o"), // Port & Fr
-    array("ó", "", "", "o"), // Port & Sp & It
-    array("õ", "", "", "(o|on)"), // Port
-    array("ò", "", "", "o"), // Sp & It
-    array("ú", "", "", "u"), // Port & Sp
-    array("ü", "", "", "u"), // Port & Sp
+    ["â","","","a"], // Port & Fr
+    ["à","","","a"], // Port 
+    ["á","","","a"], // Port & Sp
+    ["ã","","","(a|an)"], // Port
+    ["é","","","e"],
+    ["ê","","","e"], // Port & Fr
+    ["è","","","e"], // Sp & Fr & It
+    ["í","","","i"], // Port & Sp
+    ["î","","","i"], // Fr
+    ["ô","","","o"], // Port & Fr
+    ["ó","","","o"], // Port & Sp & It
+    ["õ","","","(o|on)"], // Port
+    ["ò","","","o"],  // Sp & It
+    ["ú","","","u"], // Port & Sp
+    ["ü","","","u"], // Port & Sp
 
-    // LATIN ALPHABET
-    array("a", "", "", "a"),
-    array("b", "", "", "(b|v[".$this->lang['spanish']."])"),
-    array("c", "", "", "k"),
-    array("d", "", "", "d"),
-    array("e", "", "", "e"),
-    array("f", "", "", "f"),
-    array("g", "", "", "g"),
-    array("h", "", "", "h"),
-    array("i", "", "", "i"),
-    array("j", "", "", "(x[".$this->lang['spanish']."]|Z)"), // not It
-    array("k", "", "", "k"),
-    array("l", "", "", "l"),
-    array("m", "", "", "m"),
-    array("n", "", "", "n"),
-    array("o", "", "", "o"),
-    array("p", "", "", "p"),
-    array("q", "", "", "k"),
-    array("r", "", "", "r"),
-    array("s", "", "", "(s|S[".$this->lang['portuguese']."])"),
-    array("t", "", "", "t"),
-    array("u", "", "", "u"),
-    array("v", "", "", "(v|b[".$this->lang['spanish']."])"),
-    array("w", "", "", "v"), // foreign
-    array("x", "", "", "(ks|gz|S[" . ($this->lang['portuguese'] + $this->lang['spanish']) . "])"), // S/ks Port & Sp, gz Sp, It only ks
-    array("y", "", "", "i"),
-    array("z", "", "", "z"),
+    // LATIN ALPHABET     
+    ["a","","","a"],
+    ["b","","","(b|v[%spanish%])"],
+    ["c","","","k"],
+    ["d","","","d"],
+    ["e","","","e"],
+    ["f","","","f"],
+    ["g","","","g"],
+    ["h","","","h"],
+    ["i","","","i"],
+    ["j","","","(x[%spanish%]|Z)"], // not It
+    ["k","","","k"],
+    ["l","","","l"],
+    ["m","","","m"],
+    ["n","","","n"],
+    ["o","","","o"],
+    ["p","","","p"],
+    ["q","","","k"],
+    ["r","","","r"],
+    ["s","","","(s|S[%portuguese%])"],
+    ["t","","","t"],
+    ["u","","","u"],
+    ["v","","","(v|b[%spanish%])"],
+    ["w","","","v"],    // foreign
+    ["x","","","(ks|gz|S[%portuguese%+%spanish%])"],   // S/ks Port & Sp, gz Sp, It only ks
+    ["y","","","i"],
+    ["z","","","z"],
 
-    array("rulesany")
+    ["rulesany"]
 
-);
+];

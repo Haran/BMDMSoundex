@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,87 +15,87 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-//Sephardic
-$this->rules[ $this->getLanguageIndexByName('spanish') ] = array(
+// Includes both Spanish (Castillian) & Catalan
+return [
 
-    // Includes both Spanish (Castillian) & Catalan
     // CONSONANTS
-    array("ñ", "", "", "(n|nj)"),
-    array("ny", "", "", "nj"), // Catalan
-    array("ç", "", "", "s"), // Catalan
+    ["ñ","","","(n|nj)"],
+    ["ny","","","nj"], // Catalan
+    ["ç","","","s"],   // Catalan
 
-    array("ig", "[aeiou]", "", "(tS|ig)"), // tS is Catalan
-    array("ix", "[aeiou]", "", "S"), // Catalan
-    array("tx", "", "", "tS"), // Catalan
-    array("tj", "", "$", "tS"), // Catalan
-    array("tj", "", "", "dZ"), // Catalan
-    array("tg", "", "", "(tg|dZ)"), // dZ is Catalan
-    array("ch", "", "", "(tS|dZ)"), // dZ is typical for Argentina
-    array("bh", "", "", "b"), // translit. from Arabic
-    array("h", "[dgt]", "", ""), // translit. from Arabic
+    ["ig","[aeiou]","","(tS|ig)"], // tS is Catalan
+    ["ix","[aeiou]","","S"],       // Catalan
+    ["tx","","","tS"],             // Catalan
+    ["tj","","$","tS"],            // Catalan
+    ["tj","","","dZ"],             // Catalan
+    ["tg","","","(tg|dZ)"],        // dZ is Catalan
+    ["ch","","","(tS|dZ)"],        // dZ is typical for Argentina
+    ["bh","","","b"],              // translit. from Arabic
+    ["h","[dgt]","",""],           // translit. from Arabic
 
-    array("j", "", "", "(x|Z)"), // Z is Catalan
-    array("x", "", "", "(ks|gz|S)"), // ks is Spanish, all are Catalan
+    ["j","","","(x|Z)"], // Z is Catalan
+    ["x","","","(ks|gz|S)"], // ks is Spanish, all are Catalan
 
-    //array("ll","","","(l|Z)"), // Z is typical for Argentina, only Ashkenazic
-    array("w", "", "", "v"), // foreign words
+    // array("ll","","","(l|Z)"), // Z is typical for Argentina, only Ashkenazic
+    ["w","","","v"], // foreign words
 
-    array("v", "^", "", "(B|v)"),
-    array("b", "^", "", "(b|V)"),
-    array("v", "", "", "(b|v)"),
-    array("b", "", "", "(b|v)"),
-    array("m", "", "[bpvf]", "(m|n)"),
+    ["v","^","","(B|v)"],
+    ["b","^","","(b|V)"],
+    ["v","","","(b|v)"],
+    ["b","","","(b|v)"],
+    ["m","","[bpvf]","(m|n)"],
 
-    array("c", "", "[ei]", "s"),
-//  array("c","","[aou]","(k|C)"),
-    array("c", "", "", "k"),
+    ["c","","[ei]","s"],
+    // array("c","","[aou]","(k|C)"),
+    ["c","","","k"],
 
-    array("z", "", "", "(z|s)"), // as "c" befoire "e" or "i", in Spain it is like unvoiced English "th"
+    ["z","","","(z|s)"], // as "c" befoire "e" or "i", in Spain it is like unvoiced English "th"
 
-    array("gu", "", "[ei]", "(g|gv)"), // "gv" because "u" can actually be "ü"
-    array("g", "", "[ei]", "(x|g|dZ)"), // "g" only for foreign words; dZ is Catalan
+    ["gu","","[ei]","(g|gv)"], // "gv" because "u" can actually be "ü"
+    ["g","","[ei]","(x|g|dZ)"],  // "g" only for foreign words; dZ is Catalan
 
-    array("qu", "", "", "k"),
-    array("q", "", "", "k"),
+    ["qu","","","k"],
+    ["q","","","k"],
 
-    array("uo", "", "", "(vo|o)"),
-    array("u", "", "[aei]", "v"),
+    ["uo","","","(vo|o)"],
+    ["u","","[aei]","v"],
 
-//  array("y","","","(i|j|S|Z)"), // S or Z are peculiar to South America; only Ashkenazic
-    array("y", "", "", "(i|j)"),
+    // array("y","","","(i|j|S|Z)"), // S or Z are peculiar to South America; only Ashkenazic
+    ["y","","","(i|j)"],
 
     // VOWELS
-    array("ü", "", "", "v"),
-    array("á", "", "", "a"),
-    array("é", "", "", "e"),
-    array("í", "", "", "i"),
-    array("ó", "", "", "o"),
-    array("ú", "", "", "u"),
-    array("à", "", "", "a"), // Catalan
-    array("è", "", "", "e"), // Catalan
-    array("ò", "", "", "o"), // Catalan
+    ["ü","","","v"],
+    ["á","","","a"],
+    ["é","","","e"],
+    ["í","","","i"],
+    ["ó","","","o"],
+    ["ú","","","u"],
+    ["à","","","a"],  // Catalan
+    ["è","","","e"], // Catalan
+    ["ò","","","o"],  // Catalan
 
     // TRIVIAL
-    array("a", "", "", "a"),
-    array("d", "", "", "d"),
-    array("e", "", "", "e"),
-    array("f", "", "", "f"),
-    array("g", "", "", "g"),
-    array("h", "", "", "h"),
-    array("i", "", "", "i"),
-    array("k", "", "", "k"),
-    array("l", "", "", "l"),
-    array("m", "", "", "m"),
-    array("n", "", "", "n"),
-    array("o", "", "", "o"),
-    array("p", "", "", "p"),
-    array("r", "", "", "r"),
-    array("s", "", "", "s"),
-    array("t", "", "", "t"),
-    array("u", "", "", "u"),
+    ["a","","","a"],
+    ["d","","","d"],
+    ["e","","","e"],
+    ["f","","","f"],
+    ["g","","","g"],
+    ["h","","","h"],
+    ["i","","","i"],
+    ["k","","","k"],
+    ["l","","","l"],
+    ["m","","","m"],
+    ["n","","","n"],
+    ["o","","","o"],
+    ["p","","","p"],
+    ["r","","","r"],
+    ["s","","","s"],
+    ["t","","","t"],
+    ["u","","","u"],
 
-    array("rulesspanish")
+    ["rulesspanish"]
 
-);
+];

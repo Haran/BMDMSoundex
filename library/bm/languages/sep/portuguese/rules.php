@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,98 +15,99 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->rules[ $this->getLanguageIndexByName('portuguese') ] = array(
+return [
 
-    array("kh", "", "", "x"), // foreign
-    array("ch", "", "", "S"),
-    array("ss", "", "", "s"),
-    array("sc", "", "[ei]", "s"),
-    array("sç", "", "[aou]", "s"),
-    array("ç", "", "", "s"),
-    array("c", "", "[ei]", "s"),
-//  array("c","","[aou]","(k|C)"),
+    ["kh","","","x"], // foreign
+    ["ch","","","S"],
+    ["ss","","","s"],
+    ["sc","","[ei]","s"],
+    ["sç","","[aou]","s"],
+    ["ç","","","s"],
+    ["c","","[ei]","s"],
+    // array("c","","[aou]","(k|C)"),
 
-    array("s", "^", "", "s"),
-    array("s", "[aáuiíoóeéêy]", "[aáuiíoóeéêy]", "z"),
-    array("s", "", "[dglmnrv]", "(Z|S)"), // Z is Brazil
+    ["s","^","","s"],
+    ["s","[aáuiíoóeéêy]","[aáuiíoóeéêy]","z"],
+    ["s","","[dglmnrv]","(Z|S)"], // Z is Brazil
 
-    array("z", "", "$", "(Z|s|S)"), // s and S in Brazil
-    array("z", "", "[bdgv]", "(Z|z)"), // Z in Brazil
-    array("z", "", "[ptckf]", "(s|S|z)"), // s and S in Brazil
+    ["z","","$","(Z|s|S)"],       // s and S in Brazil
+    ["z","","[bdgv]","(Z|z)"],    // Z in Brazil
+    ["z","","[ptckf]","(s|S|z)"], // s and S in Brazil
 
-    array("gu", "", "[eiu]", "g"),
-    array("gu", "", "[ao]", "gv"),
-    array("g", "", "[ei]", "Z"),
-    array("qu", "", "[eiu]", "k"),
-    array("qu", "", "[ao]", "kv"),
+    ["gu","","[eiu]","g"],
+    ["gu","","[ao]","gv"],
+    ["g","","[ei]","Z"],
+    ["qu","","[eiu]","k"],
+    ["qu","","[ao]","kv"],
 
-    array("uo", "", "", "(vo|o|u)"),
-    array("u", "", "[aei]", "v"),
+    ["uo","","","(vo|o|u)"],
+    ["u","","[aei]","v"],
 
-    array("lh", "", "", "l"),
-    array("nh", "", "", "nj"),
-    array("h", "[bdgt]", "", ""), // translit. from Arabic
+    ["lh","","","l"],
+    ["nh","","","nj"],
+    ["h","[bdgt]","",""], // translit. from Arabic
 
-    array("ex", "", "[aáuiíoóeéêy]", "(ez|eS|eks)"), // ez in Brazil
-    array("ex", "", "[cs]", "e"),
+    ["ex","","[aáuiíoóeéêy]","(ez|eS|eks)"], // ez in Brazil
+    ["ex","","[cs]","e"],
 
-    array("y", "[aáuiíoóeéê]", "", "j"),
-    array("y", "", "[aeiíou]", "j"),
-    array("m", "", "[bcdfglnprstv]", "(m|n)"), // maybe to add a rule for m/n before a consonant that disappears [preceeding vowel becomes nasalized]
-    array("m", "", "$", "(m|n)"), // maybe to add a rule for final m/n that disappears [preceeding vowel becomes nasalized]
+    ["y","[aáuiíoóeéê]","","j"],
+    ["y","","[aeiíou]","j"],
+    ["m","","[bcdfglnprstv]","(m|n)"], // maybe to add a rule for m/n before a consonant that disappears [preceeding vowel becomes nasalized]
+    ["m","","$","(m|n)"],              // maybe to add a rule for final m/n that disappears [preceeding vowel becomes nasalized]
 
-    array("ão", "", "", "(au|an|on)"),
-    array("ãe", "", "", "(aj|an)"),
-    array("ãi", "", "", "(aj|an)"),
-    array("õe", "", "", "(oj|on)"),
-    array("i", "[aáuoóeéê]", "", "j"),
-    array("i", "", "[aeou]", "j"),
+    ["ão","","","(au|an|on)"],
+    ["ãe","","","(aj|an)"],
+    ["ãi","","","(aj|an)"],
+    ["õe","","","(oj|on)"],
+    ["i","[aáuoóeéê]","","j"],
+    ["i","","[aeou]","j"],
 
-    array("â", "", "", "a"),
-    array("à", "", "", "a"),
-    array("á", "", "", "a"),
-    array("ã", "", "", "(a|an|on)"),
-    array("é", "", "", "e"),
-    array("ê", "", "", "e"),
-    array("í", "", "", "i"),
-    array("ô", "", "", "o"),
-    array("ó", "", "", "o"),
-    array("õ", "", "", "(o|on)"),
-    array("ú", "", "", "u"),
-    array("ü", "", "", "u"),
+    ["â","","","a"],
+    ["à","","","a"],
+    ["á","","","a"],
+    ["ã","","","(a|an|on)"],
+    ["é","","","e"],
+    ["ê","","","e"],
+    ["í","","","i"],
+    ["ô","","","o"],
+    ["ó","","","o"],
+    ["õ","","","(o|on)"],
+    ["ú","","","u"],
+    ["ü","","","u"],
 
-    array("aue", "", "", "aue"),
+    ["aue","","","aue"],
 
     // LATIN ALPHABET
-    array("a", "", "", "a"),
-    array("b", "", "", "b"),
-    array("c", "", "", "k"),
-    array("d", "", "", "d"),
-    array("e", "", "", "(e|i)"),
-    array("f", "", "", "f"),
-    array("g", "", "", "g"),
-    array("h", "", "", "h"),
-    array("i", "", "", "i"),
-    array("j", "", "", "Z"),
-    array("k", "", "", "k"),
-    array("l", "", "", "l"),
-    array("m", "", "", "m"),
-    array("n", "", "", "n"),
-    array("o", "", "", "(o|u)"),
-    array("p", "", "", "p"),
-    array("q", "", "", "k"),
-    array("r", "", "", "r"),
-    array("s", "", "", "S"),
-    array("t", "", "", "t"),
-    array("u", "", "", "u"),
-    array("v", "", "", "v"),
-    array("w", "", "", "v"),
-    array("x", "", "", "(S|ks)"),
-    array("y", "", "", "i"),
-    array("z", "", "", "z"),
+    ["a","","","a"],
+    ["b","","","b"],
+    ["c","","","k"],
+    ["d","","","d"],
+    ["e","","","(e|i)"],
+    ["f","","","f"],
+    ["g","","","g"],
+    ["h","","","h"],
+    ["i","","","i"],
+    ["j","","","Z"],
+    ["k","","","k"],
+    ["l","","","l"],
+    ["m","","","m"],
+    ["n","","","n"],
+    ["o","","","(o|u)"],
+    ["p","","","p"],
+    ["q","","","k"],
+    ["r","","","r"],
+    ["s","","","S"],
+    ["t","","","t"],
+    ["u","","","u"],
+    ["v","","","v"],
+    ["w","","","v"],
+    ["x","","","(S|ks)"],
+    ["y","","","i"],
+    ["z","","","z"],
 
-    array("rulesportuguese")
+    ["rulesportuguese"]
 
-);
+];

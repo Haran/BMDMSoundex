@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,16 +15,17 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-require(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'french'.DIRECTORY_SEPARATOR.'approx.php');
+// this file uses the same rules as approx french
+$french = require(__DIR__.'/../french/approx.php');
 
-// this file uses the same rules as french/approx.php plus addition
-$this->approx[ $this->getLanguageIndexByName('spanish') ] = array_merge(
-    $this->approx[ $this->getLanguageIndexByName('french') ],
-    array(
-        array("B","","","(b|v)"),
-        array("V","","","(b|v)"),
-        array("approxfrench plus approxspanish")
-    )
-);
+// plus
+$spanish = [
+    ["B","","","(b|v)"],
+    ["V","","","(b|v)"],
+    ["approxfrench plus approxspanish"]
+];
+
+return array_merge($french, $spanish);

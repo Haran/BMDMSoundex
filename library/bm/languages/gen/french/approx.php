@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,19 +15,20 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->approx[ $this->getLanguageIndexByName('french') ] = array(
+return [
 
-    array("au","","","(D|a|u)"),
-    array("ou","","","(D|o|u)"),
-    array("ai","","","(D|a|i)"),
-    array("oi","","","(D|o|i)"),
-    array("ui","","","(D|u|i)"),
+    ["au","","","(D|a|u)"],
+    ["ou","","","(D|o|u)"],
+    ["ai","","","(D|a|i)"],
+    ["oi","","","(D|o|i)"],
+    ["ui","","","(D|u|i)"],
 
-    array ("a", "", "", "(a|o)"),
-    array ("e", "", "", "i"),
+    ["a", "", "", "(a|o)"],
+    ["e", "", "", "i"],
 
-    array("approxfrench")
+    ["approxfrench"]
 
-);
+];

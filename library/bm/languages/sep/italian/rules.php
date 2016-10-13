@@ -1,10 +1,7 @@
 <?php
 /*
- * Copyright Olegs Capligins, 2013
- *
- * This file is fork of BMPM (Beider-Morse Phonetic Matching System)
- * Copyright: Stephen P. Morse, 2005.
- * Website:   http://stevemorse.org/phoneticinfo.htm
+ * Copyright Alexander Beider and Stephen P. Morse, 2008
+ * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,70 +15,71 @@
  *
  * You should have received a copy of the GNU General Public License.
  * If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-$this->rules[ $this->getLanguageIndexByName('italian') ] = array(
+return [
 
-    array("kh","","","x"), // foreign
+    ["kh","","","x"], // foreign
 
-    array("gli","","","(l|gli)"),
-    array("gn","","[aeou]","(n|nj|gn)"),
-    array("gni","","","(ni|gni)"),
+    ["gli","","","(l|gli)"],
+    ["gn","","[aeou]","(n|nj|gn)"],
+    ["gni","","","(ni|gni)"],
 
-    array("gi","","[aeou]","dZ"),
-    array("gg","","[ei]","dZ"),
-    array("g","","[ei]","dZ"),
-    array("h","[bdgt]","","g"), // gh is It; others from Arabic translit
+    ["gi","","[aeou]","dZ"],
+    ["gg","","[ei]","dZ"],
+    ["g","","[ei]","dZ"],
+    ["h","[bdgt]","","g"], // gh is It; others from Arabic translit
 
-    array("ci","","[aeou]","tS"),
-    array("ch","","[ei]","k"),
-    array("sc","","[ei]","S"),
-    array("cc","","[ei]","tS"),
-    array("c","","[ei]","tS"),
-    array("s","[aeiou]","[aeiou]","z"),
+    ["ci","","[aeou]","tS"],
+    ["ch","","[ei]","k"],
+    ["sc","","[ei]","S"],
+    ["cc","","[ei]","tS"],
+    ["c","","[ei]","tS"],
+    ["s","[aeiou]","[aeiou]","z"],
 
-    array("i","[aeou]","","j"),
-    array("i","","[aeou]","j"),
-    array("y","[aeou]","","j"), // foreign
-    array("y","","[aeou]","j"), // foreign
+    ["i","[aeou]","","j"],
+    ["i","","[aeou]","j"],
+    ["y","[aeou]","","j"], // foreign
+    ["y","","[aeou]","j"], // foreign
 
-    array("qu","","","k"),
-    array("uo","","","(vo|o)"),
-    array("u","","[aei]","v"),
+    ["qu","","","k"],
+    ["uo","","","(vo|o)"],
+    ["u","","[aei]","v"],
 
-    array("и","","","e"),
-    array("й","","","e"),
-    array("т","","","o"),
-    array("у","","","o"),
+    ["и","","","e"],
+    ["й","","","e"],
+    ["т","","","o"],
+    ["у","","","o"],
 
     // LATIN ALPHABET
-    array("a","","","a"),
-    array("b","","","b"),
-    array("c","","","k"),
-    array("d","","","d"),
-    array("e","","","e"),
-    array("f","","","f"),
-    array("g","","","g"),
-    array("h","","","h"),
-    array("i","","","i"),
-    array("j","","","(Z|dZ|j)"), // foreign
-    array("k","","","k"),
-    array("l","","","l"),
-    array("m","","","m"),
-    array("n","","","n"),
-    array("o","","","o"),
-    array("p","","","p"),
-    array("q","","","k"),
-    array("r","","","r"),
-    array("s","","","s"),
-    array("t","","","t"),
-    array("u","","","u"),
-    array("v","","","v"),
-    array("w","","","v"),    // foreign
-    array("x","","","ks"),    // foreign
-    array("y","","","i"),    // foreign
-    array("z","","","(ts|dz)"),
+    ["a","","","a"],
+    ["b","","","b"],
+    ["c","","","k"],
+    ["d","","","d"],
+    ["e","","","e"],
+    ["f","","","f"],
+    ["g","","","g"],
+    ["h","","","h"],
+    ["i","","","i"],
+    ["j","","","(Z|dZ|j)"], // foreign
+    ["k","","","k"],
+    ["l","","","l"],
+    ["m","","","m"],
+    ["n","","","n"],
+    ["o","","","o"],
+    ["p","","","p"],
+    ["q","","","k"],
+    ["r","","","r"],
+    ["s","","","s"],
+    ["t","","","t"],
+    ["u","","","u"],
+    ["v","","","v"],
+    ["w","","","v"],    // foreign
+    ["x","","","ks"],   // foreign
+    ["y","","","i"],    // foreign
+    ["z","","","(ts|dz)"],
 
-    array("rulesitalian")
+    ["rulesitalian"]
 
-);
+];
