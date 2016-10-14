@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BMDM soundex = Beider-Morse + Daitch-Mokotoff phonetic matching</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 40px;
+        }
+        .jumbotron {
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">BMDM</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="performance.html">Performance</a></li>
+                <li><a href="algorithms.html">Algorithms</a></li>
+                <li><a href="usage.html">Usage</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://stevemorse.org/index.html">Stephen P. Morse </a></li>
+                <li><a href="https://github.com/Haran/BMDMSoundex">BMDM github</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>BMDM Soundex</h1>
+        <p>
+            This is a fork of Beider-Morse and Daitch-Mokotoff soundex algorithms. Merged and reforged in object-
+            oriented way for more convenient usage and development.
+        </p>
+    </div>
+</div>
+
+<div class="container">
+
+    <h2>Description</h2>
+    <p>
+        This is a fork of the algorithm developed by Alexander Beider and Stephen P. Morse for phonetic matching of names
+        and words. This algorithm generates less quantity of false hits comparing to soundex() and methaphone(). Also
+        it's possible to use this algorithm for some non-latin alphabets without a transliteration.
+    </p>
+
+    <h2>Language support</h2>
+    <p>
+        Currently there are 16 languages supported: Czech, Dutch, English, French, German, Greek (and Greek Latin),
+        Hebrew, Hungarian, Italian, Latvian, Polish, Portuguese, Romanian, Russian (latin and cyrillic), Spanish,
+        Turkish. Also BMPM (Beider-Morse Phonetic Matching) and BMDM as it's derivative can parse Hebrew names by
+        Ashkenazic and Sephardic rules.
+    </p>
+
+    <h2>What's the difference from original?</h2>
+    <p>
+        This fork's goal is to get rid of deprecated and global functions, global variables and to represent algorithm
+        in object-oriented way. Also there were implemented some fixes and modifications for unification purposes. While
+        exceeding the limits of procedural code now it's possible to include algorithm in frameworks and third-parity
+        applications without a headache. Latvian language experimental support added.
+    </p>
+
+    <div class="row">
+        <div class="col-md-4 text-justify">
+            <h3>Performance</h3>
+            <p>
+                I strictly encourage to use PHP 7.0 and newer due to major performance enhancement since 5.x versions
+                especially in array processing which is crucial for BMDM. Take a look at <a href="performance.html">
+                benchmark results</a>.
+            </p>
+        </div>
+        <div class="col-md-4 text-justify">
+            <h3>Requirements and usage</h3>
+            <p>
+                Library requires PHP 5.4 and higher with mbstring extension. I recommend installing it via composer and
+                use it via composer autoloader. Usage examples with description are provided in <a href="usage.html">
+                this document</a>.
+            </p>
+        </div>
+        <div class="col-md-4 text-justify">
+            <h3>Miscellaneous</h3>
+            <p>
+                Currently arabic language support is removed from stable branch due to severe performance issues related
+                to excessively complicated phonetics. Available in separate branch. You contribution is welcome :)
+            </p>
+        </div>
+    </div>
+
+    <hr>
+    <footer>
+        <p>
+            &copy; 2008-2016 Alexander Beider and Stephen P. Morse <br>
+            &copy; 2013-2016 Olegs Capligins
+        </p>
+    </footer>
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BMDM soundex = Beider-Morse + Daitch-Mokotoff phonetic matching</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 40px;
+        }
+        .jumbotron {
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">BMDM</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="performance.html">Performance</a></li>
+                <li class="active"><a href="algorithms.html">Algorithms</a></li>
+                <li><a href="usage.html">Usage</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://stevemorse.org/index.html">Stephen P. Morse </a></li>
+                <li><a href="https://github.com/Haran/BMDMSoundex">BMDM github</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>BMDM Soundex</h1>
+        <p>
+            This is a fork of Beider-Morse and Daitch-Mokotoff soundex algorithms. Merged and reforged in object-
+            oriented way for more convenient usage and development.
+        </p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Description</h2>
+            <div class="text-justify">
+                On this page you can take a look at object model in class inheritance diagram and at detailed Beider-Morse
+                class initialization process. It can be useful for development and understanding what is different between
+                original BMPM and this fork.
+            </div>
+            <br>
+            <div class="alert alert-warning" role="alert">
+                Please note, that this documentation doesn't make a point to set a detailed explanation how both used
+                phonetcis matching algorithms work.  The B-M algorithm itself is described on Stephen P. Morse website:
+                <a href="http://stevemorse.org/phonetics/bmpm.htm">here</a> and <a href="http://stevemorse.org/phonetics/bmpm2.htm">here</a>.
+                D-M algorithm mechanics are described on <a href="http://www.avotaynu.com/soundex.htm">avotaynu.com</a> website.
+            </div>
+            <br>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Class inheritance diagram
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <img src="images/classes.png" alt="object model" style="width: 100%; height: auto;">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Beider-Morse algorithm
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body text-center">
+                            <img src="images/algorythm.png" alt="object model">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <footer>
+        <p>
+            &copy; 2008-2016 Alexander Beider and Stephen P. Morse <br>
+            &copy; 2013-2016 Olegs Capligins
+        </p>
+    </footer>
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

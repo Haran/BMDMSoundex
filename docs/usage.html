@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BMDM soundex = Beider-Morse + Daitch-Mokotoff phonetic matching</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 40px;
+        }
+        .jumbotron {
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">BMDM</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="performance.html">Performance</a></li>
+                <li><a href="algorithms.html">Algorithms</a></li>
+                <li class="active"><a href="usage.html">Usage</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://stevemorse.org/index.html">Stephen P. Morse </a></li>
+                <li><a href="https://github.com/Haran/BMDMSoundex">BMDM github</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>BMDM Soundex</h1>
+        <p>
+            This is a fork of Beider-Morse and Daitch-Mokotoff soundex algorithms. Merged and reforged in object-
+            oriented way for more convenient usage and development.
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Installation</h2>
+<pre>composer require dautkom/bmdm
+composer update --no-dev</pre>
+
+    <br>
+    <h2>Usage</h2>
+    <p>
+        I suggest to use library with composer autoloader. As an argument for <code>BMDM()</code> constructor it's
+        possible to use 'sep' or 'ash' argument to initialize Sephardic or Ashkenazic phonetic subsystem. By default
+        'gen' for <i>general</i> ruleset is initialized.
+    </p>
+<pre style='color:#000000;background:#ffffff;'><span style='color:#800000; font-weight:bold; '>require</span><span style='color:#000000;'> </span><span style='color:#0000e6; '>"../vendor/autoload.php"</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span>
+<span style='color:#797997;'>$bmdm</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#800000; font-weight:bold; '>new</span><span style='color:#000000;'> </span><span style='color:#800080;'>\</span><span style='color:#666616;'>dautkom</span><span style='color:#800080;'>\</span><span style='color:#666616;'>bmdm</span><span style='color:#800080;'>\</span><span style='color:#000000;'>BMDM</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span></pre>
+
+    <br>
+    <h3>Generic usage</h3>
+    <p>Retrieve all supported languages</p>
+<pre style='color:#000000;background:#ffffff;'><span style='color:#c0bd92;'>/**</span> <span style='color:#005fd2;'>@var</span><span style='color:#3f5fbf;'> </span><span style='color:#bb7977;'>array</span><span style='color:#3f5fbf;'> </span><span style='color:#c0bd92;'>*/</span><span style='color:#000000;'></span>
+<span style='color:#797997;'>$l</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>getLanguages</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#000000;'></span>;</pre>
+
+    <br>
+    <p>Guess language for given string</p>
+    <pre style='color:#000000;background:#ffffff;'><span style='color:#c0bd92;'>/**</span> <span style='color:#005fd2;'>@var</span><span style='color:#3f5fbf;'> </span><span style='color:#bb7977;'>array</span><span style='color:#3f5fbf;'> </span><span style='color:#c0bd92;'>*/</span><span style='color:#000000;'></span>
+<span style='color:#797997;'>$g</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#797997;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>guess</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#000000;'></span>;</pre>
+
+    <br>
+    <p>Retrieve full soundex data</p>
+    <pre style='color:#000000;background:#ffffff;'><span style='color:#c0bd92;'>/**</span> <span style='color:#005fd2;'>@var</span><span style='color:#3f5fbf;'> </span><span style='color:#bb7977;'>array</span><span style='color:#3f5fbf;'> </span><span style='color:#c0bd92;'>*/</span><span style='color:#000000;'></span>
+<span style='color:#797997;'>$s</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#797997;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>soundex</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#000000;'></span>;</pre>
+
+    <br>
+    <p>Also you can call <code>set()</code> once and use it as an object to call specific methods</p>
+<pre style='color:#000000;background:#ffffff;'>
+<span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#0000e6;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span>
+<span style='color:#797997;'>$g</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>guess</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'> </span><span style='color:#696969;'>// array</span><span style='color:#000000;'></span>
+<span style='color:#000000;'></span>
+<span style='color:#696969;'>// OR</span><span style='color:#000000;'></span>
+<span style='color:#797997;'>$obj</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#0000e6;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span>
+<span style='color:#797997;'>$g</span><span style='color:#000000;'>   </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$obj</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>guess</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'> </span><span style='color:#696969;'>// array</span><span style='color:#000000;'></span></pre>
+
+    <br>
+    <h3>Daitch-Mokotoff algorithm methods</h3>
+    <p>There's only one method available for D-M soundex. Please note, that it's possible to parse only latin strings for D-M.</p>
+<pre style='color:#000000;background:#ffffff;'><span style='color:#c0bd92;'>/** </span><span style='color:#005fd2;'>@var</span><span style='color:#3f5fbf;'> </span><span style='color:#bb7977;'>array</span><span style='color:#3f5fbf;'> </span><span style='color:#c0bd92;'>*/</span><span style='color:#000000;'></span>
+<span style='color:#797997;'>$s</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#797997;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#808030;'>-></span><span style='color:#797997;'>dm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#400000;'>soundex</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span></pre>
+
+    <br>
+    <h3>Beider-Morse algorithm methods</h3>
+    <p>I suggest using generic methods to retrieve soundex data. However it's possible to call B-M methods directly.</p>
+
+    <br>
+    <p>Retrieve soundex data, phonetic keys only</p>
+    <pre style='color:#000000;background:#ffffff;'><span style='color:#c0bd92;'>/** </span><span style='color:#005fd2;'>@var</span><span style='color:#3f5fbf;'> </span><span style='color:#bb7977;'>array</span><span style='color:#3f5fbf;'> </span><span style='color:#c0bd92;'>*/</span><span style='color:#000000;'></span>
+<span style='color:#797997;'>$p</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#797997;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#808030;'>-></span><span style='color:#797997;'>bm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#400000;'>soundex</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span></pre>
+
+    <br>
+    <p>Retrieve possible language names for given string</p>
+    <pre style='color:#000000;background:#ffffff;'><span style='color:#c0bd92;'>/** </span><span style='color:#005fd2;'>@var</span><span style='color:#3f5fbf;'> </span><span style='color:#bb7977;'>array</span><span style='color:#3f5fbf;'> </span><span style='color:#c0bd92;'>*/</span><span style='color:#000000;'></span>
+<span style='color:#797997;'>$l</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#797997;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#808030;'>-></span><span style='color:#797997;'>bm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#400000;'>getLanguageNames</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span></pre>
+
+    <br>
+    <p>Retrieve supported languages list</p>
+    <pre style='color:#000000;background:#ffffff;'><span style='color:#c0bd92;'>/** </span><span style='color:#005fd2;'>@var</span><span style='color:#3f5fbf;'> </span><span style='color:#bb7977;'>array</span><span style='color:#3f5fbf;'> </span><span style='color:#c0bd92;'>*/</span><span style='color:#000000;'></span>
+<span style='color:#797997;'>$l</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-></span><span style='color:#797997;'>bm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#400000;'>getLanguages</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span></pre>
+
+    <div class="row">
+        <div class="col-md-12">
+        <hr>
+        <p>
+            &copy; 2008-2016 Alexander Beider and Stephen P. Morse <br>
+            &copy; 2013-2016 Olegs Capligins
+        </p>
+        </div>
+    </div>
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
