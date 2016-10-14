@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BMDM soundex = Beider-Morse + Daitch-Mokotoff phonetic matching</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 40px;
+        }
+        .jumbotron {
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">BMDM</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="performance.html">Performance</a></li>
+                <li><a href="algorithms.html">Algorithms</a></li>
+                <li><a href="usage.html">Usage</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://stevemorse.org/index.html">Stephen P. Morse </a></li>
+                <li><a href="https://github.com/Haran/BMDMSoundex">BMDM github</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>BMDM Soundex</h1>
+        <p>
+            This is a fork of Beider-Morse and Daitch-Mokotoff soundex algorithms. Merged and reforged in object-
+            oriented way for more convenient usage and development.
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>PHP versions</h2>
+            <img src="images/php-versions.png" alt="php versions">
+        </div>
+        <div class="col-md-6">
+            <h2>Caching</h2>
+            <img src="images/php-caching.png" alt="caching">
+            <p>&nbsp;</p>
+            <p class="text-justify">
+                Benchmarks show significant performance increase upon PHP version upgrade. The main reason are numerous
+                improvements in array processing. Internal caching also increases performance. All separate rulesets from
+                language files are combined, processed and stored as a serialized data in runtime directory. Make sure
+                it's writable before using cache.
+            </p>
+        </div>
+    </div>
+
+    <hr>
+    <footer>
+        <p>
+            &copy; 2008-2016 Alexander Beider and Stephen P. Morse <br>
+            &copy; 2013-2016 Olegs Capligins
+        </p>
+    </footer>
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
