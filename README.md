@@ -32,7 +32,7 @@ PHP 5.4+; mbstring extenstion
 I strongly encourage to use PHP 7.0 and newer due to major performance enhancement since 5.x versions especially in array
 processing which is crucial for BMDM. Also there's built-in caching support - make sure that ./runtime directory is 
 writable and let BMDM precompile and cache it's runtime rules. Here're charts of performance with and without caching. 
-Also caching lowers I/O load. [Test results available here](https://github.com/Haran/BMDMSoundex/blob/master/docs/performance.md) . 
+Also caching lowers I/O load. [Test results available here](http://haran.github.io/BMDMSoundex/performance.html) . 
 
 # Usage
 
