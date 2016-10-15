@@ -61,7 +61,7 @@ class BeiderMorse extends Core
     private $all;
 
     /**
-     * Generic language rules from {$this->type}/rules.php
+     * Generic language rules from {$this->type}/%language%/rules.php
      * @var array
      */
     private $languageRules;

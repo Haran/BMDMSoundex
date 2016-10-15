@@ -18,7 +18,8 @@
  *
  */
 
-return [
+$exactApproxCommon = require "exactApprox.php";
+$hebrew = [
 
     ["ts","","","C"], // for not confusion Gutes [=guts] and Guts [=guc]
     ["tS","","","C"], // same reason
@@ -128,3 +129,5 @@ return [
     ["exactapproxcommon plus hebrewcommon"]
 
 ];
+
+return array_merge($exactApproxCommon, $hebrew);

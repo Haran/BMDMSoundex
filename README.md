@@ -73,7 +73,8 @@ $d = $bmdm->set('Grzegorz')->dm->soundex()
 
 require "../vendor/autoload.php";
 
-// use 'sep' instead of 'ash' to init a Sephardic rules
+// Using 'ash' upon init will load Ashkenazi phonetic rules
+// Use 'sep' instead of 'ash' to init Sephardic rules
 $bmdm = new \dautkom\bmdm\BMDM('ash');
 
 ```
