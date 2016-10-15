@@ -61,7 +61,7 @@ class BeiderMorse extends Core
     private $all;
 
     /**
-     * Generic language rules from {$this->type}/%language%/rules.php
+     * Generic language rules from {$this->type}/rules.php
      * @var array
      */
     private $languageRules;
@@ -89,7 +89,7 @@ class BeiderMorse extends Core
      * Caching saves
      * @var bool
      */
-    private $cache = true;
+    private $cache = false;
 
     /**
      * Runtime directory
