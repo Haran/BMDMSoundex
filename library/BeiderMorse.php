@@ -85,13 +85,6 @@ class BeiderMorse extends Core
     private $approxCommon;
 
     /**
-     * If caching is enabled
-     * Caching saves
-     * @var bool
-     */
-    private $cache = false;
-
-    /**
      * Runtime directory
      * @var string
      */
@@ -148,7 +141,7 @@ class BeiderMorse extends Core
     public function getLanguageCode($input = null)
     {
 
-        $input  = empty($input) ? self::$input : Core::prepareString($input);
+        $input  = empty($input) ? self::$input : $this->prepareString($input);
         $count  = count($this->languageRules);
         $remain = $this->all;
 
@@ -273,7 +266,7 @@ class BeiderMorse extends Core
 
         $concat      = false;
         $finalRules1 = $this->approxCommon;
-        $input       = empty($input) ? self::$input : Core::prepareString($input);
+        $input       = empty($input) ? self::$input : $this->prepareString($input);
         $languageArg = empty($languageArg) ? $this->getLanguageCode() : $languageArg;
         $rules       = $this->rules[$this->getLanguageIndexFromCode($languageArg)];
         $finalRules2 = $this->approx[$this->getLanguageIndexFromCode($languageArg)];
@@ -462,8 +455,8 @@ class BeiderMorse extends Core
                 }
             }
 
-            self::$logger->debug("Applying language rules from '$fileName' to '$input' using language code '$languageArg'");
-            self::$logger->debug($dbg);
+            $this->dbg("Applying language rules from '$fileName' to '$input' using language code '$languageArg'", 'debug');
+            $this->dbg($dbg, 'debug');
 
         }
 
@@ -527,13 +520,13 @@ class BeiderMorse extends Core
                 $candidate = $this->applyRuleIfCompatible($phonetic, $rule[$phoneticPos], $languageArg);
 
                 if ($candidate === false) {
-                    self::$logger->debug("Rejecting rule #$r because of incompatible attributes: [pattern='$pattern', context='$lcontext', rcontext='$rcontext', subst='{$rule[$phoneticPos]}', result='$phonetic']");
+                    $this->dbg("Rejecting rule #$r because of incompatible attributes: [pattern='$pattern', context='$lcontext', rcontext='$rcontext', subst='{$rule[$phoneticPos]}', result='$phonetic']", 'debug');
                     continue;
                 }
 
                 $phonetic = $candidate;
 
-                self::$logger->debug("Applying rule #$r [pattern='$pattern', lcontext='$lcontext', rcontext='$rcontext', subst='{$rule[$phoneticPos]}', result='$phonetic']");
+                $this->dbg("Applying rule #$r [pattern='$pattern', lcontext='$lcontext', rcontext='$rcontext', subst='{$rule[$phoneticPos]}', result='$phonetic']", 'debug');
 
                 $found = true;
                 break;
@@ -542,7 +535,7 @@ class BeiderMorse extends Core
 
             // character in name that is not in table -- e.g., space
             if( !$found ) {
-                self::$logger->debug('Not found: ' . substr($input, $i, 1));
+                $this->dbg('Not found: ' . substr($input, $i, 1), 'debug');
                 $patternLength = 1;
             }
 
@@ -550,7 +543,7 @@ class BeiderMorse extends Core
 
         }
 
-        self::$logger->debug("After language rules: '$phonetic'");
+        $this->dbg("After language rules: '$phonetic'", 'debug');
 
         // Apply common rules
         $phonetic = $this->applyFinalRules($phonetic, $finalRules1, $languageArg, false);
@@ -666,7 +659,7 @@ class BeiderMorse extends Core
         for ($k = 0; $k < $ph_count; $k++) {
 
 
-            self::$logger->debug("Applying final rules from ($fileName) to $phonetic");
+            $this->dbg("Applying final rules from ($fileName) to $phonetic", 'debug');
 
             $phonetic  = $phoneticArray[$k];
             $phonetic2 = '';
@@ -751,13 +744,13 @@ class BeiderMorse extends Core
                     $candidate = $this->applyRuleIfCompatible($phonetic2, $rule[$phoneticPos], $languageArg);
 
                     if ($candidate === false) {
-                        self::$logger->debug("rejecting rule #$r because of incompatible attributes");
+                        $this->dbg("rejecting rule #$r because of incompatible attributes", 'debug');
                         continue;
                     }
 
                     $phonetic2 = $candidate;
 
-                    self::$logger->debug("  after applying final rule #$r to phonetic item #$k at position $i: $phonetic2 pattern=$pattern lcontext=$lcontext rcontext=$rcontext subst=" . $rule[$phoneticPos]);
+                    $this->dbg("  after applying final rule #$r to phonetic item #$k at position $i: $phonetic2 pattern=$pattern lcontext=$lcontext rcontext=$rcontext subst=" . $rule[$phoneticPos], 'debug');
 
                     $found = true;
                     break;
@@ -770,7 +763,7 @@ class BeiderMorse extends Core
                     $patternLength = 1;
                     $phonetic2    .= substr($phonetic, $i, 1);
 
-                    self::$logger->debug("  no rules match for phonetic item $k at position $i: $phonetic2");
+                    $this->dbg("  no rules match for phonetic item $k at position $i: $phonetic2", 'fff');
 
                 }
 
@@ -996,7 +989,7 @@ class BeiderMorse extends Core
     private function buildApproxCommon()
     {
 
-        if( $this->cache && $this->readRuntime('approxCommon') ) {
+        if( self::$cache && $this->readRuntime('approxCommon') ) {
             return;
         }
 
@@ -1020,7 +1013,7 @@ class BeiderMorse extends Core
     private function buildPhonetics()
     {
 
-        if( $this->cache && $this->readRuntime('approx') && $this->readRuntime('rules') ) {
+        if( self::$cache && $this->readRuntime('approx') && $this->readRuntime('rules') ) {
             return;
         }
 
@@ -1056,7 +1049,7 @@ class BeiderMorse extends Core
     private function buildLanguageRules()
     {
 
-        if( $this->cache && $this->readRuntime('languageRules') ) {
+        if( self::$cache && $this->readRuntime('languageRules') ) {
             return;
         }
 
@@ -1169,9 +1162,16 @@ class BeiderMorse extends Core
      */
     private function writeRuntime($key)
     {
-        if($this->cache) {
+
+        $wr = is_writable($this->runtime);
+
+        if(self::$cache && $wr) {
             file_put_contents("$this->runtime/{$this->type}.$key.data", serialize($this->{$key}), LOCK_EX);
         }
+        elseif(!$wr) {
+            $this->dbg("Runtime directory $this->runtime is not writable", 'warning');
+        }
+
     }
 
 }

@@ -28,6 +28,16 @@ class Core
 {
 
     /**
+     * @var bool
+     */
+    protected static $debug = false;
+
+    /**
+     * @var bool
+     */
+    protected static $cache = true;
+
+    /**
      * @var string
      */
     protected static $input;
@@ -44,7 +54,7 @@ class Core
      * @param  string $string
      * @return string
      */
-    protected static function prepareString($string)
+    protected function prepareString($string)
     {
 
         if(!mb_check_encoding($string, 'UTF-8')) {
@@ -55,6 +65,35 @@ class Core
         $string = mb_strtolower($string, 'UTF-8');
 
         return $string;
+
+    }
+
+
+    /**
+     * Fallback logging handler
+     *
+     * @param string $message
+     * @param string $level
+     * @return void
+     */
+    protected function dbg($message, $level = 'info')
+    {
+
+        if (self::$debug) {
+
+            if (!isset(self::$logger)) {
+                echo "$message\n<br>";
+            }
+            else {
+                if( method_exists(self::$logger, $level) ) {
+                    self::$logger->$level($message);
+                }
+                else {
+                    self::$logger->info($message);
+                }
+            }
+
+        }
 
     }
 

@@ -17,6 +17,7 @@
  *
  */
 namespace dautkom\bmdm;
+require_once "library/Core.php";
 
 use dautkom\bmdm\library\Core;
 use dautkom\bmdm\library\BeiderMorse;
@@ -33,10 +34,6 @@ use Monolog\Logger;
 class BMDM extends Core
 {
 
-    /**
-     * @var bool
-     */
-    protected $debug = true;
 
     /**
      * @var float
@@ -63,22 +60,45 @@ class BMDM extends Core
 
         $this->start  = microtime(true);
         self::$input  = null;
+        self::$logger = null;
+        $composer     = spl_autoload_functions();
         register_shutdown_function([$this, 'beforeShutdown']);
 
-        $handler      = $this->debug ? new BrowserConsoleHandler() : new NullHandler();
-        $formatter    = new LineFormatter("%datetime% [[%level_name%]]{macro: autolabel} %message%", "H:i:s.u");
-        self::$logger = new Logger('debug');
-        self::$logger->pushHandler($handler);
-        $handler->setFormatter($formatter);
+        if (!empty($composer)) {
 
-        if( !in_array($mode, ['gen', 'sep', 'ash']) ) {
-            self::$logger->info("Unsupported mode argument passed: '$mode', falling back to default 'gen'");
-            $mode = 'gen';
+            $handler   = self::$debug ? new BrowserConsoleHandler() : new NullHandler();
+            $formatter = new LineFormatter("%datetime% [[%level_name%]]{macro: autolabel} %message%", "H:i:s.u");
+
+            self::$logger = new Logger('debug');
+            self::$logger->pushHandler($handler);
+            $handler->setFormatter($formatter);
+
+            if (!in_array($mode, ['gen', 'sep', 'ash'])) {
+                $this->dbg("Unsupported mode argument passed: '$mode', falling back to default 'gen'");
+                $mode = 'gen';
+            }
+
+        }
+        else {
+            spl_autoload_register([$this, 'autoload']);
         }
 
         $this->dm = new DaitchMokotoff();
         $this->bm = new BeiderMorse($mode);
 
+    }
+
+
+    /**
+     * Fallback autoloader if no composer is used
+     *
+     * @param string $className
+     * @return void
+     */
+    public function autoload($className)
+    {
+        /** @noinspection PhpIncludeInspection */
+        require __DIR__."/library/".substr($className, strrpos($className, '\\') + 1).'.php';
     }
 
 
@@ -93,8 +113,8 @@ class BMDM extends Core
         $time = microtime(true) - $this->start;
         $mem  = memory_get_usage();
 
-        self::$logger->info("Execution time: $time seconds");
-        self::$logger->info("Used memory: $mem bytes");
+        $this->dbg("Execution time: $time seconds");
+        $this->dbg("Used memory: $mem bytes");
 
     }
 
