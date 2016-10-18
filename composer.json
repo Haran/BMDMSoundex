@@ -12,11 +12,11 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=5.4.0",
-    "ext-mbstring": "*",
-    "monolog/monolog": "*"
+    "ext-mbstring": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "5.5.*"
+    "phpunit/phpunit": "5.5.*",
+    "monolog/monolog": "*"
   },
   "autoload": {
     "psr-4": {

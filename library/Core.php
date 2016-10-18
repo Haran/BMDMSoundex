@@ -82,7 +82,9 @@ class Core
         if (self::$debug) {
 
             if (!isset(self::$logger)) {
-                echo "$message\n<br>";
+                echo $this->timestamp();
+                echo "\t$message";
+                echo (strcasecmp(PHP_SAPI, 'cli') == 0) ? "\n" : "\n<br>";
             }
             else {
                 if( method_exists(self::$logger, $level) ) {
@@ -95,6 +97,17 @@ class Core
 
         }
 
+    }
+
+
+    /**
+     * @return string
+     */
+    private function timestamp()
+    {
+        list($usec, $sec) = explode(' ', microtime());
+        $usec = substr(str_replace(".", "", $usec), 0, 5);
+        return date('H:i:s', $sec) .".$usec";
     }
 
 }

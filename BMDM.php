@@ -34,12 +34,6 @@ use Monolog\Logger;
 class BMDM extends Core
 {
 
-
-    /**
-     * @var float
-     */
-    private $start = 0.0;
-
     /**
      * @var DaitchMokotoff
      */
@@ -58,7 +52,6 @@ class BMDM extends Core
     public function __construct($mode = 'gen')
     {
 
-        $this->start  = microtime(true);
         self::$input  = null;
         self::$logger = null;
         $composer     = spl_autoload_functions();
@@ -73,14 +66,14 @@ class BMDM extends Core
             self::$logger->pushHandler($handler);
             $handler->setFormatter($formatter);
 
-            if (!in_array($mode, ['gen', 'sep', 'ash'])) {
-                $this->dbg("Unsupported mode argument passed: '$mode', falling back to default 'gen'");
-                $mode = 'gen';
-            }
-
         }
         else {
             spl_autoload_register([$this, 'autoload']);
+        }
+
+        if (!in_array($mode, ['gen', 'sep', 'ash'])) {
+            $this->dbg("Unsupported mode argument passed: '$mode', falling back to default 'gen'");
+            $mode = 'gen';
         }
 
         $this->dm = new DaitchMokotoff();
@@ -110,7 +103,7 @@ class BMDM extends Core
     public function beforeShutdown()
     {
 
-        $time = microtime(true) - $this->start;
+        $time = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
         $mem  = memory_get_usage();
 
         $this->dbg("Execution time: $time seconds");
