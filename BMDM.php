@@ -207,7 +207,7 @@ class BMDM extends Core
             foreach ($keys as $key) {
 
                 $dm_soundex      = $this->dm->soundex($key);
-                $dm_soundex      = join(' ', $dm_soundex);
+                $dm_soundex      = join(' ', $dm_soundex[0]);
                 $result[$word][] = $dm_soundex;
             }
 

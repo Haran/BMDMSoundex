@@ -106,7 +106,7 @@ class DaitchMokotoff extends Core
                 $subres = $this->process($inputArray[$i]);
 
                 if(!empty($subres)) {
-                    $result[] = $subres;
+                    $result[] = explode(" ", $subres);
                 }
 
             }
