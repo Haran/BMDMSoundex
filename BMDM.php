@@ -202,6 +202,13 @@ class BMDM extends Core
 
         $result = [];
 
+        // Passthrough for D-M algorithm strict matching for latin-only strings
+        if( self::$strict_dm && preg_match('/^[a-z0-9\s]+$/', self::$input) ) {
+            return $this->dm->soundex(self::$input);
+        }
+
+        // If self::$strict_dm is false or input string contains non-latin characters
+        // D-M values will be calculated based on B-M phonetic keys
         foreach ($phoneticKeys as $word => $keys) {
 
             foreach ($keys as $key) {

@@ -5,6 +5,9 @@
 * Fixed warning if runtime directory is not writable
 * Updated ruleset loading
 * Monolog requirement moved to required-dev
+* Updated Latvian language rules
+* Fixed inconsistent return values for DM codes
+* Added flag for strict D-M code retrieving
 
 ## v2.0.0, Oct 2016
 

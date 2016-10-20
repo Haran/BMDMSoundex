@@ -28,11 +28,25 @@ class Core
 {
 
     /**
+     * Flag for BMDM::soundex() method, telling that D-M keys must be calculated based
+     * on a string, not on B-M phonetic keys.  Will work only if input string has only
+     * latin  characters.  For non-latin strings B-M phonetic keys will be used anyway.
+     *
+     * Set this flag to False if you want to retrieve extended D-M keys, based on B-M
+     * phonetic keys. In most cases setting this flag to False will produce more keys.
+     * @var bool
+     */
+    protected static $strict_dm = false;
+
+    /**
+     * Debug information is sent via Monolog to browser console if possible. If
+     * Monolog is not included, debug will be printed to STDOUT.
      * @var bool
      */
     protected static $debug = false;
 
     /**
+     * Flag for caching rulesets in ./runtime directory
      * @var bool
      */
     protected static $cache = true;
