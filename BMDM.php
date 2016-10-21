@@ -58,14 +58,7 @@ class BMDM extends Core
         register_shutdown_function([$this, 'beforeShutdown']);
 
         if (!empty($composer)) {
-
-            $handler   = self::$debug ? new BrowserConsoleHandler() : new NullHandler();
-            $formatter = new LineFormatter("%datetime% [[%level_name%]]{macro: autolabel} %message%", "H:i:s.u");
-
-            self::$logger = new Logger('debug');
-            self::$logger->pushHandler($handler);
-            $handler->setFormatter($formatter);
-
+            $this->tryMonologHandler();
         }
         else {
             spl_autoload_register([$this, 'autoload']);
@@ -90,8 +83,14 @@ class BMDM extends Core
      */
     public function autoload($className)
     {
-        /** @noinspection PhpIncludeInspection */
-        require __DIR__."/library/".substr($className, strrpos($className, '\\') + 1).'.php';
+
+        $file = __DIR__."/library/".substr($className, strrpos($className, '\\') + 1).'.php';
+
+        if( file_exists($file) ) {
+            /** @noinspection PhpIncludeInspection */
+            require $file;
+        }
+
     }
 
 
@@ -186,6 +185,45 @@ class BMDM extends Core
         $names = $this->bm->getLanguageNames();
 
         return ['code' => $code, 'languages' => $names];
+
+    }
+
+
+    /**
+     * @param  bool $value
+     * @return void
+     */
+    public function setDebug($value)
+    {
+
+        self::$debug = (bool)$value;
+
+        if( self::$debug === true ) {
+            $this->tryMonologHandler();
+        }
+
+    }
+
+
+    /**
+     * Sets self::$logger to Monolog handler if it is possible
+     * If Monolog is not used, self::$logger will remain NULL and debugging will be printed to STDOUT
+     *
+     * @return void
+     */
+    private function tryMonologHandler()
+    {
+
+        if(class_exists('Monolog\Handler\BrowserConsoleHandler')) {
+
+            $handler   = self::$debug ? new BrowserConsoleHandler() : new NullHandler();
+            $formatter = new LineFormatter("%datetime% [[%level_name%]]{macro: autolabel} %message%", "H:i:s.u");
+
+            self::$logger = new Logger('debug');
+            self::$logger->pushHandler($handler);
+            $handler->setFormatter($formatter);
+
+        }
 
     }
 

@@ -89,6 +89,11 @@ composer update --no-dev</pre>
 <span style='color:#797997;'>$s</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#797997;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>soundex</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#000000;'></span>;</pre>
 
     <br>
+    <p>Enable or disable debug mode</p>
+    <pre style='color:#000000;background:#ffffff;'><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>setDebug</span><span style='color:#808030;'>(</span><span style='color:#797997;'>true</span><span style='color:#808030;'>)</span>;
+<span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>setDebug</span><span style='color:#808030;'>(</span><span style='color:#797997;'>false</span><span style='color:#808030;'>)</span>;</pre>
+
+    <br>
     <p>Also you can call <code>set()</code> once and use it as an object to call specific methods</p>
 <pre style='color:#000000;background:#ffffff;'>
 <span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#0000e6;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span>
@@ -117,11 +122,6 @@ composer update --no-dev</pre>
     <p>Retrieve possible language names for given string</p>
     <pre style='color:#000000;background:#ffffff;'><span style='color:#c0bd92;'>/** </span><span style='color:#005fd2;'>@var</span><span style='color:#3f5fbf;'> </span><span style='color:#bb7977;'>array</span><span style='color:#3f5fbf;'> </span><span style='color:#c0bd92;'>*/</span><span style='color:#000000;'></span>
 <span style='color:#797997;'>$l</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#797997;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#808030;'>-></span><span style='color:#797997;'>bm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#400000;'>getLanguageNames</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span></pre>
-
-    <br>
-    <p>Retrieve supported languages list</p>
-    <pre style='color:#000000;background:#ffffff;'><span style='color:#c0bd92;'>/** </span><span style='color:#005fd2;'>@var</span><span style='color:#3f5fbf;'> </span><span style='color:#bb7977;'>array</span><span style='color:#3f5fbf;'> </span><span style='color:#c0bd92;'>*/</span><span style='color:#000000;'></span>
-<span style='color:#797997;'>$l</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-></span><span style='color:#797997;'>bm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#400000;'>getLanguages</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span></pre>
 
     <div class="row">
         <div class="col-md-12">
