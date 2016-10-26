@@ -255,6 +255,47 @@ class BeiderMorse extends Core
 
 
     /**
+     * Retrieve list of languages from given internal code. The code
+     * is a sum of language internal values, represented by sum of
+     * powers of two.
+     *
+     * @param  int $code
+     * @return array
+     */
+    public function getLanguagesFromCode($code)
+    {
+
+        $result = [];
+
+        if ($code > 0 && $code < $this->all) {
+
+            foreach ($this->indexes as $language => $index) {
+                if ($index & $code) {
+                    $result[] = $language;
+                }
+            }
+
+        }
+
+        return $result;
+
+    }
+
+
+    /**
+     * Retrieve language internal code from its' name.
+     * If no language can be found by given name, NULL will be returned
+     *
+     * @param  string $name
+     * @return int|null
+     */
+    public function getLanguageCodeFromName($name)
+    {
+        return array_key_exists($name, $this->indexes) ? $this->indexes[$name] : null;
+    }
+
+
+    /**
      * Retrieve string of phonetic keys
      *
      * @param  string $input       [optional] alternative input string (instead of set via BMDM::set())
