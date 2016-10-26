@@ -1146,25 +1146,31 @@ class BeiderMorse extends Core
     private function processRules(&$rule)
     {
 
-        $sum   = 0;
         $match = [];
 
-        // Find if rule contains %language% and capturing language names between %...%
-        if( array_key_exists(3, $rule) &&  preg_match_all('/\%(\w+)\%/', $rule[3], $match)) {
+        // Find if rule contains %language% and capturing language names between [%...%] one group per each [..] occurence
+        if( array_key_exists(3, $rule) &&  preg_match_all('/\[(%[\w%\+]+\%)]/', $rule[3], $match)) {
 
-            // Summing %language% indexes
-            foreach ($match[1] as $lang) {
-                if( array_key_exists($lang, $this->indexes) ) {
-                    $sum += $this->indexes[$lang];
+            // Loop through [%...%] matches
+            foreach ($match[1] as $langs) {
+
+                $found = [];
+                $sum   = 0;
+
+                // Find and capture language names between %...%
+                if( preg_match_all('/\%(\w+)\%/im', $langs, $found) ) {
+
+                    foreach ($found[1] as $lang) {
+                        if( array_key_exists($lang, $this->indexes) ) {
+                            $sum += $this->indexes[$lang];
+                        }
+                    }
+
                 }
-            }
 
-            // Ignoring the unsupported language
-            if( $sum > 0 ) {
-                $rule[3] = preg_replace('/\%[\w+\+\%]+\%/', $sum, $rule[3]);
-            }
-            else {
-                $rule = null;
+                // If unsupported language found and $sum remained 0, assign 'any' language to the rule
+                $rule[3] = ($sum > 0) ? str_replace($langs, $sum, $rule[3]) : str_replace($langs, '1', $rule[3]);
+
             }
 
         }
