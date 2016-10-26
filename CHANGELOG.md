@@ -8,6 +8,7 @@
 * Updated Latvian language rules
 * Fixed inconsistent return values for DM codes
 * Added flag for strict D-M code retrieving
+* Fixed an issue with ruleset %variables% parsing 
 
 ## v2.0.0, Oct 2016
 
