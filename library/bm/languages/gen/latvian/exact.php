@@ -1,6 +1,5 @@
 <?php
 /*
- * Copyright Alexander Beider and Stephen P. Morse, 2008
  * Copyright Olegs Capligins, 2013-2016
  *
  * This is free software: you can redistribute it and/or modify
@@ -19,26 +18,5 @@
  */
 
 return [
-
-    0 => [
-        "/y/",
-        "/q/",
-        "/w/",
-        "/x/",
-    ],
-
-    1 => [
-        "/ā/",
-        "/č/",
-        "/ē/",
-        "/ģ/",
-        "/ī/",
-        "/ķ/",
-        "/ļ/",
-        "/ņ/",
-        "/š/",
-        "/ū/",
-        "/ž/",
-    ],
-
+    ["exactlatvian"]
 ];

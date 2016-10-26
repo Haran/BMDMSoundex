@@ -18,76 +18,79 @@
  *
  */
 
-return array(
+$exactApproxCommon = require "exactApprox.php";
+$hebrew = [
 
-    array("E","","",""),  // final French "e": only in Sephardic
+    ["E","","",""],  // final French "e": only in Sephardic
 
-    array("ts","","","C"), // for not confusion Gutes [=guts] and Guts [=guc]
-    array("tS","","","C"), // same reason
-    array("S","","","s"),
-    array("p","","","f"),
-    array("b","^","","b"),
-    array("b","","","(b|v)"),
+    ["ts","","","C"], // for not confusion Gutes [=guts] and Guts [=guc]
+    ["tS","","","C"], // same reason
+    ["S","","","s"],
+    ["p","","","f"],
+    ["b","^","","b"],
+    ["b","","","(b|v)"],
 
-    array("ja","","","i"),
-    array("je","","","i"),
-    array("aj","","","i"),
-    array("j","","","i"),
+    ["ja","","","i"],
+    ["je","","","i"],
+    ["aj","","","i"],
+    ["j","","","i"],
 
-    array("a","^","","1"),
-    array("e","^","","1"),
-    array("a","","$","1"),
-    array("e","","$","1"),
+    ["a","^","","1"],
+    ["e","^","","1"],
+    ["a","","$","1"],
+    ["e","","$","1"],
 
-    array("a","","",""),
-    array("e","","",""),
+    ["a","","",""],
+    ["e","","",""],
 
-    array("oj","^","","(u|vi)"),
-    array("uj","^","","(u|vi)"),
+    ["oj","^","","(u|vi)"],
+    ["uj","^","","(u|vi)"],
 
-    array("oj","","","u"),
-    array("uj","","","u"),
+    ["oj","","","u"],
+    ["uj","","","u"],
 
-    array("ou","^","","(u|v|1)"),
-    array("o","^","","(u|v|1)"),
-    array("u","^","","(u|v|1)"),
+    ["ou","^","","(u|v|1)"],
+    ["o","^","","(u|v|1)"],
+    ["u","^","","(u|v|1)"],
 
-    array("o","","$","(u|1)"),
-    array("u","","$","(u|1)"),
+    ["o","","$","(u|1)"],
+    ["u","","$","(u|1)"],
 
-    array("ou","","","u"),
-    array("o","","","u"),
+    ["ou","","","u"],
+    ["o","","","u"],
 
-    array("VV","","","u"),       // alef/ayin + vov from ruleshebrew
-    array("L","^","","1"),       // alef/ayin from  ruleshebrew
-    array("L","","$","1"),       // alef/ayin from  ruleshebrew
-    array("L","","",""),         // alef/ayin from  ruleshebrew
-    array("WW","^","","(vi|u)"), // vav-yod from  ruleshebrew
-    array("WW","","","u"),       // vav-yod from  ruleshebrew
-    array("W","^","","(u|v)"),   // vav from  ruleshebrew
-    array("W","","","u"),        // vav from  ruleshebrew
+    ["VV","","","u"],       // alef/ayin + vov from ruleshebrew
+    ["L","^","","1"],       // alef/ayin from  ruleshebrew
+    ["L","","$","1"],       // alef/ayin from  ruleshebrew
+    ["L","","",""],         // alef/ayin from  ruleshebrew
+    ["WW","^","","(vi|u)"], // vav-yod from  ruleshebrew
+    ["WW","","","u"],       // vav-yod from  ruleshebrew
+    ["W","^","","(u|v)"],   // vav from  ruleshebrew
+    ["W","","","u"],        // vav from  ruleshebrew
 
     // array("g","","","(g|Z)"),
     // array("z","","","(z|Z)"),
     // array("d","","","(d|dZ)"),
 
-    array("T","","","t"),   // tet from  ruleshebrew
+    ["T","","","t"],   // tet from  ruleshebrew
 
     // array("k","","","(k|x)"),
     // array("x","","","(k|x)"),
-    array("K","","","k"), // kof and initial kaf from ruleshebrew
-    array("X","","","x"), // khet and final kaf from ruleshebrew
+    ["K","","","k"], // kof and initial kaf from ruleshebrew
+    ["X","","","x"], // khet and final kaf from ruleshebrew
 
     // special for Spanish initial B/V
-    array("B","","","v"),
-    array("V","","","b"),
+    ["B","","","v"],
+    ["V","","","b"],
 
-    array("H","^","","(x|1)"),
-    array("H","","$","(x|1)"),
-    array("H","","","(x|)"),
-    array("h","^","","1"),
-    array("h","","",""),
+    ["H","^","","(x|1)"],
+    ["H","","$","(x|1)"],
+    ["H","","","(x|)"],
+    ["h","^","","1"],
+    ["h","","",""],
 
-    array("exactapproxcommon plus hebrewcommon")
+    ["exactapproxcommon plus hebrewcommon"]
 
-);
+];
+
+return array_merge($exactApproxCommon, $hebrew);

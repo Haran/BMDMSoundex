@@ -18,7 +18,8 @@
  *
  */
 
-return [
+$exactApproxCommon = require "exactApprox.php";
+$approxCommon = [
 
     // DUTCH
     ["van", "^", "[bp]", "(vam|)"],
@@ -236,3 +237,5 @@ return [
     ["exactapproxcommon plus approxcommon"]
 
 ];
+
+return array_merge($exactApproxCommon, $approxCommon);

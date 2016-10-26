@@ -85,13 +85,6 @@ class BeiderMorse extends Core
     private $approxCommon;
 
     /**
-     * If caching is enabled
-     * Caching saves
-     * @var bool
-     */
-    private $cache = true;
-
-    /**
      * Runtime directory
      * @var string
      */
@@ -148,7 +141,7 @@ class BeiderMorse extends Core
     public function getLanguageCode($input = null)
     {
 
-        $input  = empty($input) ? self::$input : Core::prepareString($input);
+        $input  = empty($input) ? self::$input : $this->prepareString($input);
         $count  = count($this->languageRules);
         $remain = $this->all;
 
@@ -262,6 +255,47 @@ class BeiderMorse extends Core
 
 
     /**
+     * Retrieve list of languages from given internal code. The code
+     * is a sum of language internal values, represented by sum of
+     * powers of two.
+     *
+     * @param  int $code
+     * @return array
+     */
+    public function getLanguagesFromCode($code)
+    {
+
+        $result = [];
+
+        if ($code > 0 && $code < $this->all) {
+
+            foreach ($this->indexes as $language => $index) {
+                if ($index & $code) {
+                    $result[] = $language;
+                }
+            }
+
+        }
+
+        return $result;
+
+    }
+
+
+    /**
+     * Retrieve language internal code from its' name.
+     * If no language can be found by given name, NULL will be returned
+     *
+     * @param  string $name
+     * @return int|null
+     */
+    public function getLanguageCodeFromName($name)
+    {
+        return array_key_exists($name, $this->indexes) ? $this->indexes[$name] : null;
+    }
+
+
+    /**
      * Retrieve string of phonetic keys
      *
      * @param  string $input       [optional] alternative input string (instead of set via BMDM::set())
@@ -273,7 +307,7 @@ class BeiderMorse extends Core
 
         $concat      = false;
         $finalRules1 = $this->approxCommon;
-        $input       = empty($input) ? self::$input : Core::prepareString($input);
+        $input       = empty($input) ? self::$input : $this->prepareString($input);
         $languageArg = empty($languageArg) ? $this->getLanguageCode() : $languageArg;
         $rules       = $this->rules[$this->getLanguageIndexFromCode($languageArg)];
         $finalRules2 = $this->approx[$this->getLanguageIndexFromCode($languageArg)];
@@ -462,8 +496,8 @@ class BeiderMorse extends Core
                 }
             }
 
-            self::$logger->debug("Applying language rules from '$fileName' to '$input' using language code '$languageArg'");
-            self::$logger->debug($dbg);
+            $this->dbg("Applying language rules from '$fileName' to '$input' using language code '$languageArg'", 'debug');
+            $this->dbg($dbg, 'debug');
 
         }
 
@@ -527,13 +561,13 @@ class BeiderMorse extends Core
                 $candidate = $this->applyRuleIfCompatible($phonetic, $rule[$phoneticPos], $languageArg);
 
                 if ($candidate === false) {
-                    self::$logger->debug("Rejecting rule #$r because of incompatible attributes: [pattern='$pattern', context='$lcontext', rcontext='$rcontext', subst='{$rule[$phoneticPos]}', result='$phonetic']");
+                    $this->dbg("Rejecting rule #$r because of incompatible attributes: [pattern='$pattern', context='$lcontext', rcontext='$rcontext', subst='{$rule[$phoneticPos]}', result='$phonetic']", 'debug');
                     continue;
                 }
 
                 $phonetic = $candidate;
 
-                self::$logger->debug("Applying rule #$r [pattern='$pattern', lcontext='$lcontext', rcontext='$rcontext', subst='{$rule[$phoneticPos]}', result='$phonetic']");
+                $this->dbg("Applying rule #$r [pattern='$pattern', lcontext='$lcontext', rcontext='$rcontext', subst='{$rule[$phoneticPos]}', result='$phonetic']", 'debug');
 
                 $found = true;
                 break;
@@ -542,7 +576,7 @@ class BeiderMorse extends Core
 
             // character in name that is not in table -- e.g., space
             if( !$found ) {
-                self::$logger->debug('Not found: ' . substr($input, $i, 1));
+                $this->dbg('Not found: ' . substr($input, $i, 1), 'debug');
                 $patternLength = 1;
             }
 
@@ -550,7 +584,7 @@ class BeiderMorse extends Core
 
         }
 
-        self::$logger->debug("After language rules: '$phonetic'");
+        $this->dbg("After language rules: '$phonetic'", 'debug');
 
         // Apply common rules
         $phonetic = $this->applyFinalRules($phonetic, $finalRules1, $languageArg, false);
@@ -666,7 +700,7 @@ class BeiderMorse extends Core
         for ($k = 0; $k < $ph_count; $k++) {
 
 
-            self::$logger->debug("Applying final rules from ($fileName) to $phonetic");
+            $this->dbg("Applying final rules from ($fileName) to $phonetic", 'debug');
 
             $phonetic  = $phoneticArray[$k];
             $phonetic2 = '';
@@ -751,13 +785,13 @@ class BeiderMorse extends Core
                     $candidate = $this->applyRuleIfCompatible($phonetic2, $rule[$phoneticPos], $languageArg);
 
                     if ($candidate === false) {
-                        self::$logger->debug("rejecting rule #$r because of incompatible attributes");
+                        $this->dbg("rejecting rule #$r because of incompatible attributes", 'debug');
                         continue;
                     }
 
                     $phonetic2 = $candidate;
 
-                    self::$logger->debug("  after applying final rule #$r to phonetic item #$k at position $i: $phonetic2 pattern=$pattern lcontext=$lcontext rcontext=$rcontext subst=" . $rule[$phoneticPos]);
+                    $this->dbg("  after applying final rule #$r to phonetic item #$k at position $i: $phonetic2 pattern=$pattern lcontext=$lcontext rcontext=$rcontext subst=" . $rule[$phoneticPos], 'debug');
 
                     $found = true;
                     break;
@@ -770,7 +804,7 @@ class BeiderMorse extends Core
                     $patternLength = 1;
                     $phonetic2    .= substr($phonetic, $i, 1);
 
-                    self::$logger->debug("  no rules match for phonetic item $k at position $i: $phonetic2");
+                    $this->dbg("  no rules match for phonetic item $k at position $i: $phonetic2", 'fff');
 
                 }
 
@@ -996,7 +1030,7 @@ class BeiderMorse extends Core
     private function buildApproxCommon()
     {
 
-        if( $this->cache && $this->readRuntime('approxCommon') ) {
+        if( self::$cache && $this->readRuntime('approxCommon') ) {
             return;
         }
 
@@ -1020,7 +1054,7 @@ class BeiderMorse extends Core
     private function buildPhonetics()
     {
 
-        if( $this->cache && $this->readRuntime('approx') && $this->readRuntime('rules') ) {
+        if( self::$cache && $this->readRuntime('approx') && $this->readRuntime('rules') ) {
             return;
         }
 
@@ -1056,7 +1090,7 @@ class BeiderMorse extends Core
     private function buildLanguageRules()
     {
 
-        if( $this->cache && $this->readRuntime('languageRules') ) {
+        if( self::$cache && $this->readRuntime('languageRules') ) {
             return;
         }
 
@@ -1112,25 +1146,31 @@ class BeiderMorse extends Core
     private function processRules(&$rule)
     {
 
-        $sum   = 0;
         $match = [];
 
-        // Find if rule contains %language% and capturing language names between %...%
-        if( array_key_exists(3, $rule) &&  preg_match_all('/\%(\w+)\%/', $rule[3], $match)) {
+        // Find if rule contains %language% and capturing language names between [%...%] one group per each [..] occurence
+        if( array_key_exists(3, $rule) &&  preg_match_all('/\[(%[\w%\+]+\%)]/', $rule[3], $match)) {
 
-            // Summing %language% indexes
-            foreach ($match[1] as $lang) {
-                if( array_key_exists($lang, $this->indexes) ) {
-                    $sum += $this->indexes[$lang];
+            // Loop through [%...%] matches
+            foreach ($match[1] as $langs) {
+
+                $found = [];
+                $sum   = 0;
+
+                // Find and capture language names between %...%
+                if( preg_match_all('/\%(\w+)\%/im', $langs, $found) ) {
+
+                    foreach ($found[1] as $lang) {
+                        if( array_key_exists($lang, $this->indexes) ) {
+                            $sum += $this->indexes[$lang];
+                        }
+                    }
+
                 }
-            }
 
-            // Ignoring the unsupported language
-            if( $sum > 0 ) {
-                $rule[3] = preg_replace('/\%[\w+\+\%]+\%/', $sum, $rule[3]);
-            }
-            else {
-                $rule = null;
+                // If unsupported language found and $sum remained 0, assign 'any' language to the rule
+                $rule[3] = ($sum > 0) ? str_replace($langs, $sum, $rule[3]) : str_replace($langs, '1', $rule[3]);
+
             }
 
         }
@@ -1169,9 +1209,16 @@ class BeiderMorse extends Core
      */
     private function writeRuntime($key)
     {
-        if($this->cache) {
+
+        $wr = is_writable($this->runtime);
+
+        if(self::$cache && $wr) {
             file_put_contents("$this->runtime/{$this->type}.$key.data", serialize($this->{$key}), LOCK_EX);
         }
+        elseif(!$wr) {
+            $this->dbg("Runtime directory $this->runtime is not writable", 'warning');
+        }
+
     }
 
 }

@@ -106,7 +106,7 @@ class DaitchMokotoff extends Core
                 $subres = $this->process($inputArray[$i]);
 
                 if(!empty($subres)) {
-                    $result[] = $subres;
+                    $result[] = explode(" ", $subres);
                 }
 
             }
@@ -158,7 +158,7 @@ class DaitchMokotoff extends Core
                 }
             }
 
-            self::$logger->debug(sprintf("pt1 MyStr='%s', MyStr2='%s', MyStr3='%s'", $input, $current_substring, $remaining));
+            $this->dbg(sprintf("pt1 MyStr='%s', MyStr2='%s', MyStr3='%s'", $input, $current_substring, $remaining), 'debug');
 
             if ($i == $remaining_length) {
                 $remaining = ''; // finished
@@ -177,7 +177,7 @@ class DaitchMokotoff extends Core
 
             if (!$allblank) {
 
-                self::$logger->debug(sprintf("pt2 MyStr='%s', MyStr2='%s', MyStr3='%s'\n", $input, $current_substring, $remaining));
+                $this->dbg(sprintf("pt2 MyStr='%s', MyStr2='%s', MyStr3='%s'\n", $input, $current_substring, $remaining), 'debug');
 
                 $dim_dm2   = 1;
                 $dm2       = [];
@@ -247,7 +247,7 @@ class DaitchMokotoff extends Core
                                 // if 1st position is a vowel
                                 if (strlen($input) > 0 && strpos($this->vowels, $input[0]) !== false) {
 
-                                    self::$logger->debug(sprintf("pt2b vowel: '%s'\n", $input[0]));
+                                    $this->dbg(sprintf("pt2b vowel: '%s'\n", $input[0]), 'debug');
 
                                     for ($ii = 0; $ii < $dmnumber; $ii++) {
 
@@ -287,7 +287,7 @@ class DaitchMokotoff extends Core
 
                                     }
 
-                                    self::$logger->debug(sprintf("pt2c vowel: '%s'  done\n", $input[0]));
+                                    $this->dbg(sprintf("pt2c vowel: '%s'  done\n", $input[0]), 'debug');
 
                                 }
 
@@ -296,7 +296,7 @@ class DaitchMokotoff extends Core
 
                                     for ($ii = 0; $ii < $dmnumber; $ii++) {
 
-                                        self::$logger->debug("pt2d lastdm: ".var_export($lastdm, true));
+                                        $this->dbg("pt2d lastdm: ".var_export($lastdm, true), 'debug');
 
                                         if ($this->rules[$rule][3] != "999" && $this->rules[$rule][3] != $lastdm[$ii]) {
                                             $lastdm[$ii] = $this->rules[$rule][3];
@@ -313,7 +313,7 @@ class DaitchMokotoff extends Core
 
                                         for ($ii = $dmnumber; $ii < $dim_dm2; $ii++) {
 
-                                            self::$logger->debug("pt2e checking xrules");
+                                            $this->dbg("pt2e checking xrules", 'debug');
 
                                             if ($xr >= 0 && $this->xrules[$xr][3] != "999" && $this->xrules[$xr][3] != $lastdm[$ii]) {
                                                 $lastdm[$ii] = $this->xrules[$xr][3];
@@ -346,7 +346,7 @@ class DaitchMokotoff extends Core
 
                 } // end of while (strlen($input)) > 0)
 
-                self::$logger->debug("pt4 dm2: ".var_export($dm2, true));
+                $this->dbg("pt4 dm2: ".var_export($dm2, true), 'debug');
 
                 $dm = '';
 
@@ -375,7 +375,7 @@ class DaitchMokotoff extends Core
 
                 }
 
-                self::$logger->debug("pt3 - dm3 '" . $result . "' dm '" . $dm);
+                $this->dbg("pt3 - dm3 '" . $result . "' dm '" . $dm, 'debug');
 
                 if (strlen($result) > 0 && strlen($dm) > 0 && strpos($result, $dm) === false) {
                     $result = $result . ' ' . $dm;

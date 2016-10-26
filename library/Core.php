@@ -28,6 +28,30 @@ class Core
 {
 
     /**
+     * Flag for BMDM::soundex() method, telling that D-M keys must be calculated based
+     * on a string, not on B-M phonetic keys.  Will work only if input string has only
+     * latin  characters.  For non-latin strings B-M phonetic keys will be used anyway.
+     *
+     * Set this flag to False if you want to retrieve extended D-M keys, based on B-M
+     * phonetic keys. In most cases setting this flag to False will produce more keys.
+     * @var bool
+     */
+    protected static $strict_dm = false;
+
+    /**
+     * Debug information is sent via Monolog to browser console if possible. If
+     * Monolog is not included, debug will be printed to STDOUT.
+     * @var bool
+     */
+    protected static $debug = false;
+
+    /**
+     * Flag for caching rulesets in ./runtime directory
+     * @var bool
+     */
+    protected static $cache = true;
+
+    /**
      * @var string
      */
     protected static $input;
@@ -44,7 +68,7 @@ class Core
      * @param  string $string
      * @return string
      */
-    protected static function prepareString($string)
+    protected function prepareString($string)
     {
 
         if(!mb_check_encoding($string, 'UTF-8')) {
@@ -56,6 +80,48 @@ class Core
 
         return $string;
 
+    }
+
+
+    /**
+     * Fallback logging handler
+     *
+     * @param string $message
+     * @param string $level
+     * @return void
+     */
+    protected function dbg($message, $level = 'info')
+    {
+
+        if (self::$debug) {
+
+            if (!isset(self::$logger)) {
+                echo $this->timestamp();
+                echo "\t$message";
+                echo (strcasecmp(PHP_SAPI, 'cli') == 0) ? "\n" : "\n<br>";
+            }
+            else {
+                if( method_exists(self::$logger, $level) ) {
+                    self::$logger->$level($message);
+                }
+                else {
+                    self::$logger->info($message);
+                }
+            }
+
+        }
+
+    }
+
+
+    /**
+     * @return string
+     */
+    private function timestamp()
+    {
+        list($usec, $sec) = explode(' ', microtime());
+        $usec = substr(str_replace(".", "", $usec), 0, 5);
+        return date('H:i:s', $sec) .".$usec";
     }
 
 }

@@ -37,6 +37,7 @@
                 <li><a href="performance.html">Performance</a></li>
                 <li><a href="algorithms.html">Algorithms</a></li>
                 <li class="active"><a href="usage.html">Usage</a></li>
+                <li><a href="https://github.com/Haran/BMDMSoundex/releases">Downloads</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="http://stevemorse.org/index.html">Stephen P. Morse </a></li>
@@ -50,8 +51,8 @@
     <div class="container">
         <h1>BMDM Soundex</h1>
         <p>
-            This is a fork of Beider-Morse and Daitch-Mokotoff soundex algorithms. Merged and reforged in object-
-            oriented way for more convenient usage and development.
+            This is a fork of Beider-Morse and Daitch-Mokotoff soundex algorithms. Merged and reforged in object-oriented
+            way for more convenient usage and development.
         </p>
     </div>
 </div>
@@ -88,13 +89,18 @@ composer update --no-dev</pre>
 <span style='color:#797997;'>$s</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#797997;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>soundex</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#000000;'></span>;</pre>
 
     <br>
+    <p>Enable or disable debug mode</p>
+    <pre style='color:#000000;background:#ffffff;'><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>setDebug</span><span style='color:#808030;'>(</span><span style='color:#0000e6;'>true</span><span style='color:#808030;'>)</span>;
+<span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>setDebug</span><span style='color:#808030;'>(</span><span style='color:#0000e6;'>false</span><span style='color:#808030;'>)</span>;</pre>
+
+    <br>
     <p>Also you can call <code>set()</code> once and use it as an object to call specific methods</p>
 <pre style='color:#000000;background:#ffffff;'>
-<span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#0000e6;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span>
+<span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#797997;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span>
 <span style='color:#797997;'>$g</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>guess</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'> </span><span style='color:#696969;'>// array</span><span style='color:#000000;'></span>
 <span style='color:#000000;'></span>
 <span style='color:#696969;'>// OR</span><span style='color:#000000;'></span>
-<span style='color:#797997;'>$obj</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#0000e6;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span>
+<span style='color:#797997;'>$obj</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#797997;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span>
 <span style='color:#797997;'>$g</span><span style='color:#000000;'>   </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$obj</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>guess</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'> </span><span style='color:#696969;'>// array</span><span style='color:#000000;'></span></pre>
 
     <br>
@@ -118,9 +124,14 @@ composer update --no-dev</pre>
 <span style='color:#797997;'>$l</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#000000;'>set</span><span style='color:#808030;'>(</span><span style='color:#797997;'>'Slim Shady'</span><span style='color:#808030;'>)</span><span style='color:#808030;'>-></span><span style='color:#797997;'>bm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#400000;'>getLanguageNames</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span></pre>
 
     <br>
-    <p>Retrieve supported languages list</p>
+    <p>Retrieve list of languages from given internal code</p>
     <pre style='color:#000000;background:#ffffff;'><span style='color:#c0bd92;'>/** </span><span style='color:#005fd2;'>@var</span><span style='color:#3f5fbf;'> </span><span style='color:#bb7977;'>array</span><span style='color:#3f5fbf;'> </span><span style='color:#c0bd92;'>*/</span><span style='color:#000000;'></span>
-<span style='color:#797997;'>$l</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-></span><span style='color:#797997;'>bm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#400000;'>getLanguages</span><span style='color:#808030;'>(</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span></pre>
+<span style='color:#797997;'>$l</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#797997;'>bm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#400000;'>getLanguagesFromCode</span><span style='color:#808030;'>(</span><span style='color:#0000e6;'>12</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span></pre>
+
+    <br>
+    <p>Retrieve language internal code from its' name</p>
+    <pre style='color:#000000;background:#ffffff;'><span style='color:#c0bd92;'>/** </span><span style='color:#005fd2;'>@var</span><span style='color:#3f5fbf;'> </span><span style='color:#bb7977;'>int</span><span style='color:#3f5fbf;'> </span><span style='color:#c0bd92;'>*/</span><span style='color:#000000;'></span>
+<span style='color:#797997;'>$c</span><span style='color:#000000;'> </span><span style='color:#808030;'>=</span><span style='color:#000000;'> </span><span style='color:#797997;'>$bmdm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#797997;'>bm</span><span style='color:#808030;'>-</span><span style='color:#808030;'>></span><span style='color:#400000;'>getLanguageCodeFromName</span><span style='color:#808030;'>(</span><span style='color:#797997;'>'arabic'</span><span style='color:#808030;'>)</span><span style='color:#800080;'>;</span><span style='color:#000000;'></span></pre>
 
     <div class="row">
         <div class="col-md-12">

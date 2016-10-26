@@ -242,10 +242,10 @@ return [
     ["eu","","","(eu|Yj[%german%]|ej[%german%]|oj[%german%]|Y[%dutch%])"],
     ["ey","","","(aj|ej)"],
     ["ia","","","ja"],
-    ["ie","","","(i[%german%]|e[%polish%]|ije[%russian%]|Q[%dutch%]|je)"],
+    ["ie","","","(D[%latvian%]ie|i[%german%]|e[%polish%]|ije[%russian%]|Q[%dutch%]|je)"],
     ["ii","","$","i"], // russian
     ["io","","","(jo|e[%russian%])"],
-    ["iu","","","ju"],
+    ["iu","","","D[%latvian%]iu|ju"],
     ["iy","","$","i"], // russian
     ["oe","","","(Y[%german%]|oje[%russian%]|u[%dutch%]|oe)"],
     ["oi","","","oj"],
@@ -256,7 +256,7 @@ return [
     ["õe","","","(oj|on)"], // Port
     ["ua","","","va"],
     ["ue","","","(Q[%german%]|uje[%russian%]|ve)"],
-    ["ui","","","(uj|vi|Y[%dutch%])"],
+    ["ui","","","(D[%latvian%]ui|uj|vi|Y[%dutch%])"],
     ["uu","","","(u|Q[%dutch%])"],
     ["uo","","","(vo|o)"],
     ["uy","","","uj"],
@@ -283,7 +283,7 @@ return [
     ["â","","","a"],
     ["ã","","","(a|an)"], // Port
     ["ă","","","(e[%romanian%]|a)"], // romanian
-    ["č","","", "tS"], // czech
+    ["č","","", "tS"], // czech + latvian
     ["ć","","","(tS[%polish%]|ts)"],  // polish
     ["ç","","","(s|tS[%turkish%])"],
     ["ď","","","(d|dj[%czech%])"],
@@ -293,13 +293,16 @@ return [
     ["è","","","e"],
     ["ê","","","e"],
     ["ě","","","(e|je[%czech%])"],
+    ["ģ","","","(d|dj)"], // latvian
     ["ğ","","",""], // turkish
     ["í","","","i"],
     ["î","","","i"],
     ["ı","","","(i|e[%turkish%]|[%turkish%])"],
+    ["ļ","","","l"], // latvian
     ["ł","","","l"],
     ["ń","","","(n|nj[%polish%])"], // polish
     ["ñ","","","(n|nj[%spanish%])"],
+    ["ņ","","","(n|nj[%latvian%])"],
     ["ó","","","(u[%polish%]|o)"],
     ["ô","","","o"], // Port & Fr
     ["õ","","","(o|on[%portuguese%]|Y[%hungarian%])"],
@@ -308,23 +311,26 @@ return [
     ["ř","","","(r|rZ[%czech%])"],
     ["ś","","","(S[%polish%]|s)"],
     ["ş","","","S"], // romanian+turkish
-    ["š","","", "S"], // czech
+    ["š","","", "S"], // czech + latvian
     ["ţ","","","ts"],  // romanian
     ["ť","","","(t|tj[%czech%])"],
     ["ű","","","Q"], // hungarian
     ["ü","","","(Q|u[%portuguese%+%spanish%])"],
+    ["ū","","","u"], // latvian
     ["ú","","","u"],
     ["ů","","","u"], // czech
     ["ù","","","u"], // french
-    ["ý","","","i"],  // czech
+    ["ý","","","i"], // czech
     ["ż","","","Z"], // polish
     ["ź","","","(Z[%polish%]|z)"],
+    ["ž","","","Z"], // latvian
 
     ["ß","","","s"], // german
     ["'","","",""], // russian
     ['"',"","",""], // russian
 
     ["o","","[bcćdgklłmnńrsśtwzźż]","(O|P[%polish%])"],
+    ["o","","","(D[%latvian%]|uo)"],
 
     // LATIN ALPHABET
     ["a","","","A"],

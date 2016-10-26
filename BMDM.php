@@ -17,6 +17,7 @@
  *
  */
 namespace dautkom\bmdm;
+require_once "library/Core.php";
 
 use dautkom\bmdm\library\Core;
 use dautkom\bmdm\library\BeiderMorse;
@@ -32,16 +33,6 @@ use Monolog\Logger;
  */
 class BMDM extends Core
 {
-
-    /**
-     * @var bool
-     */
-    protected $debug = true;
-
-    /**
-     * @var float
-     */
-    private $start = 0.0;
 
     /**
      * @var DaitchMokotoff
@@ -61,23 +52,44 @@ class BMDM extends Core
     public function __construct($mode = 'gen')
     {
 
-        $this->start  = microtime(true);
         self::$input  = null;
+        self::$logger = null;
+        $composer     = spl_autoload_functions();
         register_shutdown_function([$this, 'beforeShutdown']);
 
-        $handler      = $this->debug ? new BrowserConsoleHandler() : new NullHandler();
-        $formatter    = new LineFormatter("%datetime% [[%level_name%]]{macro: autolabel} %message%", "H:i:s.u");
-        self::$logger = new Logger('debug');
-        self::$logger->pushHandler($handler);
-        $handler->setFormatter($formatter);
+        if (!empty($composer)) {
+            $this->tryMonologHandler();
+        }
+        else {
+            spl_autoload_register([$this, 'autoload']);
+        }
 
-        if( !in_array($mode, ['gen', 'sep', 'ash']) ) {
-            self::$logger->info("Unsupported mode argument passed: '$mode', falling back to default 'gen'");
+        if (!in_array($mode, ['gen', 'sep', 'ash'])) {
+            $this->dbg("Unsupported mode argument passed: '$mode', falling back to default 'gen'");
             $mode = 'gen';
         }
 
         $this->dm = new DaitchMokotoff();
         $this->bm = new BeiderMorse($mode);
+
+    }
+
+
+    /**
+     * Fallback autoloader if no composer is used
+     *
+     * @param string $className
+     * @return void
+     */
+    public function autoload($className)
+    {
+
+        $file = __DIR__."/library/".substr($className, strrpos($className, '\\') + 1).'.php';
+
+        if( file_exists($file) ) {
+            /** @noinspection PhpIncludeInspection */
+            require $file;
+        }
 
     }
 
@@ -90,11 +102,11 @@ class BMDM extends Core
     public function beforeShutdown()
     {
 
-        $time = microtime(true) - $this->start;
+        $time = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
         $mem  = memory_get_usage();
 
-        self::$logger->info("Execution time: $time seconds");
-        self::$logger->info("Used memory: $mem bytes");
+        $this->dbg("Execution time: $time seconds");
+        $this->dbg("Used memory: $mem bytes");
 
     }
 
@@ -178,6 +190,45 @@ class BMDM extends Core
 
 
     /**
+     * @param  bool $value
+     * @return void
+     */
+    public function setDebug($value)
+    {
+
+        self::$debug = (bool)$value;
+
+        if( self::$debug === true ) {
+            $this->tryMonologHandler();
+        }
+
+    }
+
+
+    /**
+     * Sets self::$logger to Monolog handler if it is possible
+     * If Monolog is not used, self::$logger will remain NULL and debugging will be printed to STDOUT
+     *
+     * @return void
+     */
+    private function tryMonologHandler()
+    {
+
+        if(class_exists('Monolog\Handler\BrowserConsoleHandler')) {
+
+            $handler   = self::$debug ? new BrowserConsoleHandler() : new NullHandler();
+            $formatter = new LineFormatter("%datetime% [[%level_name%]]{macro: autolabel} %message%", "H:i:s.u");
+
+            self::$logger = new Logger('debug');
+            self::$logger->pushHandler($handler);
+            $handler->setFormatter($formatter);
+
+        }
+
+    }
+
+
+    /**
      * Convert Beider-Morse phonetic keys to Daitch-Mokotoff keys
      * with proper deduplication of keys per each word
      *
@@ -189,12 +240,19 @@ class BMDM extends Core
 
         $result = [];
 
+        // Passthrough for D-M algorithm strict matching for latin-only strings
+        if( self::$strict_dm && preg_match('/^[a-z0-9\s]+$/', self::$input) ) {
+            return $this->dm->soundex(self::$input);
+        }
+
+        // If self::$strict_dm is false or input string contains non-latin characters
+        // D-M values will be calculated based on B-M phonetic keys
         foreach ($phoneticKeys as $word => $keys) {
 
             foreach ($keys as $key) {
 
                 $dm_soundex      = $this->dm->soundex($key);
-                $dm_soundex      = join(' ', $dm_soundex);
+                $dm_soundex      = join(' ', $dm_soundex[0]);
                 $result[$word][] = $dm_soundex;
             }
 

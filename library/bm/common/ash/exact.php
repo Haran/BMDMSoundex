@@ -18,7 +18,8 @@
  *
  */
 
-return [
+$exactApproxCommon = require "exactApprox.php";
+$exactCommon = [
 
     ["H","","","h"],
 
@@ -37,3 +38,5 @@ return [
     ["exactapproxcommon plus exactcommon"]
 
 ];
+
+return array_merge($exactApproxCommon, $exactCommon);

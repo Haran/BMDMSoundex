@@ -18,7 +18,8 @@
  *
  */
 
-return [
+$exactApproxCommon = require "exactApprox.php";
+$approxCommon = [
 
     // REGRESSIVE ASSIMILATION OF CONSONANTS
     ["n","","[bp]","m"],
@@ -230,3 +231,5 @@ return [
     ["exactapproxcommon plus approxcommon"]
 
 ];
+
+return array_merge($exactApproxCommon, $approxCommon);
